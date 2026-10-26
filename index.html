@@ -66,7 +66,7 @@ body {
 
 .prompt {
     width: 100%;
-    min-height: 90px;
+    min-height: 100px;
     border: 1px solid #39394d;
     border-radius: 15px;
     background: #10101a;
@@ -112,6 +112,12 @@ body {
     padding: 17px 8px;
     text-align: center;
     font-size: 13px;
+    cursor: pointer;
+}
+
+.tool:active,
+.reel:active {
+    transform: scale(.97);
 }
 
 .icon {
@@ -132,6 +138,7 @@ body {
     display: flex;
     align-items: flex-end;
     font-weight: 700;
+    cursor: pointer;
     background: linear-gradient(145deg,#34205e,#11111a);
 }
 
@@ -153,6 +160,82 @@ body {
     color: #777785;
     font-size: 12px;
 }
+
+/* AI DIRECTOR */
+
+.director {
+    display: none;
+}
+
+.back {
+    background: #20202c;
+    color: white;
+    border: 0;
+    padding: 10px 15px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+    cursor: pointer;
+}
+
+.director-title {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.director-subtitle {
+    color: #aaaab8;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.idea-box {
+    background: #171722;
+    border: 1px solid #303041;
+    padding: 16px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+.idea-label {
+    color: #9999aa;
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+.plan {
+    display: grid;
+    gap: 12px;
+}
+
+.plan-card {
+    background: #161620;
+    border: 1px solid #292936;
+    border-radius: 17px;
+    padding: 16px;
+}
+
+.plan-card h3 {
+    font-size: 15px;
+    margin-bottom: 7px;
+}
+
+.plan-card p {
+    color: #aaaab8;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.start {
+    width: 100%;
+    margin-top: 20px;
+    padding: 16px;
+    border: 0;
+    border-radius: 15px;
+    background: linear-gradient(90deg,#7c3cff,#c83cff);
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+}
 </style>
 </head>
 
@@ -160,131 +243,227 @@ body {
 
 <div class="app">
 
-    <div class="header">
-        <div class="logo">✨ AI Creative Studio</div>
-        <div class="pro">PRO</div>
+    <!-- HOME SCREEN -->
+
+    <div id="home">
+
+        <div class="header">
+            <div class="logo">✨ AI Creative Studio</div>
+            <div class="pro">PRO</div>
+        </div>
+
+        <div class="hero">
+
+            <h1>What do you want to create?</h1>
+
+            <p>
+                Tell AI your idea. We'll plan, design and edit it for you.
+            </p>
+
+            <textarea
+                id="prompt"
+                class="prompt"
+                placeholder="Example: Make a powerful 20-second festival Reel..."
+            ></textarea>
+
+            <button class="create" onclick="createProject()">
+                ✨ Create with AI
+            </button>
+
+        </div>
+
+        <div class="section">
+
+            <div class="section-title">
+                Create
+            </div>
+
+            <div class="tools">
+
+                <div class="tool" onclick="quickCreate('Video')">
+                    <div class="icon">🎬</div>
+                    Video
+                </div>
+
+                <div class="tool" onclick="quickCreate('Image')">
+                    <div class="icon">🖼️</div>
+                    Image
+                </div>
+
+                <div class="tool" onclick="quickCreate('Poster')">
+                    <div class="icon">🎨</div>
+                    Poster
+                </div>
+
+                <div class="tool" onclick="quickCreate('Pamphlet')">
+                    <div class="icon">📄</div>
+                    Pamphlet
+                </div>
+
+                <div class="tool" onclick="quickCreate('Reel')">
+                    <div class="icon">📱</div>
+                    Reel
+                </div>
+
+                <div class="tool" onclick="quickCreate('YouTube')">
+                    <div class="icon">▶️</div>
+                    YouTube
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="section">
+
+            <div class="section-title">
+                🎬 Ready Reels
+            </div>
+
+            <div class="reels">
+
+                <div class="reel" onclick="useTemplate('Trending Reel')">
+                    🔥 Trending
+                </div>
+
+                <div class="reel" onclick="useTemplate('Birthday Reel')">
+                    🎉 Birthday
+                </div>
+
+                <div class="reel" onclick="useTemplate('Festival Reel')">
+                    🪔 Festival
+                </div>
+
+                <div class="reel" onclick="useTemplate('Business Reel')">
+                    🏪 Business
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="section">
+
+            <div class="section-title">
+                📁 Recent Projects
+            </div>
+
+            <div class="tool">
+                No projects yet.<br>
+                Create your first project with AI.
+            </div>
+
+        </div>
+
+        <div class="bottom">
+            AI Creative Studio • Create without limits
+        </div>
+
     </div>
 
-    <div class="hero">
-        <h1>What do you want to create?</h1>
 
-        <p>
-            Tell AI your idea. We'll plan, design and edit it for you.
+    <!-- AI DIRECTOR SCREEN -->
+
+    <div id="director" class="director">
+
+        <button class="back" onclick="goHome()">
+            ← Back
+        </button>
+
+        <h1 class="director-title">
+            🎬 AI Director
+        </h1>
+
+        <p class="director-subtitle">
+            Your idea has been understood. Here is the production plan.
         </p>
 
-        <textarea class="prompt"
-        placeholder="Example: Make a powerful 20-second festival Reel..."></textarea>
+        <div class="idea-box">
 
-        <button class="create" onclick="createProject()">
-            ✨ Create with AI
+            <div class="idea-label">
+                YOUR IDEA
+            </div>
+
+            <div id="ideaText">
+                Your project idea
+            </div>
+
+        </div>
+
+        <div class="section-title">
+            📋 Production Plan
+        </div>
+
+        <div class="plan">
+
+            <div class="plan-card">
+                <h3>📝 1. Story & Script</h3>
+                <p>
+                    AI will understand the message, audience and purpose,
+                    then create the structure and script.
+                </p>
+            </div>
+
+            <div class="plan-card">
+                <h3>🎨 2. Visual Design</h3>
+                <p>
+                    Select or generate suitable images, video clips,
+                    backgrounds and graphics.
+                </p>
+            </div>
+
+            <div class="plan-card">
+                <h3>🎵 3. Audio</h3>
+                <p>
+                    Plan music, voice, sound effects and timing.
+                </p>
+            </div>
+
+            <div class="plan-card">
+                <h3>✂️ 4. Editing</h3>
+                <p>
+                    Arrange the timeline, captions, transitions,
+                    effects and motion.
+                </p>
+            </div>
+
+            <div class="plan-card">
+                <h3>📱 5. Final Format</h3>
+                <p>
+                    Prepare the project for the requested platform,
+                    such as Instagram, YouTube or WhatsApp.
+                </p>
+            </div>
+
+        </div>
+
+        <button class="start" onclick="startCreation()">
+            🚀 Start Creating
         </button>
-    </div>
 
-    <div class="section">
-        <div class="section-title">Create</div>
-
-        <div class="tools">
-
-            <div class="tool">
-                <div class="icon">🎬</div>
-                Video
-            </div>
-
-            <div class="tool">
-                <div class="icon">🖼️</div>
-                Image
-            </div>
-
-            <div class="tool">
-                <div class="icon">🎨</div>
-                Poster
-            </div>
-
-            <div class="tool">
-                <div class="icon">📄</div>
-                Pamphlet
-            </div>
-
-            <div class="tool">
-                <div class="icon">📱</div>
-                Reel
-            </div>
-
-            <div class="tool">
-                <div class="icon">▶️</div>
-                YouTube
-            </div>
-
-        </div>
-    </div>
-
-    <div class="section">
-
-        <div class="section-title">
-            🎬 Ready Reels
-        </div>
-
-        <div class="reels">
-
-            <div class="reel">
-                🔥 Trending
-            </div>
-
-            <div class="reel">
-                🎉 Birthday
-            </div>
-
-            <div class="reel">
-                🪔 Festival
-            </div>
-
-            <div class="reel">
-                🏪 Business
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="section">
-
-        <div class="section-title">
-            📁 Recent Projects
-        </div>
-
-        <div class="tool">
-            No projects yet.<br>
-            Create your first project with AI.
-        </div>
-
-    </div>
-
-    <div class="bottom">
-        AI Creative Studio • Create without limits
     </div>
 
 </div>
+
 
 <script>
 
 function createProject() {
 
-    const prompt = document.querySelector(".prompt").value.trim();
+    const prompt = document
+        .getElementById("prompt")
+        .value
+        .trim();
 
     if (!prompt) {
+
         alert("Tell AI what you want to create first.");
+
         return;
     }
 
-    alert(
-        "🚀 Project created!\\n\\n" +
-        "Your AI Director received:\\n" +
-        prompt +
-        "\\n\\nAI Director will plan the project next."
-    );
-}
+    document.getElementById("home").style.display = "none";
 
-</script>
+    document.getElementById("director").style.display = "block";
 
-</body>
-</html>
+    document.getElementById("ideaText").textContent =
