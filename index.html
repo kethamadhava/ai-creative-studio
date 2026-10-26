@@ -31,8 +31,6 @@ button{
     padding:18px 14px 40px;
 }
 
-/* HEADER */
-
 .header{
     display:flex;
     justify-content:space-between;
@@ -51,8 +49,6 @@ button{
     border-radius:20px;
     font-size:12px;
 }
-
-/* HOME */
 
 .hero{
     padding:22px 18px;
@@ -161,8 +157,6 @@ button{
     line-height:1.6;
 }
 
-/* DIRECTOR */
-
 #directorScreen,
 #editorScreen{
     display:none;
@@ -232,9 +226,7 @@ button{
     line-height:1.5;
 }
 
-/* ========================= */
-/* PROFESSIONAL EDITOR */
-/* ========================= */
+/* EDITOR */
 
 .editorTop{
     display:flex;
@@ -261,6 +253,8 @@ button{
     padding:8px 10px;
     cursor:pointer;
 }
+
+/* PREVIEW */
 
 .preview{
     position:relative;
@@ -298,6 +292,15 @@ button{
     margin-top:10px;
 }
 
+#mediaImage,
+#mediaVideo{
+    display:none;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    background:#000;
+}
+
 .playButton{
     position:absolute;
     bottom:15px;
@@ -310,6 +313,50 @@ button{
     background:white;
     color:#111;
     font-size:20px;
+    cursor:pointer;
+    z-index:5;
+}
+
+/* MEDIA PANEL */
+
+.mediaPanel{
+    margin-top:15px;
+    background:#15151f;
+    border:1px solid #292936;
+    border-radius:16px;
+    padding:15px;
+}
+
+.mediaPanelTitle{
+    font-size:15px;
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.mediaButtons{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.mediaButton{
+    padding:13px 8px;
+    border-radius:12px;
+    border:1px solid #353545;
+    background:#20202c;
+    color:white;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.removeMedia{
+    width:100%;
+    margin-top:8px;
+    padding:11px;
+    border-radius:11px;
+    border:1px solid #4a3030;
+    background:#251818;
+    color:#ffaaaa;
     cursor:pointer;
 }
 
@@ -432,8 +479,6 @@ button{
     border-color:#8d61e8;
 }
 
-/* AI DIRECTOR */
-
 .aiDirectorButton{
     width:100%;
     margin-top:15px;
@@ -445,8 +490,6 @@ button{
     font-weight:800;
     cursor:pointer;
 }
-
-/* EXPORT */
 
 .exportButton{
     width:100%;
@@ -467,39 +510,25 @@ button{
     font-size:12px;
     margin-top:28px;
 }
-
 </style>
 </head>
-
 
 <body>
 
 <div class="app">
 
-<!-- ================================= -->
 <!-- HOME -->
-<!-- ================================= -->
 
 <div id="homeScreen">
 
     <div class="header">
-
-        <div class="logo">
-            ✨ AI Creative Studio
-        </div>
-
-        <div class="pro">
-            PRO
-        </div>
-
+        <div class="logo">✨ AI Creative Studio</div>
+        <div class="pro">PRO</div>
     </div>
-
 
     <div class="hero">
 
-        <h1>
-            What do you want to create?
-        </h1>
+        <h1>What do you want to create?</h1>
 
         <p>
             Tell AI your idea. We'll plan, design and edit it for you.
@@ -511,64 +540,48 @@ button{
             placeholder="Example: Make a powerful 20-second festival Reel..."
         ></textarea>
 
-        <button
-            id="createAiButton"
-            class="create"
-            type="button">
+        <button id="createAiButton" class="create" type="button">
             ✨ Create with AI
         </button>
 
     </div>
 
-
     <div class="section">
 
-        <div class="section-title">
-            Create
-        </div>
+        <div class="section-title">Create</div>
 
         <div class="tools">
 
             <div class="tool" data-type="Video">
-                <div class="icon">🎬</div>
-                Video
+                <div class="icon">🎬</div>Video
             </div>
 
             <div class="tool" data-type="Image">
-                <div class="icon">🖼️</div>
-                Image
+                <div class="icon">🖼️</div>Image
             </div>
 
             <div class="tool" data-type="Poster">
-                <div class="icon">🎨</div>
-                Poster
+                <div class="icon">🎨</div>Poster
             </div>
 
             <div class="tool" data-type="Pamphlet">
-                <div class="icon">📄</div>
-                Pamphlet
+                <div class="icon">📄</div>Pamphlet
             </div>
 
             <div class="tool" data-type="Reel">
-                <div class="icon">📱</div>
-                Reel
+                <div class="icon">📱</div>Reel
             </div>
 
             <div class="tool" data-type="YouTube">
-                <div class="icon">▶️</div>
-                YouTube
+                <div class="icon">▶️</div>YouTube
             </div>
 
         </div>
-
     </div>
-
 
     <div class="section">
 
-        <div class="section-title">
-            🎬 Ready Reels
-        </div>
+        <div class="section-title">🎬 Ready Reels</div>
 
         <div class="reels">
 
@@ -592,12 +605,9 @@ button{
 
     </div>
 
-
     <div class="section">
 
-        <div class="section-title">
-            📁 Recent Projects
-        </div>
+        <div class="section-title">📁 Recent Projects</div>
 
         <div class="recent">
             No projects yet.<br>
@@ -606,7 +616,6 @@ button{
 
     </div>
 
-
     <div class="bottom">
         AI Creative Studio • Create without limits
     </div>
@@ -614,146 +623,87 @@ button{
 </div>
 
 
-
-<!-- ================================= -->
 <!-- AI DIRECTOR -->
-<!-- ================================= -->
 
 <div id="directorScreen">
 
-    <button
-        id="backToHome"
-        class="backButton"
-        type="button">
+    <button id="backToHome" class="backButton" type="button">
         ← Back
     </button>
 
-
-    <h1 class="directorTitle">
-        🎬 AI Director
-    </h1>
-
+    <h1 class="directorTitle">🎬 AI Director</h1>
 
     <p class="directorDescription">
         Your idea has been understood. Here is the production plan.
     </p>
 
-
     <div class="ideaBox">
 
-        <div class="ideaLabel">
-            YOUR IDEA
-        </div>
+        <div class="ideaLabel">YOUR IDEA</div>
 
-        <div id="ideaText">
-        </div>
+        <div id="ideaText"></div>
 
     </div>
 
-
-    <div class="section-title">
-        📋 Production Plan
-    </div>
-
+    <div class="section-title">📋 Production Plan</div>
 
     <div class="plan">
 
         <div class="planCard">
-
-            <h3>
-                📝 1. Story & Script
-            </h3>
-
+            <h3>📝 1. Story & Script</h3>
             <p>
                 Understand the message, audience and purpose,
                 then create the structure and script.
             </p>
-
         </div>
 
-
         <div class="planCard">
-
-            <h3>
-                🎨 2. Visual Design
-            </h3>
-
+            <h3>🎨 2. Visual Design</h3>
             <p>
                 Select or generate suitable images, videos,
                 backgrounds and graphics.
             </p>
-
         </div>
 
-
         <div class="planCard">
-
-            <h3>
-                🎵 3. Audio
-            </h3>
-
+            <h3>🎵 3. Audio</h3>
             <p>
                 Plan music, voice, sound effects and timing.
             </p>
-
         </div>
 
-
         <div class="planCard">
-
-            <h3>
-                ✂️ 4. Editing
-            </h3>
-
+            <h3>✂️ 4. Editing</h3>
             <p>
                 Arrange timeline, captions, transitions,
                 effects and motion.
             </p>
-
         </div>
 
-
         <div class="planCard">
-
-            <h3>
-                📱 5. Final Format
-            </h3>
-
+            <h3>📱 5. Final Format</h3>
             <p>
                 Prepare the project for Instagram,
                 YouTube, WhatsApp or another platform.
             </p>
-
         </div>
 
     </div>
 
-
-    <button
-        id="startCreating"
-        class="startButton"
-        type="button">
-
+    <button id="startCreating" class="startButton" type="button">
         🚀 Start Creating
-
     </button>
 
 </div>
 
 
-
-<!-- ================================= -->
 <!-- PROFESSIONAL EDITOR -->
-<!-- ================================= -->
 
 <div id="editorScreen">
 
     <div class="editorTop">
 
-        <button
-            id="editorBack"
-            class="smallBtn"
-            type="button">
+        <button id="editorBack" class="smallBtn" type="button">
             ←
         </button>
 
@@ -763,17 +713,11 @@ button{
 
         <div class="editorActions">
 
-            <button
-                id="undoButton"
-                class="smallBtn"
-                type="button">
+            <button id="undoButton" class="smallBtn" type="button">
                 ↶
             </button>
 
-            <button
-                id="redoButton"
-                class="smallBtn"
-                type="button">
+            <button id="redoButton" class="smallBtn" type="button">
                 ↷
             </button>
 
@@ -782,19 +726,15 @@ button{
     </div>
 
 
-    <!-- PREVIEW -->
+    <!-- REAL PREVIEW -->
 
     <div class="preview">
 
-        <div class="previewContent">
+        <div id="emptyPreview" class="previewContent">
 
-            <div class="previewIcon">
-                🎬
-            </div>
+            <div class="previewIcon">🎬</div>
 
-            <div
-                id="previewText"
-                class="previewText">
+            <div id="previewText" class="previewText">
                 Your project preview
             </div>
 
@@ -804,6 +744,13 @@ button{
 
         </div>
 
+        <img id="mediaImage" alt="Uploaded image">
+
+        <video
+            id="mediaVideo"
+            playsinline
+            controls>
+        </video>
 
         <button
             id="playButton"
@@ -811,6 +758,54 @@ button{
             type="button">
             ▶
         </button>
+
+    </div>
+
+
+    <!-- MEDIA -->
+
+    <div class="mediaPanel">
+
+        <div class="mediaPanelTitle">
+            🖼️ Media
+        </div>
+
+        <div class="mediaButtons">
+
+            <button
+                id="imageUploadButton"
+                class="mediaButton"
+                type="button">
+                🖼️ Add Image
+            </button>
+
+            <button
+                id="videoUploadButton"
+                class="mediaButton"
+                type="button">
+                🎬 Add Video
+            </button>
+
+        </div>
+
+        <button
+            id="removeMediaButton"
+            class="removeMedia"
+            type="button">
+            🗑️ Remove Media
+        </button>
+
+        <input
+            id="imageInput"
+            type="file"
+            accept="image/*"
+            hidden>
+
+        <input
+            id="videoInput"
+            type="file"
+            accept="video/*"
+            hidden>
 
     </div>
 
@@ -823,31 +818,21 @@ button{
             ⏱ Timeline
         </div>
 
-        <div class="time">
+        <div id="timelineTime" class="time">
             00:00 / 00:20
         </div>
 
     </div>
 
-
     <div class="timeline">
 
         <div class="track">
 
-            <div class="clip">
-                Scene 1
-            </div>
-
-            <div class="clip">
-                Scene 2
-            </div>
-
-            <div class="clip">
-                Scene 3
-            </div>
+            <div class="clip">Scene 1</div>
+            <div class="clip">Scene 2</div>
+            <div class="clip">Scene 3</div>
 
         </div>
-
 
         <div class="audioTrack">
             🎵 Music / Voice
@@ -856,53 +841,44 @@ button{
     </div>
 
 
-    <!-- EDITING TOOLS -->
+    <!-- TOOLS -->
 
     <div class="section-title" style="margin-top:18px;">
         Editing Tools
     </div>
 
-
     <div class="editorTools">
 
         <button class="editorTool" data-tool="Media">
-            <span>🖼️</span>
-            Media
+            <span>🖼️</span>Media
         </button>
 
         <button class="editorTool" data-tool="Text">
-            <span>📝</span>
-            Text
+            <span>📝</span>Text
         </button>
 
         <button class="editorTool" data-tool="Audio">
-            <span>🎵</span>
-            Audio
+            <span>🎵</span>Audio
         </button>
 
         <button class="editorTool" data-tool="Effects">
-            <span>✨</span>
-            Effects
+            <span>✨</span>Effects
         </button>
 
         <button class="editorTool" data-tool="Transition">
-            <span>🔀</span>
-            Transition
+            <span>🔀</span>Transition
         </button>
 
         <button class="editorTool" data-tool="Speed">
-            <span>⚡</span>
-            Speed
+            <span>⚡</span>Speed
         </button>
 
         <button class="editorTool" data-tool="Filter">
-            <span>🎨</span>
-            Filter
+            <span>🎨</span>Filter
         </button>
 
         <button class="editorTool" data-tool="Caption">
-            <span>🔤</span>
-            Caption
+            <span>🔤</span>Caption
         </button>
 
     </div>
@@ -916,24 +892,17 @@ button{
             📐 Canvas Format
         </div>
 
-
         <div class="formatRow">
 
-            <button
-                class="format active"
-                data-format="9:16">
+            <button class="format active" data-format="9:16">
                 9:16
             </button>
 
-            <button
-                class="format"
-                data-format="1:1">
+            <button class="format" data-format="1:1">
                 1:1
             </button>
 
-            <button
-                class="format"
-                data-format="16:9">
+            <button class="format" data-format="16:9">
                 16:9
             </button>
 
@@ -941,8 +910,6 @@ button{
 
     </div>
 
-
-    <!-- AI DIRECTOR -->
 
     <button
         id="askAiDirector"
@@ -953,8 +920,6 @@ button{
 
     </button>
 
-
-    <!-- EXPORT -->
 
     <button
         id="exportButton"
@@ -975,12 +940,9 @@ button{
 </div>
 
 
-
 <script>
 
 document.addEventListener("DOMContentLoaded", function(){
-
-    /* SCREENS */
 
     const home =
         document.getElementById("homeScreen");
@@ -991,30 +953,39 @@ document.addEventListener("DOMContentLoaded", function(){
     const editor =
         document.getElementById("editorScreen");
 
-
-    /* INPUT */
-
     const prompt =
         document.getElementById("promptInput");
-
 
     const ideaText =
         document.getElementById("ideaText");
 
-
     const previewText =
         document.getElementById("previewText");
+
+    const emptyPreview =
+        document.getElementById("emptyPreview");
+
+    const mediaImage =
+        document.getElementById("mediaImage");
+
+    const mediaVideo =
+        document.getElementById("mediaVideo");
+
+    const imageInput =
+        document.getElementById("imageInput");
+
+    const videoInput =
+        document.getElementById("videoInput");
 
 
     /* CREATE WITH AI */
 
     document
     .getElementById("createAiButton")
-    .addEventListener("click",function(){
+    .addEventListener("click", function(){
 
         const idea =
             prompt.value.trim();
-
 
         if(!idea){
 
@@ -1027,17 +998,10 @@ document.addEventListener("DOMContentLoaded", function(){
             return;
         }
 
+        ideaText.textContent = idea;
 
-        ideaText.textContent =
-            idea;
-
-
-        home.style.display =
-            "none";
-
-        director.style.display =
-            "block";
-
+        home.style.display = "none";
+        director.style.display = "block";
 
         window.scrollTo(0,0);
 
@@ -1048,13 +1012,10 @@ document.addEventListener("DOMContentLoaded", function(){
 
     document
     .getElementById("backToHome")
-    .addEventListener("click",function(){
+    .addEventListener("click", function(){
 
-        director.style.display =
-            "none";
-
-        home.style.display =
-            "block";
+        director.style.display = "none";
+        home.style.display = "block";
 
         window.scrollTo(0,0);
 
@@ -1065,18 +1026,13 @@ document.addEventListener("DOMContentLoaded", function(){
 
     document
     .getElementById("startCreating")
-    .addEventListener("click",function(){
+    .addEventListener("click", function(){
 
-        director.style.display =
-            "none";
-
-        editor.style.display =
-            "block";
-
+        director.style.display = "none";
+        editor.style.display = "block";
 
         previewText.textContent =
             ideaText.textContent;
-
 
         window.scrollTo(0,0);
 
@@ -1087,13 +1043,10 @@ document.addEventListener("DOMContentLoaded", function(){
 
     document
     .getElementById("editorBack")
-    .addEventListener("click",function(){
+    .addEventListener("click", function(){
 
-        editor.style.display =
-            "none";
-
-        director.style.display =
-            "block";
+        editor.style.display = "none";
+        director.style.display = "block";
 
         window.scrollTo(0,0);
 
@@ -1106,22 +1059,17 @@ document.addEventListener("DOMContentLoaded", function(){
     .querySelectorAll(".tool")
     .forEach(function(tool){
 
-        tool.addEventListener("click",function(){
+        tool.addEventListener("click", function(){
 
             const type =
                 tool.getAttribute("data-type");
 
+            prompt.value =
+                "Create a professional " +
+                type +
+                " for me.";
 
-            if(type){
-
-                prompt.value =
-                    "Create a professional " +
-                    type +
-                    " for me.";
-
-                prompt.focus();
-
-            }
+            prompt.focus();
 
         });
 
@@ -1134,11 +1082,10 @@ document.addEventListener("DOMContentLoaded", function(){
     .querySelectorAll(".reel")
     .forEach(function(reel){
 
-        reel.addEventListener("click",function(){
+        reel.addEventListener("click", function(){
 
             const template =
                 reel.getAttribute("data-template");
-
 
             prompt.value =
                 "Create a professional " +
@@ -1152,21 +1099,209 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
 
+    /* IMAGE UPLOAD BUTTON */
+
+    document
+    .getElementById("imageUploadButton")
+    .addEventListener("click", function(){
+
+        imageInput.click();
+
+    });
+
+
+    /* VIDEO UPLOAD BUTTON */
+
+    document
+    .getElementById("videoUploadButton")
+    .addEventListener("click", function(){
+
+        videoInput.click();
+
+    });
+
+
+    /* IMAGE FILE */
+
+    imageInput.addEventListener("change", function(){
+
+        const file = this.files[0];
+
+        if(!file){
+            return;
+        }
+
+        const url =
+            URL.createObjectURL(file);
+
+        mediaVideo.pause();
+        mediaVideo.removeAttribute("src");
+        mediaVideo.style.display = "none";
+
+        mediaImage.src = url;
+        mediaImage.style.display = "block";
+
+        emptyPreview.style.display = "none";
+
+        alert(
+            "🖼️ Image added successfully!"
+        );
+
+    });
+
+
+    /* VIDEO FILE */
+
+    videoInput.addEventListener("change", function(){
+
+        const file = this.files[0];
+
+        if(!file){
+            return;
+        }
+
+        const url =
+            URL.createObjectURL(file);
+
+        mediaImage.style.display = "none";
+        mediaImage.removeAttribute("src");
+
+        mediaVideo.src = url;
+        mediaVideo.style.display = "block";
+
+        emptyPreview.style.display = "none";
+
+        mediaVideo.load();
+
+        alert(
+            "🎬 Video added successfully!"
+        );
+
+    });
+
+
+    /* PLAY / PAUSE */
+
+    document
+    .getElementById("playButton")
+    .addEventListener("click", function(){
+
+        if(mediaVideo.style.display === "block"){
+
+            if(mediaVideo.paused){
+
+                mediaVideo.play();
+
+                this.textContent = "⏸";
+
+            }else{
+
+                mediaVideo.pause();
+
+                this.textContent = "▶";
+
+            }
+
+            return;
+        }
+
+        if(mediaImage.style.display === "block"){
+
+            alert(
+                "🖼️ Image preview is ready."
+            );
+
+            return;
+        }
+
+        alert(
+            "Add an image or video first."
+        );
+
+    });
+
+
+    /* REMOVE MEDIA */
+
+    document
+    .getElementById("removeMediaButton")
+    .addEventListener("click", function(){
+
+        mediaVideo.pause();
+
+        mediaVideo.removeAttribute("src");
+        mediaImage.removeAttribute("src");
+
+        mediaVideo.style.display = "none";
+        mediaImage.style.display = "none";
+
+        emptyPreview.style.display = "block";
+
+        imageInput.value = "";
+        videoInput.value = "";
+
+    });
+
+
+    /* VIDEO TIME */
+
+    mediaVideo.addEventListener("timeupdate", function(){
+
+        const current =
+            formatTime(mediaVideo.currentTime);
+
+        const duration =
+            formatTime(mediaVideo.duration);
+
+        document.getElementById(
+            "timelineTime"
+        ).textContent =
+            current + " / " + duration;
+
+    });
+
+
+    function formatTime(seconds){
+
+        if(!isFinite(seconds)){
+            return "00:00";
+        }
+
+        const minutes =
+            Math.floor(seconds / 60);
+
+        const secs =
+            Math.floor(seconds % 60);
+
+        return String(minutes).padStart(2,"0")
+            + ":" +
+            String(secs).padStart(2,"0");
+
+    }
+
+
     /* EDITOR TOOLS */
 
     document
     .querySelectorAll(".editorTool")
     .forEach(function(tool){
 
-        tool.addEventListener("click",function(){
+        tool.addEventListener("click", function(){
 
             const name =
                 tool.getAttribute("data-tool");
 
+            if(name === "Media"){
+
+                imageInput.click();
+
+                return;
+
+            }
 
             alert(
                 name +
-                " tool selected.\\n\\n" +
+                " tool selected.\n\n" +
                 "This tool will become fully functional in the next editor development stage."
             );
 
@@ -1181,7 +1316,7 @@ document.addEventListener("DOMContentLoaded", function(){
     .querySelectorAll(".format")
     .forEach(function(format){
 
-        format.addEventListener("click",function(){
+        format.addEventListener("click", function(){
 
             document
             .querySelectorAll(".format")
@@ -1191,17 +1326,13 @@ document.addEventListener("DOMContentLoaded", function(){
 
             });
 
-
             format.classList.add("active");
-
 
             const value =
                 format.getAttribute("data-format");
 
-
             const preview =
                 document.querySelector(".preview");
-
 
             if(value === "9:16"){
 
@@ -1229,27 +1360,13 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
 
-    /* PLAY */
-
-    document
-    .getElementById("playButton")
-    .addEventListener("click",function(){
-
-        alert(
-            "▶ Preview playback\\n\\n" +
-            "Real video playback will be connected to the editing engine next."
-        );
-
-    });
-
-
     /* UNDO */
 
     document
     .getElementById("undoButton")
-    .addEventListener("click",function(){
+    .addEventListener("click", function(){
 
-        alert("↶ Undo");
+        alert("↶ Undo will be connected to the editor history next.");
 
     });
 
@@ -1258,9 +1375,9 @@ document.addEventListener("DOMContentLoaded", function(){
 
     document
     .getElementById("redoButton")
-    .addEventListener("click",function(){
+    .addEventListener("click", function(){
 
-        alert("↷ Redo");
+        alert("↷ Redo will be connected to the editor history next.");
 
     });
 
@@ -1269,15 +1386,15 @@ document.addEventListener("DOMContentLoaded", function(){
 
     document
     .getElementById("askAiDirector")
-    .addEventListener("click",function(){
+    .addEventListener("click", function(){
 
         alert(
-            "🤖 AI Director\\n\\n" +
-            "Tell me what you want to improve:\\n\\n" +
-            "• Make it cinematic\\n" +
-            "• Make it faster\\n" +
-            "• Add captions\\n" +
-            "• Improve transitions\\n" +
+            "🤖 AI Director\n\n" +
+            "Tell me what you want to improve:\n\n" +
+            "• Make it cinematic\n" +
+            "• Make it faster\n" +
+            "• Add captions\n" +
+            "• Improve transitions\n" +
             "• Make the hook stronger"
         );
 
@@ -1288,11 +1405,11 @@ document.addEventListener("DOMContentLoaded", function(){
 
     document
     .getElementById("exportButton")
-    .addEventListener("click",function(){
+    .addEventListener("click", function(){
 
         alert(
-            "📤 Export\\n\\n" +
-            "Export settings will be connected to the rendering engine next."
+            "📤 Export engine will be connected next.\n\n" +
+            "Your media is currently loaded directly in the editor preview."
         );
 
     });
