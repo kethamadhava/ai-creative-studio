@@ -7,285 +7,465 @@
 <title>AI Creative Studio</title>
 
 <style>
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #0b0b12;
-    color: white;
-    min-height: 100vh;
+body{
+    font-family:Arial,sans-serif;
+    background:#08080d;
+    color:white;
+    min-height:100vh;
 }
 
-.app {
-    width: 100%;
-    max-width: 600px;
-    margin: auto;
-    padding: 20px 16px 40px;
+button{
+    font-family:inherit;
+}
+
+.app{
+    width:100%;
+    max-width:650px;
+    margin:auto;
+    padding:18px 14px 40px;
 }
 
 /* HEADER */
 
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 24px;
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:22px;
 }
 
-.logo {
-    font-size: 21px;
-    font-weight: 800;
+.logo{
+    font-size:21px;
+    font-weight:800;
 }
 
-.pro {
-    background: #272735;
-    padding: 7px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
+.pro{
+    background:#272735;
+    padding:7px 12px;
+    border-radius:20px;
+    font-size:12px;
 }
 
 /* HOME */
 
-.hero {
-    background: linear-gradient(135deg, #28164e, #15152b);
-    border-radius: 22px;
-    padding: 22px 18px;
+.hero{
+    padding:22px 18px;
+    border-radius:22px;
+    background:linear-gradient(135deg,#291650,#15152b);
 }
 
-.hero h1 {
-    font-size: 28px;
-    line-height: 1.15;
-    margin-bottom: 10px;
+.hero h1{
+    font-size:28px;
+    margin-bottom:10px;
 }
 
-.hero p {
-    color: #bdbdca;
-    font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 18px;
+.hero p{
+    color:#bdbdca;
+    font-size:14px;
+    line-height:1.5;
+    margin-bottom:18px;
 }
 
-.prompt {
-    display: block;
-    width: 100%;
-    min-height: 100px;
-    padding: 14px;
-    border-radius: 15px;
-    border: 1px solid #3c3c50;
-    background: #101019;
-    color: white;
-    font-size: 15px;
-    resize: vertical;
-    outline: none;
+.prompt{
+    width:100%;
+    min-height:100px;
+    padding:14px;
+    border-radius:15px;
+    border:1px solid #3b3b4d;
+    background:#101019;
+    color:white;
+    font-size:15px;
+    resize:vertical;
+    outline:none;
 }
 
-.prompt:focus {
-    border-color: #985cff;
+.create,
+.startButton{
+    width:100%;
+    margin-top:12px;
+    padding:16px;
+    border:0;
+    border-radius:15px;
+    background:linear-gradient(90deg,#7c3cff,#c83cff);
+    color:white;
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
 }
 
-.create {
-    display: block;
-    width: 100%;
-    margin-top: 12px;
-    padding: 16px;
-    border: none;
-    border-radius: 15px;
-    background: linear-gradient(90deg, #7c3cff, #c83cff);
-    color: white;
-    font-size: 16px;
-    font-weight: 800;
-    cursor: pointer;
-    touch-action: manipulation;
+.section{
+    margin-top:26px;
 }
 
-.create:active {
-    transform: scale(0.98);
+.section-title{
+    font-size:19px;
+    font-weight:800;
+    margin-bottom:13px;
 }
 
-/* SECTIONS */
-
-.section {
-    margin-top: 26px;
+.tools{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
 }
 
-.section-title {
-    font-size: 19px;
-    font-weight: 800;
-    margin-bottom: 13px;
+.tool{
+    background:#161620;
+    border:1px solid #292936;
+    border-radius:17px;
+    padding:17px 8px;
+    text-align:center;
+    font-size:13px;
+    cursor:pointer;
 }
 
-/* CREATE OPTIONS */
-
-.tools {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+.icon{
+    font-size:25px;
+    margin-bottom:8px;
 }
 
-.tool {
-    background: #161620;
-    border: 1px solid #292936;
-    border-radius: 17px;
-    padding: 17px 8px;
-    text-align: center;
-    font-size: 13px;
-    cursor: pointer;
+.reels{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
 }
 
-.icon {
-    font-size: 25px;
-    margin-bottom: 8px;
+.reel{
+    min-height:125px;
+    border-radius:18px;
+    padding:14px;
+    display:flex;
+    align-items:flex-end;
+    font-weight:700;
+    cursor:pointer;
 }
 
-/* READY REELS */
+.reel1{background:linear-gradient(145deg,#34205e,#11111a);}
+.reel2{background:linear-gradient(145deg,#123b4a,#11111a);}
+.reel3{background:linear-gradient(145deg,#56341b,#11111a);}
+.reel4{background:linear-gradient(145deg,#283b1b,#11111a);}
 
-.reels {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+.recent{
+    background:#161620;
+    border:1px solid #292936;
+    border-radius:17px;
+    padding:18px;
+    text-align:center;
+    color:#aaaab8;
+    line-height:1.6;
 }
 
-.reel {
-    min-height: 130px;
-    border-radius: 18px;
-    padding: 14px;
-    display: flex;
-    align-items: flex-end;
-    font-weight: 700;
-    cursor: pointer;
+/* DIRECTOR */
+
+#directorScreen,
+#editorScreen{
+    display:none;
 }
 
-.reel1 {
-    background: linear-gradient(145deg, #34205e, #11111a);
+.backButton{
+    border:0;
+    background:#242432;
+    color:white;
+    padding:10px 15px;
+    border-radius:12px;
+    cursor:pointer;
+    margin-bottom:20px;
 }
 
-.reel2 {
-    background: linear-gradient(145deg, #123b4a, #11111a);
+.directorTitle{
+    font-size:30px;
+    margin-bottom:8px;
 }
 
-.reel3 {
-    background: linear-gradient(145deg, #56341b, #11111a);
+.directorDescription{
+    color:#aaaab8;
+    font-size:14px;
+    line-height:1.6;
+    margin-bottom:20px;
 }
 
-.reel4 {
-    background: linear-gradient(145deg, #283b1b, #11111a);
+.ideaBox{
+    background:#171722;
+    border:1px solid #303041;
+    border-radius:17px;
+    padding:17px;
+    margin-bottom:22px;
 }
 
-/* RECENT */
+.ideaLabel{
+    color:#888899;
+    font-size:11px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
 
-.recent {
-    background: #161620;
-    border: 1px solid #292936;
-    border-radius: 17px;
-    padding: 18px;
-    text-align: center;
-    color: #aaaab8;
-    line-height: 1.6;
+#ideaText{
+    line-height:1.5;
+}
+
+.plan{
+    display:grid;
+    gap:12px;
+}
+
+.planCard{
+    background:#161620;
+    border:1px solid #292936;
+    border-radius:17px;
+    padding:16px;
+}
+
+.planCard h3{
+    font-size:15px;
+    margin-bottom:8px;
+}
+
+.planCard p{
+    color:#aaaab8;
+    font-size:13px;
+    line-height:1.5;
+}
+
+/* ========================= */
+/* PROFESSIONAL EDITOR */
+/* ========================= */
+
+.editorTop{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:14px;
+}
+
+.editorTitle{
+    font-size:20px;
+    font-weight:800;
+}
+
+.editorActions{
+    display:flex;
+    gap:7px;
+}
+
+.smallBtn{
+    background:#20202b;
+    color:white;
+    border:1px solid #333342;
+    border-radius:10px;
+    padding:8px 10px;
+    cursor:pointer;
+}
+
+.preview{
+    position:relative;
+    width:100%;
+    aspect-ratio:9/16;
+    max-height:470px;
+    background:linear-gradient(145deg,#21153d,#0e0e16);
+    border-radius:18px;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid #30303d;
+}
+
+.previewContent{
+    text-align:center;
+    padding:25px;
+}
+
+.previewIcon{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+.previewText{
+    font-size:18px;
+    font-weight:bold;
+    line-height:1.4;
+}
+
+.previewSub{
+    color:#aaaab8;
+    font-size:12px;
+    margin-top:10px;
+}
+
+.playButton{
+    position:absolute;
+    bottom:15px;
+    left:50%;
+    transform:translateX(-50%);
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    border:0;
+    background:white;
+    color:#111;
+    font-size:20px;
+    cursor:pointer;
+}
+
+/* TIMELINE */
+
+.timelineHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:18px;
+    margin-bottom:9px;
+}
+
+.timelineTitle{
+    font-size:16px;
+    font-weight:800;
+}
+
+.time{
+    color:#aaaab8;
+    font-size:12px;
+}
+
+.timeline{
+    background:#111119;
+    border:1px solid #292936;
+    border-radius:15px;
+    padding:12px;
+    overflow:hidden;
+}
+
+.track{
+    display:flex;
+    gap:5px;
+    height:58px;
+    margin-bottom:7px;
+}
+
+.clip{
+    min-width:90px;
+    flex:1;
+    border-radius:9px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    font-weight:bold;
+    background:linear-gradient(135deg,#563b8a,#29213e);
+    border:1px solid #65508b;
+}
+
+.clip:nth-child(2){
+    background:linear-gradient(135deg,#245c6b,#1d3035);
+}
+
+.clip:nth-child(3){
+    background:linear-gradient(135deg,#73502d,#352719);
+}
+
+.audioTrack{
+    height:30px;
+    border-radius:7px;
+    background:#1c3030;
+    border:1px solid #315656;
+    color:#80caca;
+    display:flex;
+    align-items:center;
+    padding-left:10px;
+    font-size:11px;
+}
+
+/* TOOLS */
+
+.editorTools{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-top:16px;
+}
+
+.editorTool{
+    background:#171720;
+    border:1px solid #292936;
+    border-radius:13px;
+    padding:12px 5px;
+    color:white;
+    text-align:center;
+    font-size:11px;
+    cursor:pointer;
+}
+
+.editorTool span{
+    display:block;
+    font-size:21px;
+    margin-bottom:5px;
+}
+
+/* FORMAT */
+
+.formatRow{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding-bottom:4px;
+}
+
+.format{
+    white-space:nowrap;
+    padding:10px 13px;
+    background:#171720;
+    border:1px solid #292936;
+    color:#bbb;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.format.active{
+    background:#6635c5;
+    color:white;
+    border-color:#8d61e8;
 }
 
 /* AI DIRECTOR */
 
-#directorScreen {
-    display: none;
+.aiDirectorButton{
+    width:100%;
+    margin-top:15px;
+    padding:15px;
+    border:1px solid #6745a0;
+    border-radius:14px;
+    background:#201738;
+    color:white;
+    font-weight:800;
+    cursor:pointer;
 }
 
-.backButton {
-    display: block;
-    border: none;
-    background: #242432;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 12px;
-    font-size: 14px;
-    cursor: pointer;
-    margin-bottom: 20px;
+/* EXPORT */
+
+.exportButton{
+    width:100%;
+    margin-top:10px;
+    padding:16px;
+    border:0;
+    border-radius:15px;
+    background:linear-gradient(90deg,#00a878,#00c99a);
+    color:white;
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
 }
 
-.directorTitle {
-    font-size: 30px;
-    margin-bottom: 8px;
-}
-
-.directorDescription {
-    color: #aaaab8;
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.ideaBox {
-    background: #171722;
-    border: 1px solid #303041;
-    border-radius: 17px;
-    padding: 17px;
-    margin-bottom: 22px;
-}
-
-.ideaLabel {
-    color: #888899;
-    font-size: 11px;
-    font-weight: bold;
-    margin-bottom: 8px;
-}
-
-#ideaText {
-    color: white;
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-/* PLAN */
-
-.plan {
-    display: grid;
-    gap: 12px;
-}
-
-.planCard {
-    background: #161620;
-    border: 1px solid #292936;
-    border-radius: 17px;
-    padding: 16px;
-}
-
-.planCard h3 {
-    font-size: 15px;
-    margin-bottom: 8px;
-}
-
-.planCard p {
-    color: #aaaab8;
-    font-size: 13px;
-    line-height: 1.5;
-}
-
-.startButton {
-    display: block;
-    width: 100%;
-    margin-top: 22px;
-    padding: 16px;
-    border: none;
-    border-radius: 15px;
-    background: linear-gradient(90deg, #7c3cff, #c83cff);
-    color: white;
-    font-size: 16px;
-    font-weight: 800;
-    cursor: pointer;
-}
-
-/* FOOTER */
-
-.bottom {
-    text-align: center;
-    color: #777785;
-    font-size: 12px;
-    margin-top: 30px;
+.bottom{
+    text-align:center;
+    color:#777785;
+    font-size:12px;
+    margin-top:28px;
 }
 
 </style>
@@ -296,279 +476,501 @@ body {
 
 <div class="app">
 
-    <!-- ========================= -->
-    <!-- HOME SCREEN -->
-    <!-- ========================= -->
+<!-- ================================= -->
+<!-- HOME -->
+<!-- ================================= -->
 
-    <div id="homeScreen">
+<div id="homeScreen">
 
-        <div class="header">
+    <div class="header">
 
-            <div class="logo">
-                ✨ AI Creative Studio
+        <div class="logo">
+            ✨ AI Creative Studio
+        </div>
+
+        <div class="pro">
+            PRO
+        </div>
+
+    </div>
+
+
+    <div class="hero">
+
+        <h1>
+            What do you want to create?
+        </h1>
+
+        <p>
+            Tell AI your idea. We'll plan, design and edit it for you.
+        </p>
+
+        <textarea
+            id="promptInput"
+            class="prompt"
+            placeholder="Example: Make a powerful 20-second festival Reel..."
+        ></textarea>
+
+        <button
+            id="createAiButton"
+            class="create"
+            type="button">
+            ✨ Create with AI
+        </button>
+
+    </div>
+
+
+    <div class="section">
+
+        <div class="section-title">
+            Create
+        </div>
+
+        <div class="tools">
+
+            <div class="tool" data-type="Video">
+                <div class="icon">🎬</div>
+                Video
             </div>
 
-            <div class="pro">
-                PRO
+            <div class="tool" data-type="Image">
+                <div class="icon">🖼️</div>
+                Image
+            </div>
+
+            <div class="tool" data-type="Poster">
+                <div class="icon">🎨</div>
+                Poster
+            </div>
+
+            <div class="tool" data-type="Pamphlet">
+                <div class="icon">📄</div>
+                Pamphlet
+            </div>
+
+            <div class="tool" data-type="Reel">
+                <div class="icon">📱</div>
+                Reel
+            </div>
+
+            <div class="tool" data-type="YouTube">
+                <div class="icon">▶️</div>
+                YouTube
             </div>
 
         </div>
 
+    </div>
 
-        <div class="hero">
 
-            <h1>
-                What do you want to create?
-            </h1>
+    <div class="section">
+
+        <div class="section-title">
+            🎬 Ready Reels
+        </div>
+
+        <div class="reels">
+
+            <div class="reel reel1" data-template="Trending Reel">
+                🔥 Trending
+            </div>
+
+            <div class="reel reel2" data-template="Birthday Reel">
+                🎉 Birthday
+            </div>
+
+            <div class="reel reel3" data-template="Festival Reel">
+                🪔 Festival
+            </div>
+
+            <div class="reel reel4" data-template="Business Reel">
+                🏪 Business
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="section">
+
+        <div class="section-title">
+            📁 Recent Projects
+        </div>
+
+        <div class="recent">
+            No projects yet.<br>
+            Create your first project with AI.
+        </div>
+
+    </div>
+
+
+    <div class="bottom">
+        AI Creative Studio • Create without limits
+    </div>
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- AI DIRECTOR -->
+<!-- ================================= -->
+
+<div id="directorScreen">
+
+    <button
+        id="backToHome"
+        class="backButton"
+        type="button">
+        ← Back
+    </button>
+
+
+    <h1 class="directorTitle">
+        🎬 AI Director
+    </h1>
+
+
+    <p class="directorDescription">
+        Your idea has been understood. Here is the production plan.
+    </p>
+
+
+    <div class="ideaBox">
+
+        <div class="ideaLabel">
+            YOUR IDEA
+        </div>
+
+        <div id="ideaText">
+        </div>
+
+    </div>
+
+
+    <div class="section-title">
+        📋 Production Plan
+    </div>
+
+
+    <div class="plan">
+
+        <div class="planCard">
+
+            <h3>
+                📝 1. Story & Script
+            </h3>
 
             <p>
-                Tell AI your idea. We'll plan, design and edit it for you.
+                Understand the message, audience and purpose,
+                then create the structure and script.
             </p>
 
+        </div>
 
-            <textarea
-                id="promptInput"
-                class="prompt"
-                placeholder="Example: Make a powerful 20-second festival Reel..."
-            ></textarea>
 
+        <div class="planCard">
+
+            <h3>
+                🎨 2. Visual Design
+            </h3>
+
+            <p>
+                Select or generate suitable images, videos,
+                backgrounds and graphics.
+            </p>
+
+        </div>
+
+
+        <div class="planCard">
+
+            <h3>
+                🎵 3. Audio
+            </h3>
+
+            <p>
+                Plan music, voice, sound effects and timing.
+            </p>
+
+        </div>
+
+
+        <div class="planCard">
+
+            <h3>
+                ✂️ 4. Editing
+            </h3>
+
+            <p>
+                Arrange timeline, captions, transitions,
+                effects and motion.
+            </p>
+
+        </div>
+
+
+        <div class="planCard">
+
+            <h3>
+                📱 5. Final Format
+            </h3>
+
+            <p>
+                Prepare the project for Instagram,
+                YouTube, WhatsApp or another platform.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <button
+        id="startCreating"
+        class="startButton"
+        type="button">
+
+        🚀 Start Creating
+
+    </button>
+
+</div>
+
+
+
+<!-- ================================= -->
+<!-- PROFESSIONAL EDITOR -->
+<!-- ================================= -->
+
+<div id="editorScreen">
+
+    <div class="editorTop">
+
+        <button
+            id="editorBack"
+            class="smallBtn"
+            type="button">
+            ←
+        </button>
+
+        <div class="editorTitle">
+            🎬 Professional Editor
+        </div>
+
+        <div class="editorActions">
 
             <button
-                id="createAiButton"
-                class="create"
-                type="button"
-            >
-                ✨ Create with AI
+                id="undoButton"
+                class="smallBtn"
+                type="button">
+                ↶
+            </button>
+
+            <button
+                id="redoButton"
+                class="smallBtn"
+                type="button">
+                ↷
             </button>
 
         </div>
 
+    </div>
 
-        <!-- CREATE -->
 
-        <div class="section">
+    <!-- PREVIEW -->
 
-            <div class="section-title">
-                Create
+    <div class="preview">
+
+        <div class="previewContent">
+
+            <div class="previewIcon">
+                🎬
             </div>
 
+            <div
+                id="previewText"
+                class="previewText">
+                Your project preview
+            </div>
 
-            <div class="tools">
-
-                <div class="tool" data-type="Video">
-                    <div class="icon">🎬</div>
-                    Video
-                </div>
-
-                <div class="tool" data-type="Image">
-                    <div class="icon">🖼️</div>
-                    Image
-                </div>
-
-                <div class="tool" data-type="Poster">
-                    <div class="icon">🎨</div>
-                    Poster
-                </div>
-
-                <div class="tool" data-type="Pamphlet">
-                    <div class="icon">📄</div>
-                    Pamphlet
-                </div>
-
-                <div class="tool" data-type="Reel">
-                    <div class="icon">📱</div>
-                    Reel
-                </div>
-
-                <div class="tool" data-type="YouTube">
-                    <div class="icon">▶️</div>
-                    YouTube
-                </div>
-
+            <div class="previewSub">
+                1080 × 1920 • 9:16
             </div>
 
         </div>
 
 
-        <!-- READY REELS -->
+        <button
+            id="playButton"
+            class="playButton"
+            type="button">
+            ▶
+        </button>
 
-        <div class="section">
-
-            <div class="section-title">
-                🎬 Ready Reels
-            </div>
+    </div>
 
 
-            <div class="reels">
+    <!-- TIMELINE -->
 
-                <div class="reel reel1" data-template="Trending Reel">
-                    🔥 Trending
-                </div>
+    <div class="timelineHeader">
 
-                <div class="reel reel2" data-template="Birthday Reel">
-                    🎉 Birthday
-                </div>
-
-                <div class="reel reel3" data-template="Festival Reel">
-                    🪔 Festival
-                </div>
-
-                <div class="reel reel4" data-template="Business Reel">
-                    🏪 Business
-                </div>
-
-            </div>
-
+        <div class="timelineTitle">
+            ⏱ Timeline
         </div>
 
-
-        <!-- RECENT PROJECTS -->
-
-        <div class="section">
-
-            <div class="section-title">
-                📁 Recent Projects
-            </div>
-
-            <div class="recent">
-
-                No projects yet.<br>
-
-                Create your first project with AI.
-
-            </div>
-
-        </div>
-
-
-        <div class="bottom">
-            AI Creative Studio • Create without limits
+        <div class="time">
+            00:00 / 00:20
         </div>
 
     </div>
 
 
+    <div class="timeline">
 
-    <!-- ========================= -->
-    <!-- AI DIRECTOR SCREEN -->
-    <!-- ========================= -->
+        <div class="track">
 
-    <div id="directorScreen">
-
-        <button
-            id="backButton"
-            class="backButton"
-            type="button"
-        >
-            ← Back
-        </button>
-
-
-        <h1 class="directorTitle">
-            🎬 AI Director
-        </h1>
-
-
-        <p class="directorDescription">
-            Your idea has been understood. AI Director has created a production plan for your project.
-        </p>
-
-
-        <div class="ideaBox">
-
-            <div class="ideaLabel">
-                YOUR IDEA
+            <div class="clip">
+                Scene 1
             </div>
 
-            <div id="ideaText">
+            <div class="clip">
+                Scene 2
+            </div>
+
+            <div class="clip">
+                Scene 3
             </div>
 
         </div>
 
+
+        <div class="audioTrack">
+            🎵 Music / Voice
+        </div>
+
+    </div>
+
+
+    <!-- EDITING TOOLS -->
+
+    <div class="section-title" style="margin-top:18px;">
+        Editing Tools
+    </div>
+
+
+    <div class="editorTools">
+
+        <button class="editorTool" data-tool="Media">
+            <span>🖼️</span>
+            Media
+        </button>
+
+        <button class="editorTool" data-tool="Text">
+            <span>📝</span>
+            Text
+        </button>
+
+        <button class="editorTool" data-tool="Audio">
+            <span>🎵</span>
+            Audio
+        </button>
+
+        <button class="editorTool" data-tool="Effects">
+            <span>✨</span>
+            Effects
+        </button>
+
+        <button class="editorTool" data-tool="Transition">
+            <span>🔀</span>
+            Transition
+        </button>
+
+        <button class="editorTool" data-tool="Speed">
+            <span>⚡</span>
+            Speed
+        </button>
+
+        <button class="editorTool" data-tool="Filter">
+            <span>🎨</span>
+            Filter
+        </button>
+
+        <button class="editorTool" data-tool="Caption">
+            <span>🔤</span>
+            Caption
+        </button>
+
+    </div>
+
+
+    <!-- FORMAT -->
+
+    <div class="section">
 
         <div class="section-title">
-            📋 Production Plan
+            📐 Canvas Format
         </div>
 
 
-        <div class="plan">
+        <div class="formatRow">
 
-            <div class="planCard">
+            <button
+                class="format active"
+                data-format="9:16">
+                9:16
+            </button>
 
-                <h3>
-                    📝 1. Story & Script
-                </h3>
+            <button
+                class="format"
+                data-format="1:1">
+                1:1
+            </button>
 
-                <p>
-                    Understand the purpose, audience and message, then create the structure and script.
-                </p>
-
-            </div>
-
-
-            <div class="planCard">
-
-                <h3>
-                    🎨 2. Visual Design
-                </h3>
-
-                <p>
-                    Select or generate suitable images, videos, backgrounds and graphics.
-                </p>
-
-            </div>
-
-
-            <div class="planCard">
-
-                <h3>
-                    🎵 3. Audio
-                </h3>
-
-                <p>
-                    Plan music, voice, sound effects and audio timing.
-                </p>
-
-            </div>
-
-
-            <div class="planCard">
-
-                <h3>
-                    ✂️ 4. Editing
-                </h3>
-
-                <p>
-                    Arrange the timeline, captions, transitions, effects and motion.
-                </p>
-
-            </div>
-
-
-            <div class="planCard">
-
-                <h3>
-                    📱 5. Final Format
-                </h3>
-
-                <p>
-                    Prepare the project for Instagram, YouTube, WhatsApp or another platform.
-                </p>
-
-            </div>
+            <button
+                class="format"
+                data-format="16:9">
+                16:9
+            </button>
 
         </div>
-
-
-        <button
-            id="startCreatingButton"
-            class="startButton"
-            type="button"
-        >
-            🚀 Start Creating
-        </button>
 
     </div>
+
+
+    <!-- AI DIRECTOR -->
+
+    <button
+        id="askAiDirector"
+        class="aiDirectorButton"
+        type="button">
+
+        🤖 Ask AI Director to improve this
+
+    </button>
+
+
+    <!-- EXPORT -->
+
+    <button
+        id="exportButton"
+        class="exportButton"
+        type="button">
+
+        📤 Export Project
+
+    </button>
+
+
+    <div class="bottom">
+        AI Creative Studio • Professional Editor
+    </div>
+
+</div>
 
 </div>
 
@@ -576,170 +978,321 @@ body {
 
 <script>
 
-/*
-==================================================
-AI CREATIVE STUDIO
-BASIC APP CONTROLLER
-==================================================
-*/
+document.addEventListener("DOMContentLoaded", function(){
 
-document.addEventListener("DOMContentLoaded", function () {
+    /* SCREENS */
 
-
-    /*
-    GET ELEMENTS
-    */
-
-    const homeScreen =
+    const home =
         document.getElementById("homeScreen");
 
-    const directorScreen =
+    const director =
         document.getElementById("directorScreen");
 
-    const promptInput =
+    const editor =
+        document.getElementById("editorScreen");
+
+
+    /* INPUT */
+
+    const prompt =
         document.getElementById("promptInput");
 
-    const createAiButton =
-        document.getElementById("createAiButton");
-
-    const backButton =
-        document.getElementById("backButton");
 
     const ideaText =
         document.getElementById("ideaText");
 
-    const startCreatingButton =
-        document.getElementById("startCreatingButton");
+
+    const previewText =
+        document.getElementById("previewText");
 
 
-    /*
-    CREATE WITH AI
-    */
+    /* CREATE WITH AI */
 
-    createAiButton.addEventListener("click", function () {
+    document
+    .getElementById("createAiButton")
+    .addEventListener("click",function(){
 
         const idea =
-            promptInput.value.trim();
+            prompt.value.trim();
 
 
-        if (idea === "") {
+        if(!idea){
 
             alert(
                 "Please tell AI what you want to create first."
             );
 
-            promptInput.focus();
+            prompt.focus();
 
             return;
         }
 
 
-        ideaText.textContent = idea;
+        ideaText.textContent =
+            idea;
 
 
-        homeScreen.style.display = "none";
+        home.style.display =
+            "none";
 
-        directorScreen.style.display = "block";
-
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    });
+        director.style.display =
+            "block";
 
 
-
-    /*
-    BACK TO HOME
-    */
-
-    backButton.addEventListener("click", function () {
-
-        directorScreen.style.display = "none";
-
-        homeScreen.style.display = "block";
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+        window.scrollTo(0,0);
 
     });
 
 
+    /* BACK HOME */
 
-    /*
-    CREATE OPTIONS
-    */
+    document
+    .getElementById("backToHome")
+    .addEventListener("click",function(){
 
-    const toolButtons =
-        document.querySelectorAll(".tool");
+        director.style.display =
+            "none";
+
+        home.style.display =
+            "block";
+
+        window.scrollTo(0,0);
+
+    });
 
 
-    toolButtons.forEach(function (tool) {
+    /* START EDITOR */
 
-        tool.addEventListener("click", function () {
+    document
+    .getElementById("startCreating")
+    .addEventListener("click",function(){
+
+        director.style.display =
+            "none";
+
+        editor.style.display =
+            "block";
+
+
+        previewText.textContent =
+            ideaText.textContent;
+
+
+        window.scrollTo(0,0);
+
+    });
+
+
+    /* EDITOR BACK */
+
+    document
+    .getElementById("editorBack")
+    .addEventListener("click",function(){
+
+        editor.style.display =
+            "none";
+
+        director.style.display =
+            "block";
+
+        window.scrollTo(0,0);
+
+    });
+
+
+    /* QUICK CREATE */
+
+    document
+    .querySelectorAll(".tool")
+    .forEach(function(tool){
+
+        tool.addEventListener("click",function(){
 
             const type =
                 tool.getAttribute("data-type");
 
 
-            promptInput.value =
-                "Create a professional " +
-                type +
-                " for me.";
+            if(type){
 
+                prompt.value =
+                    "Create a professional " +
+                    type +
+                    " for me.";
 
-            promptInput.focus();
+                prompt.focus();
+
+            }
 
         });
 
     });
 
 
+    /* READY REELS */
 
-    /*
-    READY REELS
-    */
+    document
+    .querySelectorAll(".reel")
+    .forEach(function(reel){
 
-    const reelButtons =
-        document.querySelectorAll(".reel");
-
-
-    reelButtons.forEach(function (reel) {
-
-        reel.addEventListener("click", function () {
+        reel.addEventListener("click",function(){
 
             const template =
                 reel.getAttribute("data-template");
 
 
-            promptInput.value =
+            prompt.value =
                 "Create a professional " +
                 template +
                 " for me.";
 
-
-            promptInput.focus();
+            prompt.focus();
 
         });
 
     });
 
 
+    /* EDITOR TOOLS */
 
-    /*
-    START CREATING
-    */
+    document
+    .querySelectorAll(".editorTool")
+    .forEach(function(tool){
 
-    startCreatingButton.addEventListener("click", function () {
+        tool.addEventListener("click",function(){
+
+            const name =
+                tool.getAttribute("data-tool");
+
+
+            alert(
+                name +
+                " tool selected.\\n\\n" +
+                "This tool will become fully functional in the next editor development stage."
+            );
+
+        });
+
+    });
+
+
+    /* FORMAT */
+
+    document
+    .querySelectorAll(".format")
+    .forEach(function(format){
+
+        format.addEventListener("click",function(){
+
+            document
+            .querySelectorAll(".format")
+            .forEach(function(item){
+
+                item.classList.remove("active");
+
+            });
+
+
+            format.classList.add("active");
+
+
+            const value =
+                format.getAttribute("data-format");
+
+
+            const preview =
+                document.querySelector(".preview");
+
+
+            if(value === "9:16"){
+
+                preview.style.aspectRatio =
+                    "9 / 16";
+
+            }
+
+            if(value === "1:1"){
+
+                preview.style.aspectRatio =
+                    "1 / 1";
+
+            }
+
+            if(value === "16:9"){
+
+                preview.style.aspectRatio =
+                    "16 / 9";
+
+            }
+
+        });
+
+    });
+
+
+    /* PLAY */
+
+    document
+    .getElementById("playButton")
+    .addEventListener("click",function(){
 
         alert(
-            "🚀 Production started!\\n\\n" +
-            "AI Director has accepted your project.\\n\\n" +
-            "Next module: Professional Editor + Timeline."
+            "▶ Preview playback\\n\\n" +
+            "Real video playback will be connected to the editing engine next."
+        );
+
+    });
+
+
+    /* UNDO */
+
+    document
+    .getElementById("undoButton")
+    .addEventListener("click",function(){
+
+        alert("↶ Undo");
+
+    });
+
+
+    /* REDO */
+
+    document
+    .getElementById("redoButton")
+    .addEventListener("click",function(){
+
+        alert("↷ Redo");
+
+    });
+
+
+    /* AI DIRECTOR */
+
+    document
+    .getElementById("askAiDirector")
+    .addEventListener("click",function(){
+
+        alert(
+            "🤖 AI Director\\n\\n" +
+            "Tell me what you want to improve:\\n\\n" +
+            "• Make it cinematic\\n" +
+            "• Make it faster\\n" +
+            "• Add captions\\n" +
+            "• Improve transitions\\n" +
+            "• Make the hook stronger"
+        );
+
+    });
+
+
+    /* EXPORT */
+
+    document
+    .getElementById("exportButton")
+    .addEventListener("click",function(){
+
+        alert(
+            "📤 Export\\n\\n" +
+            "Export settings will be connected to the rendering engine next."
         );
 
     });
