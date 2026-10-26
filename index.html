@@ -20,8 +20,14 @@ body{
     min-height:100vh;
 }
 
-button{
+button,
+input,
+textarea{
     font-family:inherit;
+}
+
+button{
+    cursor:pointer;
 }
 
 .app{
@@ -30,6 +36,10 @@ button{
     margin:auto;
     padding:18px 14px 40px;
 }
+
+/* =========================
+   HEADER
+========================= */
 
 .header{
     display:flex;
@@ -49,6 +59,10 @@ button{
     border-radius:20px;
     font-size:12px;
 }
+
+/* =========================
+   HOME
+========================= */
 
 .hero{
     padding:22px 18px;
@@ -92,7 +106,6 @@ button{
     color:white;
     font-size:16px;
     font-weight:800;
-    cursor:pointer;
 }
 
 .section{
@@ -118,7 +131,6 @@ button{
     padding:17px 8px;
     text-align:center;
     font-size:13px;
-    cursor:pointer;
 }
 
 .icon{
@@ -139,13 +151,23 @@ button{
     display:flex;
     align-items:flex-end;
     font-weight:700;
-    cursor:pointer;
 }
 
-.reel1{background:linear-gradient(145deg,#34205e,#11111a);}
-.reel2{background:linear-gradient(145deg,#123b4a,#11111a);}
-.reel3{background:linear-gradient(145deg,#56341b,#11111a);}
-.reel4{background:linear-gradient(145deg,#283b1b,#11111a);}
+.reel1{
+    background:linear-gradient(145deg,#34205e,#11111a);
+}
+
+.reel2{
+    background:linear-gradient(145deg,#123b4a,#11111a);
+}
+
+.reel3{
+    background:linear-gradient(145deg,#56341b,#11111a);
+}
+
+.reel4{
+    background:linear-gradient(145deg,#283b1b,#11111a);
+}
 
 .recent{
     background:#161620;
@@ -156,6 +178,10 @@ button{
     color:#aaaab8;
     line-height:1.6;
 }
+
+/* =========================
+   SCREENS
+========================= */
 
 #directorScreen,
 #editorScreen{
@@ -168,7 +194,6 @@ button{
     color:white;
     padding:10px 15px;
     border-radius:12px;
-    cursor:pointer;
     margin-bottom:20px;
 }
 
@@ -226,7 +251,9 @@ button{
     line-height:1.5;
 }
 
-/* EDITOR */
+/* =========================
+   EDITOR HEADER
+========================= */
 
 .editorTop{
     display:flex;
@@ -251,15 +278,16 @@ button{
     border:1px solid #333342;
     border-radius:10px;
     padding:8px 10px;
-    cursor:pointer;
 }
 
-/* PREVIEW */
+/* =========================
+   PREVIEW
+========================= */
 
 .preview{
     position:relative;
     width:100%;
-    aspect-ratio:9/16;
+    aspect-ratio:9 / 16;
     max-height:470px;
     background:linear-gradient(145deg,#21153d,#0e0e16);
     border-radius:18px;
@@ -271,6 +299,8 @@ button{
 }
 
 .previewContent{
+    position:relative;
+    z-index:1;
     text-align:center;
     padding:25px;
 }
@@ -294,12 +324,54 @@ button{
 
 #mediaImage,
 #mediaVideo{
-    display:none;
+    position:absolute;
+    inset:0;
     width:100%;
     height:100%;
     object-fit:contain;
     background:#000;
+    display:none;
+    z-index:2;
 }
+
+/* =========================
+   TEXT OVERLAY
+========================= */
+
+.textOverlay{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    z-index:20;
+
+    color:#ffffff;
+    font-size:32px;
+    font-weight:800;
+    line-height:1.15;
+
+    text-align:center;
+    text-shadow:
+        0 2px 4px #000,
+        0 4px 12px #000;
+
+    max-width:90%;
+    word-break:break-word;
+
+    user-select:none;
+    -webkit-user-select:none;
+
+    cursor:move;
+    touch-action:none;
+
+    padding:4px 8px;
+
+    display:none;
+}
+
+/* =========================
+   PLAY BUTTON
+========================= */
 
 .playButton{
     position:absolute;
@@ -313,11 +385,12 @@ button{
     background:white;
     color:#111;
     font-size:20px;
-    cursor:pointer;
-    z-index:5;
+    z-index:30;
 }
 
-/* MEDIA PANEL */
+/* =========================
+   MEDIA PANEL
+========================= */
 
 .mediaPanel{
     margin-top:15px;
@@ -345,7 +418,6 @@ button{
     border:1px solid #353545;
     background:#20202c;
     color:white;
-    cursor:pointer;
     font-weight:700;
 }
 
@@ -357,27 +429,11 @@ button{
     border:1px solid #4a3030;
     background:#251818;
     color:#ffaaaa;
-    cursor:pointer;
 }
-/* TEXT OVERLAY */
 
-.textOverlay{
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    color:white;
-    font-size:32px;
-    font-weight:800;
-    text-align:center;
-    text-shadow:0 2px 8px #000;
-    z-index:10;
-    cursor:move;
-    user-select:none;
-    touch-action:none;
-    max-width:90%;
-    word-break:break-word;
-}
+/* =========================
+   TEXT PANEL
+========================= */
 
 .textPanel{
     margin-top:15px;
@@ -406,7 +462,7 @@ button{
 
 .textControls{
     display:grid;
-    grid-template-columns:1fr 1fr 1fr 50px;
+    grid-template-columns:1fr 1fr 1fr 55px;
     gap:7px;
     margin-top:9px;
 }
@@ -417,14 +473,13 @@ button{
     border:1px solid #353545;
     background:#20202c;
     color:white;
-    cursor:pointer;
     font-weight:700;
 }
 
 .colorInput{
-    width:50px;
+    width:55px;
     height:40px;
-    padding:2px;
+    padding:3px;
     border:1px solid #353545;
     border-radius:10px;
     background:#20202c;
@@ -435,8 +490,11 @@ button{
     background:#251818;
     border-color:#4a3030;
     color:#ffaaaa;
-    }
-/* TIMELINE */
+}
+
+/* =========================
+   TIMELINE
+========================= */
 
 .timelineHeader{
     display:flex;
@@ -504,7 +562,9 @@ button{
     font-size:11px;
 }
 
-/* TOOLS */
+/* =========================
+   EDITOR TOOLS
+========================= */
 
 .editorTools{
     display:grid;
@@ -521,7 +581,6 @@ button{
     color:white;
     text-align:center;
     font-size:11px;
-    cursor:pointer;
 }
 
 .editorTool span{
@@ -530,7 +589,9 @@ button{
     margin-bottom:5px;
 }
 
-/* FORMAT */
+/* =========================
+   FORMAT
+========================= */
 
 .formatRow{
     display:flex;
@@ -546,7 +607,6 @@ button{
     border:1px solid #292936;
     color:#bbb;
     border-radius:10px;
-    cursor:pointer;
 }
 
 .format.active{
@@ -554,6 +614,10 @@ button{
     color:white;
     border-color:#8d61e8;
 }
+
+/* =========================
+   AI / EXPORT
+========================= */
 
 .aiDirectorButton{
     width:100%;
@@ -564,7 +628,6 @@ button{
     background:#201738;
     color:white;
     font-weight:800;
-    cursor:pointer;
 }
 
 .exportButton{
@@ -577,7 +640,6 @@ button{
     color:white;
     font-size:16px;
     font-weight:800;
-    cursor:pointer;
 }
 
 .bottom{
@@ -586,6 +648,18 @@ button{
     font-size:12px;
     margin-top:28px;
 }
+
+@media(max-width:420px){
+
+    .textControls{
+        grid-template-columns:1fr 1fr 1fr;
+    }
+
+    .colorInput{
+        width:100%;
+    }
+
+}
 </style>
 </head>
 
@@ -593,18 +667,30 @@ button{
 
 <div class="app">
 
-<!-- HOME -->
+<!-- ==================================================
+     HOME
+================================================== -->
 
 <div id="homeScreen">
 
     <div class="header">
-        <div class="logo">✨ AI Creative Studio</div>
-        <div class="pro">PRO</div>
+
+        <div class="logo">
+            ✨ AI Creative Studio
+        </div>
+
+        <div class="pro">
+            PRO
+        </div>
+
     </div>
+
 
     <div class="hero">
 
-        <h1>What do you want to create?</h1>
+        <h1>
+            What do you want to create?
+        </h1>
 
         <p>
             Tell AI your idea. We'll plan, design and edit it for you.
@@ -616,48 +702,66 @@ button{
             placeholder="Example: Make a powerful 20-second festival Reel..."
         ></textarea>
 
-        <button id="createAiButton" class="create" type="button">
+        <button
+            id="createAiButton"
+            class="create"
+            type="button">
+
             ✨ Create with AI
+
         </button>
 
     </div>
 
+
     <div class="section">
 
-        <div class="section-title">Create</div>
+        <div class="section-title">
+            Create
+        </div>
 
         <div class="tools">
 
             <div class="tool" data-type="Video">
-                <div class="icon">🎬</div>Video
+                <div class="icon">🎬</div>
+                Video
             </div>
 
             <div class="tool" data-type="Image">
-                <div class="icon">🖼️</div>Image
+                <div class="icon">🖼️</div>
+                Image
             </div>
 
             <div class="tool" data-type="Poster">
-                <div class="icon">🎨</div>Poster
+                <div class="icon">🎨</div>
+                Poster
             </div>
 
             <div class="tool" data-type="Pamphlet">
-                <div class="icon">📄</div>Pamphlet
+                <div class="icon">📄</div>
+                Pamphlet
             </div>
 
             <div class="tool" data-type="Reel">
-                <div class="icon">📱</div>Reel
+                <div class="icon">📱</div>
+                Reel
             </div>
 
             <div class="tool" data-type="YouTube">
-                <div class="icon">▶️</div>YouTube
+                <div class="icon">▶️</div>
+                YouTube
             </div>
 
         </div>
+
     </div>
+
 
     <div class="section">
 
-        <div class="section-title">🎬 Ready Reels</div>
+        <div class="section-title">
+            🎬 Ready Reels
+        </div>
 
         <div class="reels">
 
@@ -681,9 +785,12 @@ button{
 
     </div>
 
+
     <div class="section">
 
-        <div class="section-title">📁 Recent Projects</div>
+        <div class="section-title">
+            📁 Recent Projects
+        </div>
 
         <div class="recent">
             No projects yet.<br>
@@ -692,6 +799,7 @@ button{
 
     </div>
 
+
     <div class="bottom">
         AI Creative Studio • Create without limits
     </div>
@@ -699,102 +807,174 @@ button{
 </div>
 
 
-<!-- AI DIRECTOR -->
+<!-- ==================================================
+     AI DIRECTOR
+================================================== -->
 
 <div id="directorScreen">
 
-    <button id="backToHome" class="backButton" type="button">
+    <button
+        id="backToHome"
+        class="backButton"
+        type="button">
+
         ← Back
+
     </button>
 
-    <h1 class="directorTitle">🎬 AI Director</h1>
+
+    <h1 class="directorTitle">
+        🎬 AI Director
+    </h1>
+
 
     <p class="directorDescription">
         Your idea has been understood. Here is the production plan.
     </p>
 
+
     <div class="ideaBox">
 
-        <div class="ideaLabel">YOUR IDEA</div>
+        <div class="ideaLabel">
+            YOUR IDEA
+        </div>
 
         <div id="ideaText"></div>
 
     </div>
 
-    <div class="section-title">📋 Production Plan</div>
+
+    <div class="section-title">
+        📋 Production Plan
+    </div>
+
 
     <div class="plan">
 
         <div class="planCard">
-            <h3>📝 1. Story & Script</h3>
+
+            <h3>
+                📝 1. Story & Script
+            </h3>
+
             <p>
                 Understand the message, audience and purpose,
                 then create the structure and script.
             </p>
+
         </div>
 
+
         <div class="planCard">
-            <h3>🎨 2. Visual Design</h3>
+
+            <h3>
+                🎨 2. Visual Design
+            </h3>
+
             <p>
                 Select or generate suitable images, videos,
                 backgrounds and graphics.
             </p>
+
         </div>
 
+
         <div class="planCard">
-            <h3>🎵 3. Audio</h3>
+
+            <h3>
+                🎵 3. Audio
+            </h3>
+
             <p>
                 Plan music, voice, sound effects and timing.
             </p>
+
         </div>
 
+
         <div class="planCard">
-            <h3>✂️ 4. Editing</h3>
+
+            <h3>
+                ✂️ 4. Editing
+            </h3>
+
             <p>
                 Arrange timeline, captions, transitions,
                 effects and motion.
             </p>
+
         </div>
 
+
         <div class="planCard">
-            <h3>📱 5. Final Format</h3>
+
+            <h3>
+                📱 5. Final Format
+            </h3>
+
             <p>
                 Prepare the project for Instagram,
                 YouTube, WhatsApp or another platform.
             </p>
+
         </div>
 
     </div>
 
-    <button id="startCreating" class="startButton" type="button">
+
+    <button
+        id="startCreating"
+        class="startButton"
+        type="button">
+
         🚀 Start Creating
+
     </button>
 
 </div>
 
 
-<!-- PROFESSIONAL EDITOR -->
+<!-- ==================================================
+     PROFESSIONAL EDITOR
+================================================== -->
 
 <div id="editorScreen">
 
     <div class="editorTop">
 
-        <button id="editorBack" class="smallBtn" type="button">
+        <button
+            id="editorBack"
+            class="smallBtn"
+            type="button">
+
             ←
+
         </button>
+
 
         <div class="editorTitle">
             🎬 Professional Editor
         </div>
 
+
         <div class="editorActions">
 
-            <button id="undoButton" class="smallBtn" type="button">
+            <button
+                id="undoButton"
+                class="smallBtn"
+                type="button">
+
                 ↶
+
             </button>
 
-            <button id="redoButton" class="smallBtn" type="button">
+            <button
+                id="redoButton"
+                class="smallBtn"
+                type="button">
+
                 ↷
+
             </button>
 
         </div>
@@ -802,16 +982,24 @@ button{
     </div>
 
 
-    <!-- REAL PREVIEW -->
+    <!-- PREVIEW -->
 
     <div class="preview">
 
-        <div id="emptyPreview" class="previewContent">
+        <div
+            id="emptyPreview"
+            class="previewContent">
 
-            <div class="previewIcon">🎬</div>
+            <div class="previewIcon">
+                🎬
+            </div>
 
-            <div id="previewText" class="previewText">
+            <div
+                id="previewText"
+                class="previewText">
+
                 Your project preview
+
             </div>
 
             <div class="previewSub">
@@ -820,19 +1008,35 @@ button{
 
         </div>
 
-        <img id="mediaImage" alt="Uploaded image">
+
+        <img
+            id="mediaImage"
+            alt="Uploaded image">
+
 
         <video
             id="mediaVideo"
-            playsinline
-            controls>
+            playsinline>
+
         </video>
+
+
+        <!-- REAL TEXT LAYER -->
+
+        <div
+            id="textOverlay"
+            class="textOverlay">
+
+        </div>
+
 
         <button
             id="playButton"
             class="playButton"
             type="button">
+
             ▶
+
         </button>
 
     </div>
@@ -846,36 +1050,47 @@ button{
             🖼️ Media
         </div>
 
+
         <div class="mediaButtons">
 
             <button
                 id="imageUploadButton"
                 class="mediaButton"
                 type="button">
+
                 🖼️ Add Image
+
             </button>
+
 
             <button
                 id="videoUploadButton"
                 class="mediaButton"
                 type="button">
+
                 🎬 Add Video
+
             </button>
 
         </div>
+
 
         <button
             id="removeMediaButton"
             class="removeMedia"
             type="button">
+
             🗑️ Remove Media
+
         </button>
+
 
         <input
             id="imageInput"
             type="file"
             accept="image/*"
             hidden>
+
 
         <input
             id="videoInput"
@@ -884,49 +1099,76 @@ button{
             hidden>
 
     </div>
-<!-- TEXT OVERLAY -->
 
-<div class="textPanel">
 
-    <div class="textPanelTitle">
-        📝 Text Overlay
-    </div>
+    <!-- TEXT -->
 
-    <input
-        id="overlayTextInput"
-        class="textInput"
-        type="text"
-        placeholder="Type your text..."
-    >
+    <div class="textPanel">
 
-    <div class="textControls">
+        <div class="textPanelTitle">
+            📝 Text Overlay
+        </div>
 
-        <button id="textAddButton" class="textControlButton">
-            ➕ Add Text
-        </button>
-
-        <button id="textMinusButton" class="textControlButton">
-            A−
-        </button>
-
-        <button id="textPlusButton" class="textControlButton">
-            A+
-        </button>
 
         <input
-            id="textColorInput"
-            type="color"
-            value="#ffffff"
-            class="colorInput"
-        >
+            id="overlayTextInput"
+            class="textInput"
+            type="text"
+            placeholder="Type your text...">
 
-        <button id="textRemoveButton" class="textControlButton danger">
-            🗑️ Remove
-        </button>
+
+        <div class="textControls">
+
+            <button
+                id="textAddButton"
+                class="textControlButton"
+                type="button">
+
+                ➕ Add
+
+            </button>
+
+
+            <button
+                id="textMinusButton"
+                class="textControlButton"
+                type="button">
+
+                A−
+
+            </button>
+
+
+            <button
+                id="textPlusButton"
+                class="textControlButton"
+                type="button">
+
+                A+
+
+            </button>
+
+
+            <input
+                id="textColorInput"
+                type="color"
+                value="#ffffff"
+                class="colorInput">
+
+
+            <button
+                id="textRemoveButton"
+                class="textControlButton danger"
+                type="button">
+
+                🗑️ Remove Text
+
+            </button>
+
+        </div>
 
     </div>
 
-</div>
 
     <!-- TIMELINE -->
 
@@ -936,21 +1178,35 @@ button{
             ⏱ Timeline
         </div>
 
-        <div id="timelineTime" class="time">
+        <div
+            id="timelineTime"
+            class="time">
+
             00:00 / 00:20
+
         </div>
 
     </div>
+
 
     <div class="timeline">
 
         <div class="track">
 
-            <div class="clip">Scene 1</div>
-            <div class="clip">Scene 2</div>
-            <div class="clip">Scene 3</div>
+            <div class="clip">
+                Scene 1
+            </div>
+
+            <div class="clip">
+                Scene 2
+            </div>
+
+            <div class="clip">
+                Scene 3
+            </div>
 
         </div>
+
 
         <div class="audioTrack">
             🎵 Music / Voice
@@ -959,44 +1215,104 @@ button{
     </div>
 
 
-    <!-- TOOLS -->
+    <!-- EDITING TOOLS -->
 
-    <div class="section-title" style="margin-top:18px;">
+    <div
+        class="section-title"
+        style="margin-top:18px;">
+
         Editing Tools
+
     </div>
+
 
     <div class="editorTools">
 
-        <button class="editorTool" data-tool="Media">
-            <span>🖼️</span>Media
+        <button
+            class="editorTool"
+            data-tool="Media"
+            type="button">
+
+            <span>🖼️</span>
+            Media
+
         </button>
 
-        <button class="editorTool" data-tool="Text">
-            <span>📝</span>Text
+
+        <button
+            class="editorTool"
+            data-tool="Text"
+            type="button">
+
+            <span>📝</span>
+            Text
+
         </button>
 
-        <button class="editorTool" data-tool="Audio">
-            <span>🎵</span>Audio
+
+        <button
+            class="editorTool"
+            data-tool="Audio"
+            type="button">
+
+            <span>🎵</span>
+            Audio
+
         </button>
 
-        <button class="editorTool" data-tool="Effects">
-            <span>✨</span>Effects
+
+        <button
+            class="editorTool"
+            data-tool="Effects"
+            type="button">
+
+            <span>✨</span>
+            Effects
+
         </button>
 
-        <button class="editorTool" data-tool="Transition">
-            <span>🔀</span>Transition
+
+        <button
+            class="editorTool"
+            data-tool="Transition"
+            type="button">
+
+            <span>🔀</span>
+            Transition
+
         </button>
 
-        <button class="editorTool" data-tool="Speed">
-            <span>⚡</span>Speed
+
+        <button
+            class="editorTool"
+            data-tool="Speed"
+            type="button">
+
+            <span>⚡</span>
+            Speed
+
         </button>
 
-        <button class="editorTool" data-tool="Filter">
-            <span>🎨</span>Filter
+
+        <button
+            class="editorTool"
+            data-tool="Filter"
+            type="button">
+
+            <span>🎨</span>
+            Filter
+
         </button>
 
-        <button class="editorTool" data-tool="Caption">
-            <span>🔤</span>Caption
+
+        <button
+            class="editorTool"
+            data-tool="Caption"
+            type="button">
+
+            <span>🔤</span>
+            Caption
+
         </button>
 
     </div>
@@ -1010,24 +1326,44 @@ button{
             📐 Canvas Format
         </div>
 
+
         <div class="formatRow">
 
-            <button class="format active" data-format="9:16">
+            <button
+                class="format active"
+                data-format="9:16"
+                type="button">
+
                 9:16
+
             </button>
 
-            <button class="format" data-format="1:1">
+
+            <button
+                class="format"
+                data-format="1:1"
+                type="button">
+
                 1:1
+
             </button>
 
-            <button class="format" data-format="16:9">
+
+            <button
+                class="format"
+                data-format="16:9"
+                type="button">
+
                 16:9
+
             </button>
 
         </div>
 
     </div>
 
+
+    <!-- AI DIRECTOR -->
 
     <button
         id="askAiDirector"
@@ -1038,6 +1374,8 @@ button{
 
     </button>
 
+
+    <!-- EXPORT -->
 
     <button
         id="exportButton"
@@ -1062,6 +1400,10 @@ button{
 
 document.addEventListener("DOMContentLoaded", function(){
 
+    /* ==========================================
+       MAIN SCREENS
+    ========================================== */
+
     const home =
         document.getElementById("homeScreen");
 
@@ -1071,6 +1413,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const editor =
         document.getElementById("editorScreen");
 
+
     const prompt =
         document.getElementById("promptInput");
 
@@ -1079,6 +1422,14 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const previewText =
         document.getElementById("previewText");
+
+
+    /* ==========================================
+       MEDIA
+    ========================================== */
+
+    const preview =
+        document.querySelector(".preview");
 
     const emptyPreview =
         document.getElementById("emptyPreview");
@@ -1095,8 +1446,50 @@ document.addEventListener("DOMContentLoaded", function(){
     const videoInput =
         document.getElementById("videoInput");
 
+    const playButton =
+        document.getElementById("playButton");
 
-    /* CREATE WITH AI */
+
+    /* ==========================================
+       TEXT
+    ========================================== */
+
+    const textOverlay =
+        document.getElementById("textOverlay");
+
+    const overlayTextInput =
+        document.getElementById("overlayTextInput");
+
+    const textAddButton =
+        document.getElementById("textAddButton");
+
+    const textMinusButton =
+        document.getElementById("textMinusButton");
+
+    const textPlusButton =
+        document.getElementById("textPlusButton");
+
+    const textColorInput =
+        document.getElementById("textColorInput");
+
+    const textRemoveButton =
+        document.getElementById("textRemoveButton");
+
+
+    let textSize = 32;
+
+    let textVisible = false;
+
+    let draggingText = false;
+
+    let dragOffsetX = 0;
+
+    let dragOffsetY = 0;
+
+
+    /* ==========================================
+       CREATE WITH AI
+    ========================================== */
 
     document
     .getElementById("createAiButton")
@@ -1116,38 +1509,52 @@ document.addEventListener("DOMContentLoaded", function(){
             return;
         }
 
-        ideaText.textContent = idea;
+        ideaText.textContent =
+            idea;
 
-        home.style.display = "none";
-        director.style.display = "block";
+        home.style.display =
+            "none";
+
+        director.style.display =
+            "block";
 
         window.scrollTo(0,0);
 
     });
 
 
-    /* BACK HOME */
+    /* ==========================================
+       BACK HOME
+    ========================================== */
 
     document
     .getElementById("backToHome")
     .addEventListener("click", function(){
 
-        director.style.display = "none";
-        home.style.display = "block";
+        director.style.display =
+            "none";
+
+        home.style.display =
+            "block";
 
         window.scrollTo(0,0);
 
     });
 
 
-    /* START EDITOR */
+    /* ==========================================
+       START EDITOR
+    ========================================== */
 
     document
     .getElementById("startCreating")
     .addEventListener("click", function(){
 
-        director.style.display = "none";
-        editor.style.display = "block";
+        director.style.display =
+            "none";
+
+        editor.style.display =
+            "block";
 
         previewText.textContent =
             ideaText.textContent;
@@ -1157,21 +1564,28 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
 
-    /* EDITOR BACK */
+    /* ==========================================
+       EDITOR BACK
+    ========================================== */
 
     document
     .getElementById("editorBack")
     .addEventListener("click", function(){
 
-        editor.style.display = "none";
-        director.style.display = "block";
+        editor.style.display =
+            "none";
+
+        director.style.display =
+            "block";
 
         window.scrollTo(0,0);
 
     });
 
 
-    /* QUICK CREATE */
+    /* ==========================================
+       QUICK CREATE
+    ========================================== */
 
     document
     .querySelectorAll(".tool")
@@ -1194,7 +1608,9 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
 
-    /* READY REELS */
+    /* ==========================================
+       READY REELS
+    ========================================== */
 
     document
     .querySelectorAll(".reel")
@@ -1217,7 +1633,9 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
 
-    /* IMAGE UPLOAD BUTTON */
+    /* ==========================================
+       IMAGE UPLOAD
+    ========================================== */
 
     document
     .getElementById("imageUploadButton")
@@ -1228,7 +1646,54 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
 
-    /* VIDEO UPLOAD BUTTON */
+    imageInput.addEventListener("change", function(){
+
+        const file =
+            this.files[0];
+
+        if(!file){
+            return;
+        }
+
+
+        const url =
+            URL.createObjectURL(file);
+
+
+        mediaVideo.pause();
+
+        mediaVideo.removeAttribute("src");
+
+        mediaVideo.style.display =
+            "none";
+
+
+        mediaImage.src =
+            url;
+
+        mediaImage.style.display =
+            "block";
+
+
+        emptyPreview.style.display =
+            "none";
+
+
+        playButton.style.display =
+            "none";
+
+
+        /* Make text available above image */
+
+        textOverlay.style.zIndex =
+            "20";
+
+    });
+
+
+    /* ==========================================
+       VIDEO UPLOAD
+    ========================================== */
 
     document
     .getElementById("videoUploadButton")
@@ -1239,107 +1704,53 @@ document.addEventListener("DOMContentLoaded", function(){
     });
 
 
-    /* IMAGE FILE */
-
-    imageInput.addEventListener("change", function(){
-
-        const file = this.files[0];
-
-        if(!file){
-            return;
-        }
-
-        const url =
-            URL.createObjectURL(file);
-
-        mediaVideo.pause();
-        mediaVideo.removeAttribute("src");
-        mediaVideo.style.display = "none";
-
-        mediaImage.src = url;
-        mediaImage.style.display = "block";
-
-        emptyPreview.style.display = "none";
-
-        alert(
-            "🖼️ Image added successfully!"
-        );
-
-    });
-
-
-    /* VIDEO FILE */
-
     videoInput.addEventListener("change", function(){
 
-        const file = this.files[0];
+        const file =
+            this.files[0];
 
         if(!file){
             return;
         }
 
+
         const url =
             URL.createObjectURL(file);
 
-        mediaImage.style.display = "none";
+
         mediaImage.removeAttribute("src");
 
-        mediaVideo.src = url;
-        mediaVideo.style.display = "block";
+        mediaImage.style.display =
+            "none";
 
-        emptyPreview.style.display = "none";
+
+        mediaVideo.src =
+            url;
+
+        mediaVideo.style.display =
+            "block";
+
+
+        emptyPreview.style.display =
+            "none";
+
+
+        playButton.style.display =
+            "block";
+
+
+        textOverlay.style.zIndex =
+            "20";
+
 
         mediaVideo.load();
 
-        alert(
-            "🎬 Video added successfully!"
-        );
-
     });
 
 
-    /* PLAY / PAUSE */
-
-    document
-    .getElementById("playButton")
-    .addEventListener("click", function(){
-
-        if(mediaVideo.style.display === "block"){
-
-            if(mediaVideo.paused){
-
-                mediaVideo.play();
-
-                this.textContent = "⏸";
-
-            }else{
-
-                mediaVideo.pause();
-
-                this.textContent = "▶";
-
-            }
-
-            return;
-        }
-
-        if(mediaImage.style.display === "block"){
-
-            alert(
-                "🖼️ Image preview is ready."
-            );
-
-            return;
-        }
-
-        alert(
-            "Add an image or video first."
-        );
-
-    });
-
-
-    /* REMOVE MEDIA */
+    /* ==========================================
+       REMOVE MEDIA
+    ========================================== */
 
     document
     .getElementById("removeMediaButton")
@@ -1348,35 +1759,116 @@ document.addEventListener("DOMContentLoaded", function(){
         mediaVideo.pause();
 
         mediaVideo.removeAttribute("src");
+
         mediaImage.removeAttribute("src");
 
-        mediaVideo.style.display = "none";
-        mediaImage.style.display = "none";
 
-        emptyPreview.style.display = "block";
+        mediaVideo.style.display =
+            "none";
 
-        imageInput.value = "";
-        videoInput.value = "";
-
-    });
+        mediaImage.style.display =
+            "none";
 
 
-    /* VIDEO TIME */
+        emptyPreview.style.display =
+            "block";
 
-    mediaVideo.addEventListener("timeupdate", function(){
 
-        const current =
-            formatTime(mediaVideo.currentTime);
+        playButton.style.display =
+            "block";
 
-        const duration =
-            formatTime(mediaVideo.duration);
 
-        document.getElementById(
-            "timelineTime"
-        ).textContent =
-            current + " / " + duration;
+        imageInput.value =
+            "";
+
+        videoInput.value =
+            "";
 
     });
+
+
+    /* ==========================================
+       PLAY VIDEO
+    ========================================== */
+
+    playButton.addEventListener(
+        "click",
+        function(){
+
+            if(
+                mediaVideo.style.display ===
+                "block"
+            ){
+
+                if(mediaVideo.paused){
+
+                    mediaVideo.play();
+
+                    playButton.textContent =
+                        "⏸";
+
+                }else{
+
+                    mediaVideo.pause();
+
+                    playButton.textContent =
+                        "▶";
+
+                }
+
+                return;
+            }
+
+
+            if(
+                mediaImage.style.display ===
+                "block"
+            ){
+
+                alert(
+                    "🖼️ Image preview is ready."
+                );
+
+                return;
+            }
+
+
+            alert(
+                "Add an image or video first."
+            );
+
+        }
+    );
+
+
+    /* ==========================================
+       VIDEO TIME
+    ========================================== */
+
+    mediaVideo.addEventListener(
+        "timeupdate",
+        function(){
+
+            const current =
+                formatTime(
+                    mediaVideo.currentTime
+                );
+
+            const duration =
+                formatTime(
+                    mediaVideo.duration
+                );
+
+
+            document
+            .getElementById("timelineTime")
+            .textContent =
+                current +
+                " / " +
+                duration;
+
+        }
+    );
 
 
     function formatTime(seconds){
@@ -1391,149 +1883,517 @@ document.addEventListener("DOMContentLoaded", function(){
         const secs =
             Math.floor(seconds % 60);
 
-        return String(minutes).padStart(2,"0")
-            + ":" +
-            String(secs).padStart(2,"0");
+        return String(minutes)
+            .padStart(2,"0")
+            +
+            ":" +
+            String(secs)
+            .padStart(2,"0");
 
     }
 
 
-    /* EDITOR TOOLS */
+    /* ==========================================
+       ADD TEXT
+    ========================================== */
+
+    textAddButton.addEventListener(
+        "click",
+        function(){
+
+            const value =
+                overlayTextInput.value.trim();
+
+
+            if(!value){
+
+                alert(
+                    "Type some text first."
+                );
+
+                overlayTextInput.focus();
+
+                return;
+            }
+
+
+            textOverlay.textContent =
+                value;
+
+
+            textOverlay.style.fontSize =
+                textSize + "px";
+
+
+            textOverlay.style.color =
+                textColorInput.value;
+
+
+            textOverlay.style.display =
+                "block";
+
+
+            textOverlay.style.left =
+                "50%";
+
+
+            textOverlay.style.top =
+                "50%";
+
+
+            textOverlay.style.zIndex =
+                "20";
+
+
+            textVisible =
+                true;
+
+        }
+    );
+
+
+    /* ==========================================
+       LIVE TEXT
+    ========================================== */
+
+    overlayTextInput.addEventListener(
+        "input",
+        function(){
+
+            if(textVisible){
+
+                textOverlay.textContent =
+                    this.value;
+
+            }
+
+        }
+    );
+
+
+    /* ==========================================
+       TEXT COLOR
+    ========================================== */
+
+    textColorInput.addEventListener(
+        "input",
+        function(){
+
+            if(textVisible){
+
+                textOverlay.style.color =
+                    this.value;
+
+            }
+
+        }
+    );
+
+
+    /* ==========================================
+       TEXT SMALLER
+    ========================================== */
+
+    textMinusButton.addEventListener(
+        "click",
+        function(){
+
+            textSize =
+                Math.max(
+                    12,
+                    textSize - 4
+                );
+
+
+            if(textVisible){
+
+                textOverlay.style.fontSize =
+                    textSize + "px";
+
+            }
+
+        }
+    );
+
+
+    /* ==========================================
+       TEXT BIGGER
+    ========================================== */
+
+    textPlusButton.addEventListener(
+        "click",
+        function(){
+
+            textSize =
+                Math.min(
+                    120,
+                    textSize + 4
+                );
+
+
+            if(textVisible){
+
+                textOverlay.style.fontSize =
+                    textSize + "px";
+
+            }
+
+        }
+    );
+
+
+    /* ==========================================
+       REMOVE TEXT
+    ========================================== */
+
+    textRemoveButton.addEventListener(
+        "click",
+        function(){
+
+            textOverlay.textContent =
+                "";
+
+            textOverlay.style.display =
+                "none";
+
+            overlayTextInput.value =
+                "";
+
+            textVisible =
+                false;
+
+        }
+    );
+
+
+    /* ==========================================
+       DRAG TEXT - POINTER EVENTS
+    ========================================== */
+
+    textOverlay.addEventListener(
+        "pointerdown",
+        function(event){
+
+            if(!textVisible){
+                return;
+            }
+
+
+            draggingText =
+                true;
+
+
+            const rect =
+                textOverlay.getBoundingClientRect();
+
+
+            dragOffsetX =
+                event.clientX -
+                rect.left -
+                rect.width / 2;
+
+
+            dragOffsetY =
+                event.clientY -
+                rect.top -
+                rect.height / 2;
+
+
+            textOverlay.setPointerCapture(
+                event.pointerId
+            );
+
+
+            event.preventDefault();
+
+        }
+    );
+
+
+    textOverlay.addEventListener(
+        "pointermove",
+        function(event){
+
+            if(!draggingText){
+                return;
+            }
+
+
+            const previewRect =
+                preview.getBoundingClientRect();
+
+
+            let x =
+                event.clientX -
+                previewRect.left -
+                dragOffsetX -
+                textOverlay.offsetWidth / 2;
+
+
+            let y =
+                event.clientY -
+                previewRect.top -
+                dragOffsetY -
+                textOverlay.offsetHeight / 2;
+
+
+            const halfWidth =
+                textOverlay.offsetWidth / 2;
+
+            const halfHeight =
+                textOverlay.offsetHeight / 2;
+
+
+            x =
+                Math.max(
+                    halfWidth,
+                    Math.min(
+                        previewRect.width -
+                        halfWidth,
+                        x +
+                        halfWidth
+                    )
+                );
+
+
+            y =
+                Math.max(
+                    halfHeight,
+                    Math.min(
+                        previewRect.height -
+                        halfHeight,
+                        y +
+                        halfHeight
+                    )
+                );
+
+
+            textOverlay.style.left =
+                x + "px";
+
+            textOverlay.style.top =
+                y + "px";
+
+            textOverlay.style.transform =
+                "translate(-50%, -50%)";
+
+
+            event.preventDefault();
+
+        }
+    );
+
+
+    textOverlay.addEventListener(
+        "pointerup",
+        function(){
+
+            draggingText =
+                false;
+
+        }
+    );
+
+
+    textOverlay.addEventListener(
+        "pointercancel",
+        function(){
+
+            draggingText =
+                false;
+
+        }
+    );
+
+
+    /* ==========================================
+       EDITOR TOOLS
+    ========================================== */
 
     document
     .querySelectorAll(".editorTool")
     .forEach(function(tool){
 
-        tool.addEventListener("click", function(){
+        tool.addEventListener(
+            "click",
+            function(){
 
-            const name =
-                tool.getAttribute("data-tool");
+                const name =
+                    tool.getAttribute("data-tool");
 
-            if(name === "Media"){
 
-                imageInput.click();
+                if(name === "Media"){
 
-                return;
+                    imageInput.click();
+
+                    return;
+
+                }
+
+
+                if(name === "Text"){
+
+                    overlayTextInput.focus();
+
+                    return;
+
+                }
+
+
+                alert(
+                    name +
+                    " tool selected.\n\n" +
+                    "This tool will become fully functional in the next development stage."
+                );
 
             }
-
-            alert(
-                name +
-                " tool selected.\n\n" +
-                "This tool will become fully functional in the next editor development stage."
-            );
-
-        });
+        );
 
     });
 
 
-    /* FORMAT */
+    /* ==========================================
+       CANVAS FORMAT
+    ========================================== */
 
     document
     .querySelectorAll(".format")
     .forEach(function(format){
 
-        format.addEventListener("click", function(){
+        format.addEventListener(
+            "click",
+            function(){
 
-            document
-            .querySelectorAll(".format")
-            .forEach(function(item){
+                document
+                .querySelectorAll(".format")
+                .forEach(function(item){
 
-                item.classList.remove("active");
+                    item.classList.remove(
+                        "active"
+                    );
 
-            });
+                });
 
-            format.classList.add("active");
 
-            const value =
-                format.getAttribute("data-format");
+                format.classList.add(
+                    "active"
+                );
 
-            const preview =
-                document.querySelector(".preview");
 
-            if(value === "9:16"){
+                const value =
+                    format.getAttribute(
+                        "data-format"
+                    );
 
-                preview.style.aspectRatio =
-                    "9 / 16";
+
+                if(value === "9:16"){
+
+                    preview.style.aspectRatio =
+                        "9 / 16";
+
+                }
+
+
+                if(value === "1:1"){
+
+                    preview.style.aspectRatio =
+                        "1 / 1";
+
+                }
+
+
+                if(value === "16:9"){
+
+                    preview.style.aspectRatio =
+                        "16 / 9";
+
+                }
 
             }
-
-            if(value === "1:1"){
-
-                preview.style.aspectRatio =
-                    "1 / 1";
-
-            }
-
-            if(value === "16:9"){
-
-                preview.style.aspectRatio =
-                    "16 / 9";
-
-            }
-
-        });
+        );
 
     });
 
 
-    /* UNDO */
+    /* ==========================================
+       UNDO
+    ========================================== */
 
     document
     .getElementById("undoButton")
-    .addEventListener("click", function(){
+    .addEventListener(
+        "click",
+        function(){
 
-        alert("↶ Undo will be connected to the editor history next.");
+            alert(
+                "↶ Undo history will be connected next."
+            );
 
-    });
+        }
+    );
 
 
-    /* REDO */
+    /* ==========================================
+       REDO
+    ========================================== */
 
     document
     .getElementById("redoButton")
-    .addEventListener("click", function(){
+    .addEventListener(
+        "click",
+        function(){
 
-        alert("↷ Redo will be connected to the editor history next.");
+            alert(
+                "↷ Redo history will be connected next."
+            );
 
-    });
+        }
+    );
 
 
-    /* AI DIRECTOR */
+    /* ==========================================
+       AI DIRECTOR
+    ========================================== */
 
     document
     .getElementById("askAiDirector")
-    .addEventListener("click", function(){
+    .addEventListener(
+        "click",
+        function(){
 
-        alert(
-            "🤖 AI Director\n\n" +
-            "Tell me what you want to improve:\n\n" +
-            "• Make it cinematic\n" +
-            "• Make it faster\n" +
-            "• Add captions\n" +
-            "• Improve transitions\n" +
-            "• Make the hook stronger"
-        );
+            alert(
+                "🤖 AI Director\n\n" +
+                "Tell me what you want to improve:\n\n" +
+                "• Make it cinematic\n" +
+                "• Make it faster\n" +
+                "• Add captions\n" +
+                "• Improve transitions\n" +
+                "• Make the hook stronger"
+            );
 
-    });
+        }
+    );
 
 
-    /* EXPORT */
+    /* ==========================================
+       EXPORT
+    ========================================== */
 
     document
     .getElementById("exportButton")
-    .addEventListener("click", function(){
+    .addEventListener(
+        "click",
+        function(){
 
-        alert(
-            "📤 Export engine will be connected next.\n\n" +
-            "Your media is currently loaded directly in the editor preview."
-        );
+            alert(
+                "📤 Export engine will be connected next.\n\n" +
+                "Your media and text are currently working in the editor preview."
+            );
 
-    });
+        }
+    );
 
 });
-
 </script>
 
 </body>
