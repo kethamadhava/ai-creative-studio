@@ -1,1 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Creative Studio</title>
 
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #0b0b12;
+    color: white;
+    min-height: 100vh;
+}
+
+.app {
+    max-width: 600px;
+    margin: auto;
+    padding: 22px 16px 40px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.pro {
+    font-size: 12px;
+    padding: 7px 11px;
+    border-radius: 20px;
+    background: #242433;
+}
+
+.hero {
+    padding: 24px 18px;
+    border-radius: 22px;
+    background: linear-gradient(135deg,#25164a,#15152c);
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-size: 28px;
+    line-height: 1.15;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #bdbdc9;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.prompt {
+    width: 100%;
+    min-height: 90px;
+    border: 1px solid #39394d;
+    border-radius: 15px;
+    background: #10101a;
+    color: white;
+    padding: 14px;
+    resize: none;
+    font-size: 14px;
+    outline: none;
+}
+
+.create {
+    width: 100%;
+    margin-top: 12px;
+    padding: 15px;
+    border: 0;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: 800;
+    color: white;
+    background: linear-gradient(90deg,#7c3cff,#c83cff);
+}
+
+.section {
+    margin-top: 25px;
+}
+
+.section-title {
+    font-size: 19px;
+    font-weight: 800;
+    margin-bottom: 13px;
+}
+
+.tools {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+}
+
+.tool {
+    background: #161620;
+    border: 1px solid #282834;
+    border-radius: 17px;
+    padding: 17px 8px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.icon {
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.reels {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 12px;
+}
+
+.reel {
+    min-height: 130px;
+    border-radius: 18px;
+    padding: 14px;
+    display: flex;
+    align-items: flex-end;
+    font-weight: 700;
+    background: linear-gradient(145deg,#34205e,#11111a);
+}
+
+.reel:nth-child(2) {
+    background: linear-gradient(145deg,#123b4a,#11111a);
+}
+
+.reel:nth-child(3) {
+    background: linear-gradient(145deg,#56341b,#11111a);
+}
+
+.reel:nth-child(4) {
+    background: linear-gradient(145deg,#283b1b,#11111a);
+}
+
+.bottom {
+    margin-top: 30px;
+    text-align: center;
+    color: #777785;
+    font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <div class="header">
+        <div class="logo">✨ AI Creative Studio</div>
+        <div class="pro">PRO</div>
+    </div>
+
+    <div class="hero">
+        <h1>What do you want to create?</h1>
+
+        <p>
+            Tell AI your idea. We'll plan, design and edit it for you.
+        </p>
+
+        <textarea class="prompt"
+        placeholder="Example: Make a powerful 20-second festival Reel..."></textarea>
+
+        <button class="create" onclick="createProject()">
+            ✨ Create with AI
+        </button>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Create</div>
+
+        <div class="tools">
+
+            <div class="tool">
+                <div class="icon">🎬</div>
+                Video
+            </div>
+
+            <div class="tool">
+                <div class="icon">🖼️</div>
+                Image
+            </div>
+
+            <div class="tool">
+                <div class="icon">🎨</div>
+                Poster
+            </div>
+
+            <div class="tool">
+                <div class="icon">📄</div>
+                Pamphlet
+            </div>
+
+            <div class="tool">
+                <div class="icon">📱</div>
+                Reel
+            </div>
+
+            <div class="tool">
+                <div class="icon">▶️</div>
+                YouTube
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section">
+
+        <div class="section-title">
+            🎬 Ready Reels
+        </div>
+
+        <div class="reels">
+
+            <div class="reel">
+                🔥 Trending
+            </div>
+
+            <div class="reel">
+                🎉 Birthday
+            </div>
+
+            <div class="reel">
+                🪔 Festival
+            </div>
+
+            <div class="reel">
+                🏪 Business
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="section">
+
+        <div class="section-title">
+            📁 Recent Projects
+        </div>
+
+        <div class="tool">
+            No projects yet.<br>
+            Create your first project with AI.
+        </div>
+
+    </div>
+
+    <div class="bottom">
+        AI Creative Studio • Create without limits
+    </div>
+
+</div>
+
+<script>
+
+function createProject() {
+
+    const prompt = document.querySelector(".prompt").value.trim();
+
+    if (!prompt) {
+        alert("Tell AI what you want to create first.");
+        return;
+    }
+
+    alert(
+        "🚀 Project created!\\n\\n" +
+        "Your AI Director received:\\n" +
+        prompt +
+        "\\n\\nAI Director will plan the project next."
+    );
+}
+
+</script>
+
+</body>
+</html>
