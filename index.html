@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>AI Creative Studio</title>
 
 <style>
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -20,35 +22,40 @@ body {
 }
 
 .app {
+    width: 100%;
     max-width: 600px;
     margin: auto;
-    padding: 22px 16px 40px;
+    padding: 20px 16px 40px;
 }
+
+/* HEADER */
 
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 28px;
+    margin-bottom: 24px;
 }
 
 .logo {
-    font-size: 22px;
+    font-size: 21px;
     font-weight: 800;
 }
 
 .pro {
-    font-size: 12px;
-    padding: 7px 11px;
+    background: #272735;
+    padding: 7px 12px;
     border-radius: 20px;
-    background: #242433;
+    font-size: 12px;
+    font-weight: bold;
 }
 
+/* HOME */
+
 .hero {
-    padding: 24px 18px;
+    background: linear-gradient(135deg, #28164e, #15152b);
     border-radius: 22px;
-    background: linear-gradient(135deg,#25164a,#15152c);
-    margin-bottom: 22px;
+    padding: 22px 18px;
 }
 
 .hero h1 {
@@ -58,39 +65,53 @@ body {
 }
 
 .hero p {
-    color: #bdbdc9;
+    color: #bdbdca;
     font-size: 14px;
     line-height: 1.5;
     margin-bottom: 18px;
 }
 
 .prompt {
+    display: block;
     width: 100%;
     min-height: 100px;
-    border: 1px solid #39394d;
-    border-radius: 15px;
-    background: #10101a;
-    color: white;
     padding: 14px;
-    resize: none;
-    font-size: 14px;
+    border-radius: 15px;
+    border: 1px solid #3c3c50;
+    background: #101019;
+    color: white;
+    font-size: 15px;
+    resize: vertical;
     outline: none;
 }
 
-.create {
-    width: 100%;
-    margin-top: 12px;
-    padding: 15px;
-    border: 0;
-    border-radius: 15px;
-    font-size: 16px;
-    font-weight: 800;
-    color: white;
-    background: linear-gradient(90deg,#7c3cff,#c83cff);
+.prompt:focus {
+    border-color: #985cff;
 }
 
+.create {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 16px;
+    border: none;
+    border-radius: 15px;
+    background: linear-gradient(90deg, #7c3cff, #c83cff);
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.create:active {
+    transform: scale(0.98);
+}
+
+/* SECTIONS */
+
 .section {
-    margin-top: 25px;
+    margin-top: 26px;
 }
 
 .section-title {
@@ -99,15 +120,17 @@ body {
     margin-bottom: 13px;
 }
 
+/* CREATE OPTIONS */
+
 .tools {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 }
 
 .tool {
     background: #161620;
-    border: 1px solid #282834;
+    border: 1px solid #292936;
     border-radius: 17px;
     padding: 17px 8px;
     text-align: center;
@@ -115,19 +138,16 @@ body {
     cursor: pointer;
 }
 
-.tool:active,
-.reel:active {
-    transform: scale(.97);
-}
-
 .icon {
     font-size: 25px;
     margin-bottom: 8px;
 }
 
+/* READY REELS */
+
 .reels {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
 }
 
@@ -139,138 +159,192 @@ body {
     align-items: flex-end;
     font-weight: 700;
     cursor: pointer;
-    background: linear-gradient(145deg,#34205e,#11111a);
 }
 
-.reel:nth-child(2) {
-    background: linear-gradient(145deg,#123b4a,#11111a);
+.reel1 {
+    background: linear-gradient(145deg, #34205e, #11111a);
 }
 
-.reel:nth-child(3) {
-    background: linear-gradient(145deg,#56341b,#11111a);
+.reel2 {
+    background: linear-gradient(145deg, #123b4a, #11111a);
 }
 
-.reel:nth-child(4) {
-    background: linear-gradient(145deg,#283b1b,#11111a);
+.reel3 {
+    background: linear-gradient(145deg, #56341b, #11111a);
 }
 
-.bottom {
-    margin-top: 30px;
+.reel4 {
+    background: linear-gradient(145deg, #283b1b, #11111a);
+}
+
+/* RECENT */
+
+.recent {
+    background: #161620;
+    border: 1px solid #292936;
+    border-radius: 17px;
+    padding: 18px;
     text-align: center;
-    color: #777785;
-    font-size: 12px;
+    color: #aaaab8;
+    line-height: 1.6;
 }
 
 /* AI DIRECTOR */
 
-.director {
+#directorScreen {
     display: none;
 }
 
-.back {
-    background: #20202c;
+.backButton {
+    display: block;
+    border: none;
+    background: #242432;
     color: white;
-    border: 0;
     padding: 10px 15px;
     border-radius: 12px;
-    margin-bottom: 18px;
+    font-size: 14px;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
-.director-title {
-    font-size: 28px;
+.directorTitle {
+    font-size: 30px;
     margin-bottom: 8px;
 }
 
-.director-subtitle {
+.directorDescription {
     color: #aaaab8;
-    line-height: 1.5;
+    font-size: 14px;
+    line-height: 1.6;
     margin-bottom: 20px;
 }
 
-.idea-box {
+.ideaBox {
     background: #171722;
     border: 1px solid #303041;
-    padding: 16px;
-    border-radius: 16px;
-    margin-bottom: 20px;
+    border-radius: 17px;
+    padding: 17px;
+    margin-bottom: 22px;
 }
 
-.idea-label {
-    color: #9999aa;
-    font-size: 12px;
-    margin-bottom: 7px;
+.ideaLabel {
+    color: #888899;
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 8px;
 }
+
+#ideaText {
+    color: white;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* PLAN */
 
 .plan {
     display: grid;
     gap: 12px;
 }
 
-.plan-card {
+.planCard {
     background: #161620;
     border: 1px solid #292936;
     border-radius: 17px;
     padding: 16px;
 }
 
-.plan-card h3 {
+.planCard h3 {
     font-size: 15px;
-    margin-bottom: 7px;
+    margin-bottom: 8px;
 }
 
-.plan-card p {
+.planCard p {
     color: #aaaab8;
     font-size: 13px;
     line-height: 1.5;
 }
 
-.start {
+.startButton {
+    display: block;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 22px;
     padding: 16px;
-    border: 0;
+    border: none;
     border-radius: 15px;
-    background: linear-gradient(90deg,#7c3cff,#c83cff);
+    background: linear-gradient(90deg, #7c3cff, #c83cff);
     color: white;
     font-size: 16px;
     font-weight: 800;
+    cursor: pointer;
 }
+
+/* FOOTER */
+
+.bottom {
+    text-align: center;
+    color: #777785;
+    font-size: 12px;
+    margin-top: 30px;
+}
+
 </style>
 </head>
+
 
 <body>
 
 <div class="app">
 
+    <!-- ========================= -->
     <!-- HOME SCREEN -->
+    <!-- ========================= -->
 
-    <div id="home">
+    <div id="homeScreen">
 
         <div class="header">
-            <div class="logo">✨ AI Creative Studio</div>
-            <div class="pro">PRO</div>
+
+            <div class="logo">
+                ✨ AI Creative Studio
+            </div>
+
+            <div class="pro">
+                PRO
+            </div>
+
         </div>
+
 
         <div class="hero">
 
-            <h1>What do you want to create?</h1>
+            <h1>
+                What do you want to create?
+            </h1>
 
             <p>
                 Tell AI your idea. We'll plan, design and edit it for you.
             </p>
 
+
             <textarea
-                id="prompt"
+                id="promptInput"
                 class="prompt"
                 placeholder="Example: Make a powerful 20-second festival Reel..."
             ></textarea>
 
-            <button class="create" onclick="createProject()">
+
+            <button
+                id="createAiButton"
+                class="create"
+                type="button"
+            >
                 ✨ Create with AI
             </button>
 
         </div>
+
+
+        <!-- CREATE -->
 
         <div class="section">
 
@@ -278,34 +352,35 @@ body {
                 Create
             </div>
 
+
             <div class="tools">
 
-                <div class="tool" onclick="quickCreate('Video')">
+                <div class="tool" data-type="Video">
                     <div class="icon">🎬</div>
                     Video
                 </div>
 
-                <div class="tool" onclick="quickCreate('Image')">
+                <div class="tool" data-type="Image">
                     <div class="icon">🖼️</div>
                     Image
                 </div>
 
-                <div class="tool" onclick="quickCreate('Poster')">
+                <div class="tool" data-type="Poster">
                     <div class="icon">🎨</div>
                     Poster
                 </div>
 
-                <div class="tool" onclick="quickCreate('Pamphlet')">
+                <div class="tool" data-type="Pamphlet">
                     <div class="icon">📄</div>
                     Pamphlet
                 </div>
 
-                <div class="tool" onclick="quickCreate('Reel')">
+                <div class="tool" data-type="Reel">
                     <div class="icon">📱</div>
                     Reel
                 </div>
 
-                <div class="tool" onclick="quickCreate('YouTube')">
+                <div class="tool" data-type="YouTube">
                     <div class="icon">▶️</div>
                     YouTube
                 </div>
@@ -314,27 +389,31 @@ body {
 
         </div>
 
+
+        <!-- READY REELS -->
+
         <div class="section">
 
             <div class="section-title">
                 🎬 Ready Reels
             </div>
 
+
             <div class="reels">
 
-                <div class="reel" onclick="useTemplate('Trending Reel')">
+                <div class="reel reel1" data-template="Trending Reel">
                     🔥 Trending
                 </div>
 
-                <div class="reel" onclick="useTemplate('Birthday Reel')">
+                <div class="reel reel2" data-template="Birthday Reel">
                     🎉 Birthday
                 </div>
 
-                <div class="reel" onclick="useTemplate('Festival Reel')">
+                <div class="reel reel3" data-template="Festival Reel">
                     🪔 Festival
                 </div>
 
-                <div class="reel" onclick="useTemplate('Business Reel')">
+                <div class="reel reel4" data-template="Business Reel">
                     🏪 Business
                 </div>
 
@@ -342,18 +421,25 @@ body {
 
         </div>
 
+
+        <!-- RECENT PROJECTS -->
+
         <div class="section">
 
             <div class="section-title">
                 📁 Recent Projects
             </div>
 
-            <div class="tool">
+            <div class="recent">
+
                 No projects yet.<br>
+
                 Create your first project with AI.
+
             </div>
 
         </div>
+
 
         <div class="bottom">
             AI Creative Studio • Create without limits
@@ -362,82 +448,123 @@ body {
     </div>
 
 
+
+    <!-- ========================= -->
     <!-- AI DIRECTOR SCREEN -->
+    <!-- ========================= -->
 
-    <div id="director" class="director">
+    <div id="directorScreen">
 
-        <button class="back" onclick="goHome()">
+        <button
+            id="backButton"
+            class="backButton"
+            type="button"
+        >
             ← Back
         </button>
 
-        <h1 class="director-title">
+
+        <h1 class="directorTitle">
             🎬 AI Director
         </h1>
 
-        <p class="director-subtitle">
-            Your idea has been understood. Here is the production plan.
+
+        <p class="directorDescription">
+            Your idea has been understood. AI Director has created a production plan for your project.
         </p>
 
-        <div class="idea-box">
 
-            <div class="idea-label">
+        <div class="ideaBox">
+
+            <div class="ideaLabel">
                 YOUR IDEA
             </div>
 
             <div id="ideaText">
-                Your project idea
             </div>
 
         </div>
+
 
         <div class="section-title">
             📋 Production Plan
         </div>
 
+
         <div class="plan">
 
-            <div class="plan-card">
-                <h3>📝 1. Story & Script</h3>
+            <div class="planCard">
+
+                <h3>
+                    📝 1. Story & Script
+                </h3>
+
                 <p>
-                    AI will understand the message, audience and purpose,
-                    then create the structure and script.
+                    Understand the purpose, audience and message, then create the structure and script.
                 </p>
+
             </div>
 
-            <div class="plan-card">
-                <h3>🎨 2. Visual Design</h3>
+
+            <div class="planCard">
+
+                <h3>
+                    🎨 2. Visual Design
+                </h3>
+
                 <p>
-                    Select or generate suitable images, video clips,
-                    backgrounds and graphics.
+                    Select or generate suitable images, videos, backgrounds and graphics.
                 </p>
+
             </div>
 
-            <div class="plan-card">
-                <h3>🎵 3. Audio</h3>
+
+            <div class="planCard">
+
+                <h3>
+                    🎵 3. Audio
+                </h3>
+
                 <p>
-                    Plan music, voice, sound effects and timing.
+                    Plan music, voice, sound effects and audio timing.
                 </p>
+
             </div>
 
-            <div class="plan-card">
-                <h3>✂️ 4. Editing</h3>
+
+            <div class="planCard">
+
+                <h3>
+                    ✂️ 4. Editing
+                </h3>
+
                 <p>
-                    Arrange the timeline, captions, transitions,
-                    effects and motion.
+                    Arrange the timeline, captions, transitions, effects and motion.
                 </p>
+
             </div>
 
-            <div class="plan-card">
-                <h3>📱 5. Final Format</h3>
+
+            <div class="planCard">
+
+                <h3>
+                    📱 5. Final Format
+                </h3>
+
                 <p>
-                    Prepare the project for the requested platform,
-                    such as Instagram, YouTube or WhatsApp.
+                    Prepare the project for Instagram, YouTube, WhatsApp or another platform.
                 </p>
+
             </div>
 
         </div>
 
-        <button class="start" onclick="startCreation()">
+
+        <button
+            id="startCreatingButton"
+            class="startButton"
+            type="button"
+        >
             🚀 Start Creating
         </button>
 
@@ -446,24 +573,180 @@ body {
 </div>
 
 
+
 <script>
 
-function createProject() {
+/*
+==================================================
+AI CREATIVE STUDIO
+BASIC APP CONTROLLER
+==================================================
+*/
 
-    const prompt = document
-        .getElementById("prompt")
-        .value
-        .trim();
+document.addEventListener("DOMContentLoaded", function () {
 
-    if (!prompt) {
 
-        alert("Tell AI what you want to create first.");
+    /*
+    GET ELEMENTS
+    */
 
-        return;
-    }
+    const homeScreen =
+        document.getElementById("homeScreen");
 
-    document.getElementById("home").style.display = "none";
+    const directorScreen =
+        document.getElementById("directorScreen");
 
-    document.getElementById("director").style.display = "block";
+    const promptInput =
+        document.getElementById("promptInput");
 
-    document.getElementById("ideaText").textContent =
+    const createAiButton =
+        document.getElementById("createAiButton");
+
+    const backButton =
+        document.getElementById("backButton");
+
+    const ideaText =
+        document.getElementById("ideaText");
+
+    const startCreatingButton =
+        document.getElementById("startCreatingButton");
+
+
+    /*
+    CREATE WITH AI
+    */
+
+    createAiButton.addEventListener("click", function () {
+
+        const idea =
+            promptInput.value.trim();
+
+
+        if (idea === "") {
+
+            alert(
+                "Please tell AI what you want to create first."
+            );
+
+            promptInput.focus();
+
+            return;
+        }
+
+
+        ideaText.textContent = idea;
+
+
+        homeScreen.style.display = "none";
+
+        directorScreen.style.display = "block";
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+
+
+    /*
+    BACK TO HOME
+    */
+
+    backButton.addEventListener("click", function () {
+
+        directorScreen.style.display = "none";
+
+        homeScreen.style.display = "block";
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+
+
+    /*
+    CREATE OPTIONS
+    */
+
+    const toolButtons =
+        document.querySelectorAll(".tool");
+
+
+    toolButtons.forEach(function (tool) {
+
+        tool.addEventListener("click", function () {
+
+            const type =
+                tool.getAttribute("data-type");
+
+
+            promptInput.value =
+                "Create a professional " +
+                type +
+                " for me.";
+
+
+            promptInput.focus();
+
+        });
+
+    });
+
+
+
+    /*
+    READY REELS
+    */
+
+    const reelButtons =
+        document.querySelectorAll(".reel");
+
+
+    reelButtons.forEach(function (reel) {
+
+        reel.addEventListener("click", function () {
+
+            const template =
+                reel.getAttribute("data-template");
+
+
+            promptInput.value =
+                "Create a professional " +
+                template +
+                " for me.";
+
+
+            promptInput.focus();
+
+        });
+
+    });
+
+
+
+    /*
+    START CREATING
+    */
+
+    startCreatingButton.addEventListener("click", function () {
+
+        alert(
+            "🚀 Production started!\\n\\n" +
+            "AI Director has accepted your project.\\n\\n" +
+            "Next module: Professional Editor + Timeline."
+        );
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
