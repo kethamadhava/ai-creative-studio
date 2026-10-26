@@ -2,731 +2,682 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>AI Creative Studio</title>
 
 <style>
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html,
-body{
-    width:100%;
-    min-height:100%;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
 }
 
 body{
-    font-family:Arial,sans-serif;
-    background:#08080d;
-    color:#fff;
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#0b0d12;
+  color:#fff;
 }
 
 button,
 input,
-textarea{
-    font-family:inherit;
+select{
+  font:inherit;
 }
 
 button{
-    cursor:pointer;
-    -webkit-tap-highlight-color:transparent;
+  cursor:pointer;
 }
 
 .app{
-    width:100%;
-    max-width:650px;
-    margin:auto;
-    padding:18px 14px 40px;
+  min-height:100vh;
 }
 
-/* =========================
-HEADER
-========================= */
-
-.header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:22px;
+.topbar{
+  height:58px;
+  background:#151820;
+  display:flex;
+  align-items:center;
+  padding:0 14px;
+  gap:12px;
+  border-bottom:1px solid #292d38;
+  position:sticky;
+  top:0;
+  z-index:50;
 }
 
 .logo{
-    font-size:21px;
-    font-weight:800;
+  font-size:18px;
+  font-weight:800;
+  white-space:nowrap;
 }
 
-.pro{
-    background:#272735;
-    padding:7px 12px;
-    border-radius:20px;
-    font-size:12px;
+.top-actions{
+  margin-left:auto;
+  display:flex;
+  gap:7px;
 }
 
-/* =========================
-HOME
-========================= */
+.btn{
+  border:0;
+  border-radius:9px;
+  padding:9px 13px;
+  color:white;
+  background:#252a35;
+}
+
+.btn:hover{
+  background:#303644;
+}
+
+.btn.primary{
+  background:#6c4cff;
+}
+
+.btn.danger{
+  background:#a52d3c;
+}
+
+.btn.small{
+  padding:7px 9px;
+  font-size:12px;
+}
+
+.screen{
+  display:none;
+}
+
+.screen.active{
+  display:block;
+}
+
+/* HOME */
+
+.home{
+  max-width:1000px;
+  margin:auto;
+  padding:45px 18px;
+}
 
 .hero{
-    padding:22px 18px;
-    border-radius:22px;
-    background:linear-gradient(135deg,#291650,#15152b);
+  text-align:center;
+  padding:35px 10px;
 }
 
 .hero h1{
-    font-size:28px;
-    margin-bottom:10px;
+  font-size:42px;
+  margin:0 0 12px;
 }
 
 .hero p{
-    color:#bdbdca;
-    font-size:14px;
-    line-height:1.5;
-    margin-bottom:18px;
+  color:#aeb4c2;
+  font-size:16px;
 }
 
-.prompt{
-    width:100%;
-    min-height:100px;
-    padding:14px;
-    border-radius:15px;
-    border:1px solid #3b3b4d;
-    background:#101019;
-    color:#fff;
-    font-size:15px;
-    resize:vertical;
-    outline:none;
+.ai-box{
+  max-width:760px;
+  margin:25px auto;
+  background:#171a23;
+  border:1px solid #2a2f3c;
+  border-radius:18px;
+  padding:16px;
 }
 
-.create,
-.startButton{
-    width:100%;
-    margin-top:12px;
-    padding:16px;
-    border:0;
-    border-radius:15px;
-    background:linear-gradient(90deg,#7c3cff,#c83cff);
-    color:#fff;
-    font-size:16px;
-    font-weight:800;
+.ai-box textarea{
+  width:100%;
+  min-height:110px;
+  resize:vertical;
+  border:0;
+  outline:0;
+  border-radius:12px;
+  background:#0e1118;
+  color:white;
+  padding:14px;
 }
 
-.section{
-    margin-top:26px;
+.ai-actions{
+  display:flex;
+  justify-content:flex-end;
+  margin-top:10px;
 }
 
-.section-title{
-    font-size:19px;
-    font-weight:800;
-    margin-bottom:13px;
+.create-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin-top:20px;
 }
 
-.tools{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:10px;
+.create-card{
+  background:#171a23;
+  border:1px solid #292e3a;
+  border-radius:14px;
+  padding:20px;
+  text-align:center;
+}
+
+.create-card button{
+  width:100%;
+  margin-top:12px;
+}
+
+.ready{
+  margin-top:30px;
+}
+
+.ready-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.ready-card{
+  background:#171a23;
+  padding:18px;
+  border-radius:12px;
+  border:1px solid #292e3a;
+}
+
+/* DIRECTOR */
+
+.director{
+  max-width:900px;
+  margin:auto;
+  padding:30px 18px;
+}
+
+.director-box{
+  background:#171a23;
+  border:1px solid #2a2f3c;
+  padding:20px;
+  border-radius:16px;
+}
+
+.director-box textarea{
+  width:100%;
+  min-height:130px;
+  background:#0d1017;
+  color:white;
+  border:1px solid #303542;
+  border-radius:10px;
+  padding:12px;
+}
+
+.director-result{
+  margin-top:15px;
+  background:#0d1017;
+  border-radius:10px;
+  padding:15px;
+  color:#b9c0cf;
+}
+
+/* EDITOR */
+
+.editor{
+  height:calc(100vh - 58px);
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+
+.editor-main{
+  flex:1;
+  min-height:0;
+  display:grid;
+  grid-template-columns:250px minmax(300px,1fr) 300px;
+}
+
+/* LEFT */
+
+.left-panel{
+  background:#151820;
+  border-right:1px solid #292d38;
+  overflow:auto;
+  padding:12px;
+}
+
+.panel-title{
+  font-size:13px;
+  font-weight:bold;
+  color:#aeb4c2;
+  margin:6px 0 10px;
+  text-transform:uppercase;
+  letter-spacing:.5px;
 }
 
 .tool{
-    background:#161620;
-    border:1px solid #292936;
-    border-radius:17px;
-    padding:17px 8px;
-    text-align:center;
-    font-size:13px;
+  width:100%;
+  background:#222631;
+  border:1px solid #303542;
+  color:white;
+  border-radius:9px;
+  padding:10px;
+  margin-bottom:7px;
+  text-align:left;
 }
 
-.icon{
-    font-size:25px;
-    margin-bottom:8px;
+.tool:hover{
+  background:#303644;
 }
 
-.reels{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
+.file-input{
+  width:100%;
+  margin-bottom:8px;
+  font-size:12px;
 }
 
-.reel{
-    min-height:125px;
-    border-radius:18px;
-    padding:14px;
-    display:flex;
-    align-items:flex-end;
-    font-weight:700;
+/* CENTER */
+
+.preview-area{
+  background:#090b0f;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
 }
 
-.reel1{
-    background:linear-gradient(145deg,#34205e,#11111a);
+.preview-top{
+  height:45px;
+  background:#11141b;
+  border-bottom:1px solid #292d38;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
 }
 
-.reel2{
-    background:linear-gradient(145deg,#123b4a,#11111a);
+.format-btn{
+  padding:6px 10px;
+  background:#222631;
+  border:0;
+  color:white;
+  border-radius:7px;
+  font-size:12px;
 }
 
-.reel3{
-    background:linear-gradient(145deg,#56341b,#11111a);
+.format-btn.active{
+  background:#6c4cff;
 }
 
-.reel4{
-    background:linear-gradient(145deg,#283b1b,#11111a);
+.stage-wrap{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:15px;
+  overflow:hidden;
 }
 
-.recent{
-    background:#161620;
-    border:1px solid #292936;
-    border-radius:17px;
-    padding:18px;
-    text-align:center;
-    color:#aaaab8;
-    line-height:1.6;
+.stage{
+  position:relative;
+  background:#151820;
+  overflow:hidden;
+  box-shadow:0 10px 45px rgba(0,0,0,.5);
 }
 
-/* =========================
-SCREENS
-========================= */
-
-#directorScreen,
-#editorScreen{
-    display:none;
+.stage.ratio916{
+  width:min(56vh,430px);
+  aspect-ratio:9/16;
 }
 
-.backButton{
-    border:0;
-    background:#242432;
-    color:#fff;
-    padding:10px 15px;
-    border-radius:12px;
-    margin-bottom:20px;
+.stage.ratio11{
+  width:min(70vh,560px);
+  aspect-ratio:1/1;
 }
 
-.directorTitle{
-    font-size:30px;
-    margin-bottom:8px;
+.stage.ratio169{
+  width:min(90vw,720px);
+  aspect-ratio:16/9;
 }
 
-.directorDescription{
-    color:#aaaab8;
-    font-size:14px;
-    line-height:1.6;
-    margin-bottom:20px;
+.media{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:none;
+  background:#080a0d;
 }
 
-.ideaBox{
-    background:#171722;
-    border:1px solid #303041;
-    border-radius:17px;
-    padding:17px;
-    margin-bottom:22px;
+.media.visible{
+  display:block;
 }
 
-.ideaLabel{
-    color:#888899;
-    font-size:11px;
-    font-weight:bold;
-    margin-bottom:8px;
+.empty-preview{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#777f8e;
+  font-size:14px;
+  text-align:center;
+  padding:20px;
 }
 
-#ideaText{
-    line-height:1.5;
+.text-layer{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  cursor:move;
+  user-select:none;
+  white-space:pre;
+  transform-origin:center;
+  z-index:10;
+  padding:4px;
 }
 
-.plan{
-    display:grid;
-    gap:12px;
+.text-layer.selected{
+  outline:1px dashed #6c4cff;
 }
 
-.planCard{
-    background:#161620;
-    border:1px solid #292936;
-    border-radius:17px;
-    padding:16px;
+.text-layer.locked{
+  cursor:not-allowed;
 }
 
-.planCard h3{
-    font-size:15px;
-    margin-bottom:8px;
+.text-content{
+  display:inline-block;
 }
 
-.planCard p{
-    color:#aaaab8;
-    font-size:13px;
-    line-height:1.5;
+.text-bg{
+  position:absolute;
+  inset:-5px;
+  border-radius:6px;
+  z-index:-1;
 }
 
-/* =========================
-EDITOR HEADER
-========================= */
-
-.editorTop{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:14px;
+.drag-handle{
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#6c4cff;
+  border:1px solid white;
+  display:none;
 }
 
-.editorTitle{
-    font-size:20px;
-    font-weight:800;
+.text-layer.selected .drag-handle{
+  display:block;
 }
 
-.editorActions{
-    display:flex;
-    gap:7px;
+.handle-tl{left:-5px;top:-5px}
+.handle-tr{right:-5px;top:-5px}
+.handle-bl{left:-5px;bottom:-5px}
+.handle-br{right:-5px;bottom:-5px}
+
+.preview-controls{
+  height:50px;
+  background:#11141b;
+  border-top:1px solid #292d38;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
 }
 
-.smallBtn{
-    background:#20202b;
-    color:#fff;
-    border:1px solid #333342;
-    border-radius:10px;
-    padding:8px 10px;
+/* RIGHT */
+
+.right-panel{
+  background:#151820;
+  border-left:1px solid #292d38;
+  overflow:auto;
+  padding:12px;
 }
 
-/* =========================
-PREVIEW
-========================= */
-
-.preview{
-    position:relative;
-    width:100%;
-    height:min(470px,75vh);
-    background:#0d0d15;
-    border-radius:18px;
-    overflow:hidden;
-    border:1px solid #30303d;
-    isolation:isolate;
+.control-group{
+  background:#1b1f28;
+  border:1px solid #2b303c;
+  border-radius:10px;
+  padding:10px;
+  margin-bottom:10px;
 }
 
-/* Empty preview */
-
-.previewContent{
-    position:absolute;
-    inset:0;
-    z-index:1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:25px;
-    background:linear-gradient(145deg,#21153d,#0e0e16);
+.control-group h3{
+  margin:0 0 9px;
+  font-size:12px;
+  color:#cdd2dd;
 }
 
-.previewIcon{
-    font-size:55px;
-    margin-bottom:15px;
+.control{
+  margin-bottom:9px;
 }
 
-.previewText{
-    font-size:18px;
-    font-weight:bold;
-    line-height:1.4;
-    max-width:90%;
+.control label{
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+  color:#aeb4c2;
+  margin-bottom:4px;
 }
 
-.previewSub{
-    color:#aaaab8;
-    font-size:12px;
-    margin-top:10px;
+.control input[type="range"]{
+  width:100%;
 }
 
-/* Media layer */
-
-#mediaImage,
-#mediaVideo{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:contain;
-    background:#000;
-    display:none;
-    z-index:2;
+.control input[type="color"]{
+  width:100%;
+  height:34px;
+  border:0;
+  background:none;
 }
 
-/* =========================
-TEXT OVERLAY
-========================= */
-
-#textOverlay{
-    position:absolute;
-
-    left:50%;
-    top:50%;
-
-    transform:translate(-50%,-50%);
-
-    z-index:10;
-
-    display:none;
-
-    min-width:20px;
-    max-width:90%;
-
-    padding:6px 10px;
-
-    color:#fff;
-
-    font-size:32px;
-    font-weight:800;
-
-    line-height:1.15;
-    text-align:center;
-
-    word-break:break-word;
-
-    text-shadow:
-        0 2px 4px #000,
-        0 4px 12px #000;
-
-    user-select:none;
-    -webkit-user-select:none;
-
-    cursor:move;
-
-    touch-action:none;
-
-    pointer-events:auto;
+.control select,
+.control input[type="number"]{
+  width:100%;
+  background:#0f1218;
+  color:white;
+  border:1px solid #303542;
+  border-radius:7px;
+  padding:7px;
 }
 
-/* =========================
-PLAY
-========================= */
-
-.playButton{
-    position:absolute;
-    bottom:15px;
-    left:50%;
-
-    transform:translateX(-50%);
-
-    width:48px;
-    height:48px;
-
-    border-radius:50%;
-    border:0;
-
-    background:#fff;
-    color:#111;
-
-    font-size:20px;
-
-    z-index:20;
+.row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
 }
 
-/* =========================
-MEDIA PANEL
-========================= */
-
-.mediaPanel{
-    margin-top:15px;
-    background:#15151f;
-    border:1px solid #292936;
-    border-radius:16px;
-    padding:15px;
+.row3{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:6px;
 }
 
-.mediaPanelTitle{
-    font-size:15px;
-    font-weight:800;
-    margin-bottom:10px;
+.toggle-row{
+  display:flex;
+  gap:6px;
 }
 
-.mediaButtons{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:8px;
+.toggle{
+  flex:1;
+  border:0;
+  background:#252a35;
+  color:white;
+  padding:8px;
+  border-radius:7px;
 }
 
-.mediaButton{
-    padding:13px 8px;
-    border-radius:12px;
-    border:1px solid #353545;
-    background:#20202c;
-    color:#fff;
-    font-weight:700;
+.toggle.active{
+  background:#6c4cff;
 }
 
-.removeMedia{
-    width:100%;
-    margin-top:8px;
-    padding:11px;
+/* LAYERS */
 
-    border-radius:11px;
-    border:1px solid #4a3030;
-
-    background:#251818;
-    color:#ffaaaa;
+.layers{
+  margin-bottom:12px;
 }
 
-/* =========================
-TEXT PANEL
-========================= */
-
-.textPanel{
-    margin-top:15px;
-    background:#15151f;
-    border:1px solid #292936;
-    border-radius:16px;
-    padding:15px;
+.layer{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  background:#20242e;
+  padding:8px;
+  border-radius:8px;
+  margin-bottom:5px;
+  border:1px solid transparent;
 }
 
-.textPanelTitle{
-    font-size:15px;
-    font-weight:800;
-    margin-bottom:10px;
+.layer.selected{
+  border-color:#6c4cff;
 }
 
-.textInput{
-    width:100%;
-    padding:12px;
-
-    border-radius:11px;
-    border:1px solid #363646;
-
-    background:#0e0e16;
-    color:#fff;
-
-    outline:none;
-    font-size:15px;
+.layer-name{
+  flex:1;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  font-size:12px;
 }
 
-.textControls{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr 55px;
-    gap:7px;
-    margin-top:9px;
+.layer button{
+  border:0;
+  background:#303542;
+  color:white;
+  border-radius:5px;
+  padding:4px 6px;
+  font-size:10px;
 }
 
-.textControlButton{
-    padding:10px 5px;
-
-    border-radius:10px;
-    border:1px solid #353545;
-
-    background:#20202c;
-    color:#fff;
-
-    font-weight:700;
-}
-
-.colorInput{
-    width:55px;
-    height:40px;
-
-    padding:3px;
-
-    border:1px solid #353545;
-    border-radius:10px;
-
-    background:#20202c;
-}
-
-.danger{
-    grid-column:1 / -1;
-    background:#251818;
-    border-color:#4a3030;
-    color:#ffaaaa;
-}
-
-/* =========================
-TIMELINE
-========================= */
-
-.timelineHeader{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-
-    margin-top:18px;
-    margin-bottom:9px;
-}
-
-.timelineTitle{
-    font-size:16px;
-    font-weight:800;
-}
-
-.time{
-    color:#aaaab8;
-    font-size:12px;
-}
+/* TIMELINE */
 
 .timeline{
-    background:#111119;
-    border:1px solid #292936;
-    border-radius:15px;
-    padding:12px;
-    overflow:hidden;
+  height:145px;
+  background:#11141b;
+  border-top:1px solid #292d38;
+  overflow:auto;
+}
+
+.timeline-head{
+  height:35px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:0 10px;
+  border-bottom:1px solid #292d38;
+}
+
+.timeline-body{
+  padding:8px;
 }
 
 .track{
-    display:flex;
-    gap:5px;
-    height:58px;
-    margin-bottom:7px;
+  height:35px;
+  background:#181c24;
+  border-radius:7px;
+  margin-bottom:6px;
+  position:relative;
+  overflow:hidden;
 }
 
 .clip{
-    min-width:90px;
-    flex:1;
-
-    border-radius:9px;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:11px;
-    font-weight:bold;
-
-    background:linear-gradient(135deg,#563b8a,#29213e);
-
-    border:1px solid #65508b;
+  position:absolute;
+  top:4px;
+  height:27px;
+  border-radius:5px;
+  background:#6c4cff;
+  padding:6px 9px;
+  font-size:11px;
+  min-width:90px;
 }
 
-.clip:nth-child(2){
-    background:linear-gradient(135deg,#245c6b,#1d3035);
+.track.text-track .clip{
+  background:#227b68;
 }
 
-.clip:nth-child(3){
-    background:linear-gradient(135deg,#73502d,#352719);
-}
+/* MOBILE */
 
-.audioTrack{
-    height:30px;
+@media(max-width:900px){
 
-    border-radius:7px;
+  .editor-main{
+    grid-template-columns:190px minmax(260px,1fr);
+  }
 
-    background:#1c3030;
-    border:1px solid #315656;
+  .right-panel{
+    position:fixed;
+    right:0;
+    top:58px;
+    bottom:145px;
+    width:300px;
+    z-index:30;
+    display:none;
+    box-shadow:-10px 0 30px rgba(0,0,0,.5);
+  }
 
-    color:#80caca;
-
-    display:flex;
-    align-items:center;
-
-    padding-left:10px;
-
-    font-size:11px;
-}
-
-/* =========================
-EDITOR TOOLS
-========================= */
-
-.editorTools{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:8px;
-    margin-top:16px;
-}
-
-.editorTool{
-    background:#171720;
-    border:1px solid #292936;
-    border-radius:13px;
-
-    padding:12px 5px;
-
-    color:#fff;
-    text-align:center;
-    font-size:11px;
-}
-
-.editorTool span{
+  .right-panel.open{
     display:block;
-    font-size:21px;
-    margin-bottom:5px;
+  }
+
+  .create-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .ready-grid{
+    grid-template-columns:1fr 1fr;
+  }
 }
 
-/* =========================
-FORMAT
-========================= */
+@media(max-width:600px){
 
-.formatRow{
-    display:flex;
-    gap:8px;
-    overflow-x:auto;
-    padding-bottom:4px;
-}
+  .topbar{
+    height:52px;
+  }
 
-.format{
-    white-space:nowrap;
+  .logo{
+    font-size:15px;
+  }
 
-    padding:10px 13px;
+  .top-actions .btn{
+    padding:7px 8px;
+    font-size:11px;
+  }
 
-    background:#171720;
-    border:1px solid #292936;
+  .editor{
+    height:calc(100vh - 52px);
+  }
 
-    color:#bbb;
-    border-radius:10px;
-}
+  .editor-main{
+    grid-template-columns:1fr;
+  }
 
-.format.active{
-    background:#6635c5;
-    color:#fff;
-    border-color:#8d61e8;
-}
+  .left-panel{
+    position:fixed;
+    left:0;
+    top:52px;
+    bottom:145px;
+    width:190px;
+    z-index:35;
+    display:none;
+    box-shadow:10px 0 30px rgba(0,0,0,.5);
+  }
 
-/* =========================
-AI / EXPORT
-========================= */
+  .left-panel.open{
+    display:block;
+  }
 
-.aiDirectorButton{
-    width:100%;
-    margin-top:15px;
-    padding:15px;
+  .preview-top{
+    height:42px;
+  }
 
-    border:1px solid #6745a0;
-    border-radius:14px;
+  .stage-wrap{
+    padding:8px;
+  }
 
-    background:#201738;
-    color:#fff;
+  .timeline{
+    height:145px;
+  }
 
-    font-weight:800;
-}
+  .hero h1{
+    font-size:30px;
+  }
 
-.exportButton{
-    width:100%;
-    margin-top:10px;
-    padding:16px;
+  .create-grid{
+    grid-template-columns:1fr;
+  }
 
-    border:0;
-    border-radius:15px;
-
-    background:linear-gradient(90deg,#00a878,#00c99a);
-
-    color:#fff;
-
-    font-size:16px;
-    font-weight:800;
-}
-
-.bottom{
-    text-align:center;
-    color:#777785;
-    font-size:12px;
-    margin-top:28px;
-}
-
-@media(max-width:420px){
-
-    .textControls{
-        grid-template-columns:1fr 1fr 1fr;
-    }
-
-    .colorInput{
-        width:100%;
-    }
-
-    .editorTitle{
-        font-size:17px;
-    }
+  .ready-grid{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
@@ -735,1701 +686,1966 @@ AI / EXPORT
 
 <div class="app">
 
-<!-- ==================================================
-HOME
-================================================== -->
+<header class="topbar">
+  <div class="logo">AI Creative Studio</div>
 
-<div id="homeScreen">
+  <div class="top-actions">
+    <button class="btn small" onclick="showScreen('home')">Home</button>
+    <button class="btn small" onclick="showScreen('director')">AI Director</button>
+    <button class="btn small primary" onclick="openEditor()">Editor</button>
+  </div>
+</header>
 
-    <div class="header">
 
-        <div class="logo">
-            ✨ AI Creative Studio
-        </div>
+<!-- HOME -->
 
-        <div class="pro">
-            PRO
-        </div>
+<section id="home" class="screen active">
 
+<div class="home">
+
+  <div class="hero">
+    <h1>Create Anything With AI</h1>
+    <p>Images • Videos • Posters • Reels • YouTube • Social Content</p>
+  </div>
+
+  <div class="ai-box">
+    <textarea id="homePrompt"
+      placeholder="Example: Make a powerful 20 second festival Reel..."></textarea>
+
+    <div class="ai-actions">
+      <button class="btn primary" onclick="createWithAI()">
+        ✨ Create with AI
+      </button>
+    </div>
+  </div>
+
+  <div class="create-grid">
+
+    <div class="create-card">
+      <div>🎬</div>
+      <h3>Video</h3>
+      <button class="btn" onclick="openEditor()">Create Video</button>
     </div>
 
-    <div class="hero">
-
-        <h1>
-            What do you want to create?
-        </h1>
-
-        <p>
-            Tell AI your idea. We'll plan, design and edit it for you.
-        </p>
-
-        <textarea
-            id="promptInput"
-            class="prompt"
-            placeholder="Example: Make a powerful 20-second festival Reel..."
-        ></textarea>
-
-        <button
-            id="createAiButton"
-            class="create"
-            type="button">
-
-            ✨ Create with AI
-
-        </button>
-
+    <div class="create-card">
+      <div>🖼️</div>
+      <h3>Image</h3>
+      <button class="btn" onclick="openEditor()">Create Image</button>
     </div>
 
-    <div class="section">
-
-        <div class="section-title">
-            Create
-        </div>
-
-        <div class="tools">
-
-            <div class="tool" data-type="Video">
-                <div class="icon">🎬</div>
-                Video
-            </div>
-
-            <div class="tool" data-type="Image">
-                <div class="icon">🖼️</div>
-                Image
-            </div>
-
-            <div class="tool" data-type="Poster">
-                <div class="icon">🎨</div>
-                Poster
-            </div>
-
-            <div class="tool" data-type="Pamphlet">
-                <div class="icon">📄</div>
-                Pamphlet
-            </div>
-
-            <div class="tool" data-type="Reel">
-                <div class="icon">📱</div>
-                Reel
-            </div>
-
-            <div class="tool" data-type="YouTube">
-                <div class="icon">▶️</div>
-                YouTube
-            </div>
-
-        </div>
-
+    <div class="create-card">
+      <div>🎨</div>
+      <h3>Poster</h3>
+      <button class="btn" onclick="openEditor()">Create Poster</button>
     </div>
 
-    <div class="section">
-
-        <div class="section-title">
-            🎬 Ready Reels
-        </div>
-
-        <div class="reels">
-
-            <div class="reel reel1" data-template="Trending Reel">
-                🔥 Trending
-            </div>
-
-            <div class="reel reel2" data-template="Birthday Reel">
-                🎉 Birthday
-            </div>
-
-            <div class="reel reel3" data-template="Festival Reel">
-                🪔 Festival
-            </div>
-
-            <div class="reel reel4" data-template="Business Reel">
-                🏪 Business
-            </div>
-
-        </div>
-
+    <div class="create-card">
+      <div>📄</div>
+      <h3>Pamphlet</h3>
+      <button class="btn" onclick="openEditor()">Create Pamphlet</button>
     </div>
 
-    <div class="section">
-
-        <div class="section-title">
-            📁 Recent Projects
-        </div>
-
-        <div class="recent">
-            No projects yet.<br>
-            Create your first project with AI.
-        </div>
-
+    <div class="create-card">
+      <div>📱</div>
+      <h3>Reel</h3>
+      <button class="btn" onclick="openEditor()">Create Reel</button>
     </div>
 
-    <div class="bottom">
-        AI Creative Studio • Create without limits
+    <div class="create-card">
+      <div>▶️</div>
+      <h3>YouTube</h3>
+      <button class="btn" onclick="openEditor()">Create YouTube</button>
     </div>
+
+  </div>
+
+  <div class="ready">
+
+    <h2>Ready Reels</h2>
+
+    <div class="ready-grid">
+      <div class="ready-card">🔥 Trending Reel</div>
+      <div class="ready-card">🎂 Birthday Reel</div>
+      <div class="ready-card">🪔 Festival Reel</div>
+      <div class="ready-card">🙏 Devotional Reel</div>
+      <div class="ready-card">💪 Motivation Reel</div>
+      <div class="ready-card">🏪 Business Reel</div>
+      <div class="ready-card">❤️ Love Reel</div>
+      <div class="ready-card">🎉 Celebration Reel</div>
+    </div>
+
+  </div>
 
 </div>
 
+</section>
 
-<!-- ==================================================
-AI DIRECTOR
-================================================== -->
 
-<div id="directorScreen">
+<!-- AI DIRECTOR -->
 
-    <button
-        id="backToHome"
-        class="backButton"
-        type="button">
+<section id="director" class="screen">
 
-        ← Back
+<div class="director">
 
+  <h1>AI Director</h1>
+
+  <div class="director-box">
+
+    <p>Describe what you want to create.</p>
+
+    <textarea id="directorPrompt"
+      placeholder="Example: Create a cinematic devotional Reel using my photos..."></textarea>
+
+    <br><br>
+
+    <button class="btn primary" onclick="startDirector()">
+      Start Creating
     </button>
 
-    <h1 class="directorTitle">
-        🎬 AI Director
-    </h1>
-
-    <p class="directorDescription">
-        Your idea has been understood. Here is the production plan.
-    </p>
-
-    <div class="ideaBox">
-
-        <div class="ideaLabel">
-            YOUR IDEA
-        </div>
-
-        <div id="ideaText"></div>
-
+    <div id="directorResult" class="director-result">
+      AI Director is ready.
     </div>
 
-    <div class="section-title">
-        📋 Production Plan
-    </div>
-
-    <div class="plan">
-
-        <div class="planCard">
-            <h3>📝 1. Story & Script</h3>
-            <p>
-                Understand the message, audience and purpose,
-                then create the structure and script.
-            </p>
-        </div>
-
-        <div class="planCard">
-            <h3>🎨 2. Visual Design</h3>
-            <p>
-                Select or generate suitable images, videos,
-                backgrounds and graphics.
-            </p>
-        </div>
-
-        <div class="planCard">
-            <h3>🎵 3. Audio</h3>
-            <p>
-                Plan music, voice, sound effects and timing.
-            </p>
-        </div>
-
-        <div class="planCard">
-            <h3>✂️ 4. Editing</h3>
-            <p>
-                Arrange timeline, captions, transitions,
-                effects and motion.
-            </p>
-        </div>
-
-        <div class="planCard">
-            <h3>📱 5. Final Format</h3>
-            <p>
-                Prepare the project for Instagram,
-                YouTube, WhatsApp or another platform.
-            </p>
-        </div>
-
-    </div>
-
-    <button
-        id="startCreating"
-        class="startButton"
-        type="button">
-
-        🚀 Start Creating
-
-    </button>
+  </div>
 
 </div>
 
-
-<!-- ==================================================
-PROFESSIONAL EDITOR
-================================================== -->
-
-<div id="editorScreen">
-
-    <div class="editorTop">
-
-        <button
-            id="editorBack"
-            class="smallBtn"
-            type="button">
-
-            ←
-
-        </button>
-
-        <div class="editorTitle">
-            🎬 Professional Editor
-        </div>
-
-        <div class="editorActions">
-
-            <button
-                id="undoButton"
-                class="smallBtn"
-                type="button">
-
-                ↶
-
-            </button>
-
-            <button
-                id="redoButton"
-                class="smallBtn"
-                type="button">
-
-                ↷
-
-            </button>
-
-        </div>
-
-    </div>
+</section>
 
 
-    <!-- =========================
-    PREVIEW
-    ========================= -->
+<!-- EDITOR -->
 
-    <div
-        id="preview"
-        class="preview">
+<section id="editor" class="screen">
 
-        <div
-            id="emptyPreview"
-            class="previewContent">
+<div class="editor">
 
-            <div class="previewIcon">
-                🎬
-            </div>
+  <div class="editor-main">
 
-            <div
-                id="previewText"
-                class="previewText">
+    <!-- LEFT PANEL -->
 
-                Your project preview
+    <aside class="left-panel" id="leftPanel">
 
-            </div>
+      <div class="panel-title">Media</div>
 
-            <div class="previewSub">
-                1080 × 1920 • 9:16
-            </div>
+      <input
+        class="file-input"
+        type="file"
+        accept="image/*"
+        onchange="loadImage(event)"
+      >
 
-        </div>
+      <input
+        class="file-input"
+        type="file"
+        accept="video/*"
+        onchange="loadVideo(event)"
+      >
+
+      <button class="tool" onclick="addText()">
+        T Add Text
+      </button>
+
+      <button class="tool" onclick="duplicateSelected()">
+        ⧉ Duplicate Text
+      </button>
+
+      <button class="tool" onclick="deleteSelected()">
+        🗑 Delete Selected
+      </button>
+
+      <div class="panel-title">Layer Order</div>
+
+      <button class="tool" onclick="bringForward()">
+        ⬆ Bring Forward
+      </button>
+
+      <button class="tool" onclick="sendBackward()">
+        ⬇ Send Backward
+      </button>
+
+      <button class="tool" onclick="toggleLock()">
+        🔒 Lock / Unlock
+      </button>
+
+      <button class="tool" onclick="toggleVisibility()">
+        👁 Show / Hide
+      </button>
+
+      <div class="panel-title">Editor</div>
+
+      <button class="tool" onclick="previewPlayback()">
+        ▶ Preview
+      </button>
+
+      <button class="tool" onclick="exportProject()">
+        ⬇ Export
+      </button>
+
+    </aside>
 
 
-        <img
-            id="mediaImage"
-            alt="Uploaded image">
+    <!-- CENTER -->
+
+    <main class="preview-area">
+
+      <div class="preview-top">
+
+        <button class="format-btn active"
+          onclick="setFormat('916',this)">9:16</button>
+
+        <button class="format-btn"
+          onclick="setFormat('11',this)">1:1</button>
+
+        <button class="format-btn"
+          onclick="setFormat('169',this)">16:9</button>
+
+        <button class="btn small"
+          onclick="toggleLeft()">☰</button>
+
+        <button class="btn small"
+          onclick="toggleRight()">⚙</button>
+
+      </div>
 
 
-        <video
-            id="mediaVideo"
+      <div class="stage-wrap">
+
+        <div id="stage" class="stage ratio916">
+
+          <div id="emptyPreview" class="empty-preview">
+            Upload an image or video<br>
+            then add text.
+          </div>
+
+          <img id="imagePreview" class="media">
+
+          <video id="videoPreview"
+            class="media"
             playsinline
-            preload="metadata">
-        </video>
+            controls>
+          </video>
 
-
-        <div
-            id="textOverlay">
+          <div id="textContainer"></div>
 
         </div>
 
-
-        <button
-            id="playButton"
-            class="playButton"
-            type="button">
-
-            ▶
-
-        </button>
-
-    </div>
+      </div>
 
 
-    <!-- =========================
-    MEDIA
-    ========================= -->
+      <div class="preview-controls">
 
-    <div class="mediaPanel">
+        <button class="btn small" onclick="playMedia()">▶</button>
 
-        <div class="mediaPanelTitle">
-            🖼️ Media
-        </div>
+        <button class="btn small" onclick="pauseMedia()">⏸</button>
 
-        <div class="mediaButtons">
+        <button class="btn small" onclick="stopMedia()">⏹</button>
 
-            <button
-                id="imageUploadButton"
-                class="mediaButton"
-                type="button">
+      </div>
 
-                🖼️ Add Image
-
-            </button>
-
-            <button
-                id="videoUploadButton"
-                class="mediaButton"
-                type="button">
-
-                🎬 Add Video
-
-            </button>
-
-        </div>
-
-        <button
-            id="removeMediaButton"
-            class="removeMedia"
-            type="button">
-
-            🗑️ Remove Media
-
-        </button>
-
-        <input
-            id="imageInput"
-            type="file"
-            accept="image/*"
-            hidden>
-
-        <input
-            id="videoInput"
-            type="file"
-            accept="video/*"
-            hidden>
-
-    </div>
+    </main>
 
 
-    <!-- =========================
-    TEXT
-    ========================= -->
+    <!-- RIGHT PANEL -->
 
-    <div class="textPanel">
+    <aside class="right-panel" id="rightPanel">
 
-        <div class="textPanelTitle">
-            📝 Text Overlay
-        </div>
+      <div class="panel-title">Layers</div>
 
-        <input
-            id="overlayTextInput"
-            class="textInput"
-            type="text"
-            placeholder="Type your text...">
+      <div id="layers" class="layers"></div>
 
-        <div class="textControls">
 
-            <button
-                id="textAddButton"
-                class="textControlButton"
-                type="button">
+      <div class="panel-title">Text Styling</div>
 
-                ➕ Add
+      <div id="textControls">
 
-            </button>
+        <div class="control-group">
 
-            <button
-                id="textMinusButton"
-                class="textControlButton"
-                type="button">
+          <h3>Font</h3>
 
-                A−
+          <div class="control">
+            <select id="fontFamily" onchange="updateSelected()">
+              <option value="Arial">Arial</option>
+              <option value="Verdana">Verdana</option>
+              <option value="Georgia">Georgia</option>
+              <option value="Times New Roman">Times New Roman</option>
+              <option value="Trebuchet MS">Trebuchet MS</option>
+              <option value="Impact">Impact</option>
+              <option value="Courier New">Courier New</option>
+            </select>
+          </div>
 
-            </button>
-
-            <button
-                id="textPlusButton"
-                class="textControlButton"
-                type="button">
-
-                A+
-
-            </button>
+          <div class="control">
+            <label>
+              <span>Size</span>
+              <span id="sizeValue">42</span>
+            </label>
 
             <input
-                id="textColorInput"
-                type="color"
-                value="#ffffff"
-                class="colorInput">
+              id="fontSize"
+              type="range"
+              min="10"
+              max="180"
+              value="42"
+              oninput="updateSelected()"
+            >
+          </div>
+
+          <div class="toggle-row">
 
             <button
-                id="textRemoveButton"
-                class="textControlButton danger"
-                type="button">
-
-                🗑️ Remove Text
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-    TIMELINE
-    ========================= -->
-
-    <div class="timelineHeader">
-
-        <div class="timelineTitle">
-            ⏱ Timeline
-        </div>
-
-        <div
-            id="timelineTime"
-            class="time">
-
-            00:00 / 00:20
-
-        </div>
-
-    </div>
-
-    <div class="timeline">
-
-        <div class="track">
-
-            <div class="clip">
-                Scene 1
-            </div>
-
-            <div class="clip">
-                Scene 2
-            </div>
-
-            <div class="clip">
-                Scene 3
-            </div>
-
-        </div>
-
-        <div class="audioTrack">
-            🎵 Music / Voice
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-    TOOLS
-    ========================= -->
-
-    <div
-        class="section-title"
-        style="margin-top:18px;">
-
-        Editing Tools
-
-    </div>
-
-    <div class="editorTools">
-
-        <button
-            class="editorTool"
-            data-tool="Media"
-            type="button">
-
-            <span>🖼️</span>
-            Media
-
-        </button>
-
-        <button
-            class="editorTool"
-            data-tool="Text"
-            type="button">
-
-            <span>📝</span>
-            Text
-
-        </button>
-
-        <button
-            class="editorTool"
-            data-tool="Audio"
-            type="button">
-
-            <span>🎵</span>
-            Audio
-
-        </button>
-
-        <button
-            class="editorTool"
-            data-tool="Effects"
-            type="button">
-
-            <span>✨</span>
-            Effects
-
-        </button>
-
-        <button
-            class="editorTool"
-            data-tool="Transition"
-            type="button">
-
-            <span>🔀</span>
-            Transition
-
-        </button>
-
-        <button
-            class="editorTool"
-            data-tool="Speed"
-            type="button">
-
-            <span>⚡</span>
-            Speed
-
-        </button>
-
-        <button
-            class="editorTool"
-            data-tool="Filter"
-            type="button">
-
-            <span>🎨</span>
-            Filter
-
-        </button>
-
-        <button
-            class="editorTool"
-            data-tool="Caption"
-            type="button">
-
-            <span>🔤</span>
-            Caption
-
-        </button>
-
-    </div>
-
-
-    <!-- =========================
-    FORMAT
-    ========================= -->
-
-    <div class="section">
-
-        <div class="section-title">
-            📐 Canvas Format
-        </div>
-
-        <div class="formatRow">
-
-            <button
-                class="format active"
-                data-format="9:16"
-                type="button">
-
-                9:16
-
+              id="boldBtn"
+              class="toggle"
+              onclick="toggleStyle('bold')">
+              B
             </button>
 
             <button
-                class="format"
-                data-format="1:1"
-                type="button">
-
-                1:1
-
+              id="italicBtn"
+              class="toggle"
+              onclick="toggleStyle('italic')">
+              I
             </button>
 
-            <button
-                class="format"
-                data-format="16:9"
-                type="button">
-
-                16:9
-
-            </button>
+          </div>
 
         </div>
 
+
+        <div class="control-group">
+
+          <h3>Colours</h3>
+
+          <div class="control">
+            <label>Main Colour</label>
+            <input
+              id="color1"
+              type="color"
+              value="#ffffff"
+              oninput="updateSelected()"
+            >
+          </div>
+
+          <div class="control">
+            <label>Second Colour</label>
+            <input
+              id="color2"
+              type="color"
+              value="#ffcc00"
+              oninput="updateSelected()"
+            >
+          </div>
+
+          <div class="control">
+            <label>Colour Mode</label>
+
+            <select id="colorMode" onchange="updateSelected()">
+              <option value="solid">Solid</option>
+              <option value="gradient">Gradient</option>
+            </select>
+          </div>
+
+        </div>
+
+
+        <div class="control-group">
+
+          <h3>Outline</h3>
+
+          <div class="control">
+
+            <label>
+              <span>Thickness</span>
+              <span id="outlineValue">0</span>
+            </label>
+
+            <input
+              id="outlineWidth"
+              type="range"
+              min="0"
+              max="20"
+              value="0"
+              oninput="updateSelected()"
+            >
+
+          </div>
+
+          <div class="control">
+
+            <label>Outline Colour</label>
+
+            <input
+              id="outlineColor"
+              type="color"
+              value="#000000"
+              oninput="updateSelected()"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="control-group">
+
+          <h3>Shadow</h3>
+
+          <div class="control">
+
+            <label>
+              <span>Blur</span>
+              <span id="shadowBlurValue">0</span>
+            </label>
+
+            <input
+              id="shadowBlur"
+              type="range"
+              min="0"
+              max="40"
+              value="0"
+              oninput="updateSelected()"
+            >
+
+          </div>
+
+          <div class="control">
+
+            <label>
+              <span>Distance</span>
+              <span id="shadowDistanceValue">0</span>
+            </label>
+
+            <input
+              id="shadowDistance"
+              type="range"
+              min="0"
+              max="40"
+              value="0"
+              oninput="updateSelected()"
+            >
+
+          </div>
+
+          <div class="control">
+
+            <label>Shadow Colour</label>
+
+            <input
+              id="shadowColor"
+              type="color"
+              value="#000000"
+              oninput="updateSelected()"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="control-group">
+
+          <h3>Glow</h3>
+
+          <div class="control">
+
+            <label>
+              <span>Glow</span>
+              <span id="glowValue">0</span>
+            </label>
+
+            <input
+              id="glow"
+              type="range"
+              min="0"
+              max="40"
+              value="0"
+              oninput="updateSelected()"
+            >
+
+          </div>
+
+          <div class="control">
+
+            <label>Glow Colour</label>
+
+            <input
+              id="glowColor"
+              type="color"
+              value="#ffffff"
+              oninput="updateSelected()"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="control-group">
+
+          <h3>Shape</h3>
+
+          <div class="control">
+
+            <label>
+              <span>Opacity</span>
+              <span id="opacityValue">100</span>
+            </label>
+
+            <input
+              id="opacity"
+              type="range"
+              min="0"
+              max="100"
+              value="100"
+              oninput="updateSelected()"
+            >
+
+          </div>
+
+          <div class="control">
+
+            <label>
+              <span>Letter Spacing</span>
+              <span id="letterSpacingValue">0</span>
+            </label>
+
+            <input
+              id="letterSpacing"
+              type="range"
+              min="-10"
+              max="30"
+              value="0"
+              oninput="updateSelected()"
+            >
+
+          </div>
+
+          <div class="control">
+
+            <label>
+              <span>Rotation</span>
+              <span id="rotationValue">0</span>
+            </label>
+
+            <input
+              id="rotation"
+              type="range"
+              min="-180"
+              max="180"
+              value="0"
+              oninput="updateSelected()"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="control-group">
+
+          <h3>Curve</h3>
+
+          <div class="control">
+
+            <label>
+              <span>Curve</span>
+              <span id="curveValue">0</span>
+            </label>
+
+            <input
+              id="curve"
+              type="range"
+              min="-180"
+              max="180"
+              value="0"
+              oninput="updateSelected()"
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="control-group">
+
+          <h3>Text Background</h3>
+
+          <div class="control">
+
+            <label>Background Colour</label>
+
+            <input
+              id="backgroundColor"
+              type="color"
+              value="#000000"
+              oninput="updateSelected()"
+            >
+
+          </div>
+
+          <div class="control">
+
+            <label>
+              <span>Background Opacity</span>
+              <span id="backgroundOpacityValue">0</span>
+            </label>
+
+            <input
+              id="backgroundOpacity"
+              type="range"
+              min="0"
+              max="100"
+              value="0"
+              oninput="updateSelected()"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </aside>
+
+  </div>
+
+
+  <!-- TIMELINE -->
+
+  <div class="timeline">
+
+    <div class="timeline-head">
+
+      <strong>Timeline</strong>
+
+      <span style="color:#727a89;font-size:12px;">
+        Professional Editor
+      </span>
+
     </div>
 
+    <div class="timeline-body">
 
-    <button
-        id="askAiDirector"
-        class="aiDirectorButton"
-        type="button">
+      <div class="track">
+        <div class="clip" style="left:0;width:45%;">
+          Media
+        </div>
+      </div>
 
-        🤖 Ask AI Director to improve this
+      <div id="textTimeline" class="track text-track">
+      </div>
 
-    </button>
-
-
-    <button
-        id="exportButton"
-        class="exportButton"
-        type="button">
-
-        📤 Export Project
-
-    </button>
-
-
-    <div class="bottom">
-        AI Creative Studio • Professional Editor
     </div>
+
+  </div>
 
 </div>
+
+</section>
 
 </div>
 
 
 <script>
 
-document.addEventListener("DOMContentLoaded", function(){
+/* =========================
+   GLOBAL STATE
+========================= */
 
-    /* ==================================================
-       SCREEN ELEMENTS
-    ================================================== */
+const state = {
 
-    const home =
-        document.getElementById("homeScreen");
+  format:"916",
 
-    const director =
-        document.getElementById("directorScreen");
+  layers:[],
 
-    const editor =
-        document.getElementById("editorScreen");
+  selectedId:null,
 
-    const prompt =
-        document.getElementById("promptInput");
+  nextId:1,
 
-    const ideaText =
-        document.getElementById("ideaText");
+  imageURL:null,
 
-    const previewText =
-        document.getElementById("previewText");
+  videoURL:null
 
+};
 
-    /* ==================================================
-       PREVIEW
-    ================================================== */
 
-    const preview =
-        document.getElementById("preview");
+/* =========================
+   SCREEN CONTROL
+========================= */
 
-    const emptyPreview =
-        document.getElementById("emptyPreview");
+function showScreen(id){
 
-    const mediaImage =
-        document.getElementById("mediaImage");
+  document.querySelectorAll(".screen")
+    .forEach(s=>s.classList.remove("active"));
 
-    const mediaVideo =
-        document.getElementById("mediaVideo");
+  const target=document.getElementById(id);
 
-    const imageInput =
-        document.getElementById("imageInput");
+  if(target){
+    target.classList.add("active");
+  }
 
-    const videoInput =
-        document.getElementById("videoInput");
+}
 
-    const playButton =
-        document.getElementById("playButton");
 
+function openEditor(){
 
-    /* ==================================================
-       TEXT
-    ================================================== */
+  showScreen("editor");
 
-    const textOverlay =
-        document.getElementById("textOverlay");
+  setTimeout(()=>{
+    refreshLayers();
+  },50);
 
-    const overlayTextInput =
-        document.getElementById("overlayTextInput");
+}
 
-    const textAddButton =
-        document.getElementById("textAddButton");
 
-    const textMinusButton =
-        document.getElementById("textMinusButton");
+function toggleLeft(){
 
-    const textPlusButton =
-        document.getElementById("textPlusButton");
+  document.getElementById("leftPanel")
+    .classList.toggle("open");
 
-    const textColorInput =
-        document.getElementById("textColorInput");
+}
 
-    const textRemoveButton =
-        document.getElementById("textRemoveButton");
 
+function toggleRight(){
 
-    let textSize = 32;
-    let textVisible = false;
+  document.getElementById("rightPanel")
+    .classList.toggle("open");
 
-    let dragging = false;
-    let dragPointerOffsetX = 0;
-    let dragPointerOffsetY = 0;
+}
 
 
-    /* ==================================================
-       CREATE WITH AI
-    ================================================== */
+/* =========================
+   AI DIRECTOR
+========================= */
 
-    document
-    .getElementById("createAiButton")
-    .addEventListener("click", function(){
+function createWithAI(){
 
-        const idea =
-            prompt.value.trim();
+  const prompt=document.getElementById("homePrompt").value.trim();
 
-        if(!idea){
+  if(!prompt){
 
-            alert(
-                "Please tell AI what you want to create first."
-            );
+    alert("Please describe what you want to create.");
 
-            prompt.focus();
+    return;
+  }
 
-            return;
-        }
+  document.getElementById("directorPrompt").value=prompt;
 
-        ideaText.textContent = idea;
+  showScreen("director");
 
-        home.style.display = "none";
-        director.style.display = "block";
-        editor.style.display = "none";
+  startDirector();
 
-        window.scrollTo(0,0);
+}
 
-    });
 
+function startDirector(){
 
-    /* ==================================================
-       BACK TO HOME
-    ================================================== */
+  const prompt=document
+    .getElementById("directorPrompt")
+    .value
+    .trim();
 
-    document
-    .getElementById("backToHome")
-    .addEventListener("click", function(){
+  if(!prompt){
 
-        director.style.display = "none";
-        editor.style.display = "none";
-        home.style.display = "block";
+    alert("Please describe your project.");
 
-        window.scrollTo(0,0);
+    return;
+  }
 
-    });
+  const result=document.getElementById("directorResult");
 
+  result.innerHTML=`
 
-    /* ==================================================
-       START CREATING
-    ================================================== */
+    <strong>AI Director Plan</strong>
 
-    document
-    .getElementById("startCreating")
-    .addEventListener("click", function(){
+    <br><br>
 
-        director.style.display = "none";
-        home.style.display = "none";
-        editor.style.display = "block";
+    Project understood.
 
-        previewText.textContent =
-            ideaText.textContent || "Your project preview";
+    <br><br>
 
-        window.scrollTo(0,0);
+    <b>Prompt:</b> ${escapeHTML(prompt)}
 
-    });
+    <br><br>
 
+    <b>Next:</b>
+    Professional Editor + Timeline
 
-    /* ==================================================
-       EDITOR BACK
-    ================================================== */
+    <br><br>
 
-    document
-    .getElementById("editorBack")
-    .addEventListener("click", function(){
+    <button class="btn primary"
+      onclick="openEditor()">
+      Open Professional Editor
+    </button>
 
-        editor.style.display = "none";
-        director.style.display = "block";
+  `;
 
-        window.scrollTo(0,0);
+}
 
-    });
 
+/* =========================
+   FORMAT
+========================= */
 
-    /* ==================================================
-       QUICK CREATE
-    ================================================== */
+function setFormat(format,button){
 
-    document
-    .querySelectorAll(".tool")
-    .forEach(function(tool){
+  state.format=format;
 
-        tool.addEventListener("click", function(){
+  const stage=document.getElementById("stage");
 
-            const type =
-                tool.getAttribute("data-type");
+  stage.className="stage";
 
-            prompt.value =
-                "Create a professional " +
-                type +
-                " for me.";
+  if(format==="916"){
+    stage.classList.add("ratio916");
+  }
 
-            prompt.focus();
+  if(format==="11"){
+    stage.classList.add("ratio11");
+  }
 
-        });
+  if(format==="169"){
+    stage.classList.add("ratio169");
+  }
 
-    });
+  document
+    .querySelectorAll(".format-btn")
+    .forEach(b=>b.classList.remove("active"));
 
+  button.classList.add("active");
 
-    /* ==================================================
-       READY REELS
-    ================================================== */
+}
 
-    document
-    .querySelectorAll(".reel")
-    .forEach(function(reel){
 
-        reel.addEventListener("click", function(){
+/* =========================
+   MEDIA
+========================= */
 
-            const template =
-                reel.getAttribute("data-template");
+function loadImage(event){
 
-            prompt.value =
-                "Create a professional " +
-                template +
-                " for me.";
+  const file=event.target.files[0];
 
-            prompt.focus();
+  if(!file)return;
 
-        });
+  if(state.imageURL){
+    URL.revokeObjectURL(state.imageURL);
+  }
 
-    });
+  state.imageURL=URL.createObjectURL(file);
 
+  const image=document.getElementById("imagePreview");
 
-    /* ==================================================
-       IMAGE UPLOAD
-    ================================================== */
+  const video=document.getElementById("videoPreview");
 
-    document
-    .getElementById("imageUploadButton")
-    .addEventListener("click", function(){
+  image.src=state.imageURL;
 
-        imageInput.click();
+  image.classList.add("visible");
 
-    });
+  video.classList.remove("visible");
 
+  video.pause();
 
-    imageInput.addEventListener("change", function(){
+  document
+    .getElementById("emptyPreview")
+    .style.display="none";
 
-        const file = this.files && this.files[0];
+}
 
-        if(!file){
-            return;
-        }
 
-        const url =
-            URL.createObjectURL(file);
+function loadVideo(event){
 
+  const file=event.target.files[0];
 
-        /* Stop video */
+  if(!file)return;
 
-        mediaVideo.pause();
+  if(state.videoURL){
+    URL.revokeObjectURL(state.videoURL);
+  }
 
-        mediaVideo.removeAttribute("src");
+  state.videoURL=URL.createObjectURL(file);
 
-        mediaVideo.load();
+  const video=document.getElementById("videoPreview");
 
+  const image=document.getElementById("imagePreview");
 
-        /* Show image */
+  video.src=state.videoURL;
 
-        mediaImage.src = url;
-        mediaImage.style.display = "block";
+  video.classList.add("visible");
 
+  image.classList.remove("visible");
 
-        /* Hide video */
+  document
+    .getElementById("emptyPreview")
+    .style.display="none";
 
-        mediaVideo.style.display = "none";
+}
 
 
-        /* Hide empty state */
+function playMedia(){
 
-        emptyPreview.style.display = "none";
+  const video=document.getElementById("videoPreview");
 
+  if(video.classList.contains("visible")){
+    video.play();
+  }
 
-        /* Image does not need play */
+}
 
-        playButton.style.display = "none";
 
+function pauseMedia(){
 
-        /* Keep text above media */
+  const video=document.getElementById("videoPreview");
 
-        textOverlay.style.zIndex = "10";
+  video.pause();
 
-    });
+}
 
 
-    /* ==================================================
-       VIDEO UPLOAD
-    ================================================== */
+function stopMedia(){
 
-    document
-    .getElementById("videoUploadButton")
-    .addEventListener("click", function(){
+  const video=document.getElementById("videoPreview");
 
-        videoInput.click();
+  video.pause();
 
-    });
+  video.currentTime=0;
 
+}
 
-    videoInput.addEventListener("change", function(){
 
-        const file = this.files && this.files[0];
+function previewPlayback(){
 
-        if(!file){
-            return;
-        }
+  const video=document.getElementById("videoPreview");
 
-        const url =
-            URL.createObjectURL(file);
+  if(video.classList.contains("visible")){
 
+    video.play().catch(()=>{});
 
-        /* Hide image */
+  }else{
 
-        mediaImage.removeAttribute("src");
-        mediaImage.style.display = "none";
-
-
-        /* Load video */
-
-        mediaVideo.src = url;
-        mediaVideo.style.display = "block";
-
-        mediaVideo.load();
-
-
-        /* Hide empty state */
-
-        emptyPreview.style.display = "none";
-
-
-        /* Show play button */
-
-        playButton.style.display = "block";
-
-
-        /* Keep text above video */
-
-        textOverlay.style.zIndex = "10";
-
-    });
-
-
-    /* ==================================================
-       REMOVE MEDIA
-    ================================================== */
-
-    document
-    .getElementById("removeMediaButton")
-    .addEventListener("click", function(){
-
-        mediaVideo.pause();
-
-        mediaVideo.removeAttribute("src");
-        mediaVideo.load();
-
-        mediaImage.removeAttribute("src");
-
-
-        mediaVideo.style.display = "none";
-        mediaImage.style.display = "none";
-
-
-        emptyPreview.style.display = "flex";
-
-        playButton.style.display = "block";
-        playButton.textContent = "▶";
-
-
-        imageInput.value = "";
-        videoInput.value = "";
-
-    });
-
-
-    /* ==================================================
-       PLAY VIDEO
-    ================================================== */
-
-    playButton.addEventListener("click", function(){
-
-        if(
-            mediaVideo.style.display === "block"
-        ){
-
-            if(mediaVideo.paused){
-
-                mediaVideo
-                    .play()
-                    .then(function(){
-
-                        playButton.textContent = "⏸";
-
-                    })
-                    .catch(function(){
-
-                        alert(
-                            "Video could not be played."
-                        );
-
-                    });
-
-            }else{
-
-                mediaVideo.pause();
-
-                playButton.textContent = "▶";
-
-            }
-
-            return;
-        }
-
-
-        if(
-            mediaImage.style.display === "block"
-        ){
-
-            return;
-
-        }
-
-
-        alert(
-            "Add an image or video first."
-        );
-
-    });
-
-
-    /* ==================================================
-       VIDEO TIME
-    ================================================== */
-
-    mediaVideo.addEventListener(
-        "timeupdate",
-        function(){
-
-            const current =
-                formatTime(mediaVideo.currentTime);
-
-            const duration =
-                formatTime(mediaVideo.duration);
-
-            document
-            .getElementById("timelineTime")
-            .textContent =
-                current +
-                " / " +
-                duration;
-
-        }
+    alert(
+      "Preview ready.\n\n" +
+      "Real video playback is available when a video is uploaded."
     );
 
+  }
 
-    mediaVideo.addEventListener(
-        "ended",
-        function(){
-
-            playButton.textContent = "▶";
-
-        }
-    );
+}
 
 
-    mediaVideo.addEventListener(
-        "loadedmetadata",
-        function(){
+/* =========================
+   TEXT LAYERS
+========================= */
 
-            const duration =
-                formatTime(mediaVideo.duration);
+function defaultLayer(){
 
-            document
-            .getElementById("timelineTime")
-            .textContent =
-                "00:00 / " +
-                duration;
+  return {
 
-        }
-    );
+    id:state.nextId++,
+
+    type:"text",
+
+    text:"Your Text",
+
+    x:50,
+
+    y:50,
+
+    font:"Arial",
+
+    size:42,
+
+    bold:false,
+
+    italic:false,
+
+    color1:"#ffffff",
+
+    color2:"#ffcc00",
+
+    colorMode:"solid",
+
+    outlineWidth:0,
+
+    outlineColor:"#000000",
+
+    shadowBlur:0,
+
+    shadowDistance:0,
+
+    shadowColor:"#000000",
+
+    glow:0,
+
+    glowColor:"#ffffff",
+
+    opacity:100,
+
+    letterSpacing:0,
+
+    rotation:0,
+
+    curve:0,
+
+    backgroundColor:"#000000",
+
+    backgroundOpacity:0,
+
+    visible:true,
+
+    locked:false,
+
+    z:10
+
+  };
+
+}
 
 
-    function formatTime(seconds){
+function addText(){
 
-        if(
-            !isFinite(seconds) ||
-            seconds < 0
-        ){
+  const layer=defaultLayer();
 
-            return "00:00";
+  state.layers.push(layer);
 
-        }
+  selectLayer(layer.id);
 
-        const minutes =
-            Math.floor(seconds / 60);
+  renderAll();
 
-        const secs =
-            Math.floor(seconds % 60);
+}
 
-        return String(minutes).padStart(2,"0")
-            + ":" +
-            String(secs).padStart(2,"0");
+
+function duplicateSelected(){
+
+  const selected=getSelected();
+
+  if(!selected){
+
+    alert("Select a text layer first.");
+
+    return;
+  }
+
+  const copy=JSON.parse(JSON.stringify(selected));
+
+  copy.id=state.nextId++;
+
+  copy.x=Math.min(90,copy.x+4);
+
+  copy.y=Math.min(90,copy.y+4);
+
+  copy.z=getMaxZ()+1;
+
+  state.layers.push(copy);
+
+  selectLayer(copy.id);
+
+  renderAll();
+
+}
+
+
+function deleteSelected(){
+
+  if(state.selectedId===null){
+
+    alert("Select a text layer first.");
+
+    return;
+  }
+
+  state.layers=state.layers.filter(
+    l=>l.id!==state.selectedId
+  );
+
+  state.selectedId=null;
+
+  renderAll();
+
+}
+
+
+function getSelected(){
+
+  return state.layers.find(
+    l=>l.id===state.selectedId
+  );
+
+}
+
+
+function getMaxZ(){
+
+  if(!state.layers.length)return 10;
+
+  return Math.max(...state.layers.map(l=>l.z));
+
+}
+
+
+function selectLayer(id){
+
+  state.selectedId=id;
+
+  loadControls();
+
+  renderAll();
+
+}
+
+
+function refreshLayers(){
+
+  renderAll();
+
+}
+
+
+/* =========================
+   RENDER TEXT
+========================= */
+
+function renderAll(){
+
+  const container=document.getElementById("textContainer");
+
+  container.innerHTML="";
+
+  state.layers.forEach(layer=>{
+
+    if(!layer.visible)return;
+
+    const el=document.createElement("div");
+
+    el.className="text-layer";
+
+    if(layer.id===state.selectedId){
+      el.classList.add("selected");
+    }
+
+    if(layer.locked){
+      el.classList.add("locked");
+    }
+
+    el.dataset.id=layer.id;
+
+    el.style.left=layer.x+"%";
+
+    el.style.top=layer.y+"%";
+
+    el.style.zIndex=layer.z;
+
+    el.style.opacity=layer.opacity/100;
+
+    el.style.fontFamily=layer.font;
+
+    el.style.fontSize=layer.size+"px";
+
+    el.style.fontWeight=layer.bold
+      ? "700"
+      : "400";
+
+    el.style.fontStyle=layer.italic
+      ? "italic"
+      : "normal";
+
+    el.style.letterSpacing=
+      layer.letterSpacing+"px";
+
+    const content=document.createElement("span");
+
+    content.className="text-content";
+
+    content.textContent=layer.text;
+
+    if(layer.colorMode==="gradient"){
+
+      content.style.background=
+        `linear-gradient(90deg,
+        ${layer.color1},
+        ${layer.color2})`;
+
+      content.style.webkitBackgroundClip="text";
+
+      content.style.backgroundClip="text";
+
+      content.style.color="transparent";
+
+    }else{
+
+      content.style.color=layer.color1;
 
     }
 
 
-    /* ==================================================
-       ADD / UPDATE TEXT
-    ================================================== */
+    if(layer.outlineWidth>0){
 
-    function showText(){
+      content.style.webkitTextStroke=
+        `${layer.outlineWidth}px ${layer.outlineColor}`;
 
-        const value =
-            overlayTextInput.value.trim();
+      content.style.textShadow=
+        createShadow(layer);
 
+    }else{
 
-        if(!value){
-
-            alert(
-                "Type some text first."
-            );
-
-            overlayTextInput.focus();
-
-            return;
-
-        }
-
-
-        textOverlay.textContent =
-            value;
-
-        textOverlay.style.fontSize =
-            textSize + "px";
-
-        textOverlay.style.color =
-            textColorInput.value;
-
-        textOverlay.style.display =
-            "block";
-
-        textOverlay.style.zIndex =
-            "10";
-
-        textOverlay.style.left =
-            "50%";
-
-        textOverlay.style.top =
-            "50%";
-
-        textOverlay.style.transform =
-            "translate(-50%, -50%)";
-
-        textVisible = true;
+      content.style.textShadow=
+        createShadow(layer);
 
     }
 
 
-    textAddButton.addEventListener(
-        "click",
-        showText
-    );
+    if(layer.glow>0){
 
+      const glow=
+        `0 0 ${layer.glow}px ${layer.glowColor}`;
 
-    /* ==================================================
-       LIVE TEXT
-    ================================================== */
+      if(content.style.textShadow){
 
-    overlayTextInput.addEventListener(
-        "input",
-        function(){
+        content.style.textShadow +=
+          ", "+glow;
 
-            if(!textVisible){
-                return;
-            }
+      }else{
 
-            textOverlay.textContent =
-                this.value;
+        content.style.textShadow=glow;
 
-        }
-    );
-
-
-    /* ==================================================
-       TEXT COLOR
-    ================================================== */
-
-    textColorInput.addEventListener(
-        "input",
-        function(){
-
-            if(!textVisible){
-                return;
-            }
-
-            textOverlay.style.color =
-                this.value;
-
-        }
-    );
-
-
-    /* ==================================================
-       TEXT SMALLER
-    ================================================== */
-
-    textMinusButton.addEventListener(
-        "click",
-        function(){
-
-            textSize =
-                Math.max(
-                    12,
-                    textSize - 4
-                );
-
-            if(textVisible){
-
-                textOverlay.style.fontSize =
-                    textSize + "px";
-
-            }
-
-        }
-    );
-
-
-    /* ==================================================
-       TEXT BIGGER
-    ================================================== */
-
-    textPlusButton.addEventListener(
-        "click",
-        function(){
-
-            textSize =
-                Math.min(
-                    120,
-                    textSize + 4
-                );
-
-            if(textVisible){
-
-                textOverlay.style.fontSize =
-                    textSize + "px";
-
-            }
-
-        }
-    );
-
-
-    /* ==================================================
-       REMOVE TEXT
-    ================================================== */
-
-    textRemoveButton.addEventListener(
-        "click",
-        function(){
-
-            textOverlay.textContent = "";
-
-            textOverlay.style.display = "none";
-
-            overlayTextInput.value = "";
-
-            textVisible = false;
-
-        }
-    );
-
-
-    /* ==================================================
-       DRAG TEXT
-    ================================================== */
-
-    textOverlay.addEventListener(
-        "pointerdown",
-        function(event){
-
-            if(!textVisible){
-                return;
-            }
-
-
-            dragging = true;
-
-
-            const overlayRect =
-                textOverlay.getBoundingClientRect();
-
-
-            const centerX =
-                overlayRect.left +
-                overlayRect.width / 2;
-
-            const centerY =
-                overlayRect.top +
-                overlayRect.height / 2;
-
-
-            dragPointerOffsetX =
-                event.clientX -
-                centerX;
-
-            dragPointerOffsetY =
-                event.clientY -
-                centerY;
-
-
-            try{
-
-                textOverlay.setPointerCapture(
-                    event.pointerId
-                );
-
-            }catch(error){
-
-                /* Pointer capture not available */
-
-            }
-
-
-            event.preventDefault();
-
-        }
-    );
-
-
-    textOverlay.addEventListener(
-        "pointermove",
-        function(event){
-
-            if(!dragging){
-                return;
-            }
-
-
-            const previewRect =
-                preview.getBoundingClientRect();
-
-
-            const overlayWidth =
-                textOverlay.offsetWidth;
-
-            const overlayHeight =
-                textOverlay.offsetHeight;
-
-
-            let centerX =
-                event.clientX -
-                previewRect.left -
-                dragPointerOffsetX;
-
-
-            let centerY =
-                event.clientY -
-                previewRect.top -
-                dragPointerOffsetY;
-
-
-            const minX =
-                overlayWidth / 2;
-
-            const maxX =
-                previewRect.width -
-                overlayWidth / 2;
-
-
-            const minY =
-                overlayHeight / 2;
-
-            const maxY =
-                previewRect.height -
-                overlayHeight / 2;
-
-
-            centerX =
-                Math.max(
-                    minX,
-                    Math.min(
-                        maxX,
-                        centerX
-                    )
-                );
-
-
-            centerY =
-                Math.max(
-                    minY,
-                    Math.min(
-                        maxY,
-                        centerY
-                    )
-                );
-
-
-            textOverlay.style.left =
-                centerX + "px";
-
-            textOverlay.style.top =
-                centerY + "px";
-
-            textOverlay.style.transform =
-                "translate(-50%, -50%)";
-
-
-            event.preventDefault();
-
-        }
-    );
-
-
-    function stopDragging(){
-
-        dragging = false;
+      }
 
     }
 
 
-    textOverlay.addEventListener(
-        "pointerup",
-        stopDragging
-    );
+    const bg=document.createElement("span");
 
-    textOverlay.addEventListener(
-        "pointercancel",
-        stopDragging
-    );
+    bg.className="text-bg";
 
-    textOverlay.addEventListener(
-        "lostpointercapture",
-        stopDragging
-    );
+    const bgAlpha=
+      layer.backgroundOpacity/100;
+
+    bg.style.background=
+      hexToRGBA(layer.backgroundColor,bgAlpha);
 
 
-    /* ==================================================
-       EDITOR TOOLS
-    ================================================== */
+    if(layer.backgroundOpacity<=0){
 
-    document
-    .querySelectorAll(".editorTool")
-    .forEach(function(tool){
+      bg.style.display="none";
 
-        tool.addEventListener(
-            "click",
-            function(){
-
-                const name =
-                    tool.getAttribute("data-tool");
+    }
 
 
-                if(name === "Media"){
+    el.appendChild(bg);
 
-                    imageInput.click();
-
-                    return;
-
-                }
+    el.appendChild(content);
 
 
-                if(name === "Text"){
+    /*
+      Curve effect:
+      Uses CSS rotate on individual characters.
+      For normal text, rotation is enough.
+      For curved values, create character spans.
+    */
 
-                    overlayTextInput.focus();
+    if(Math.abs(layer.curve)>5){
 
-                    return;
+      content.innerHTML="";
 
-                }
+      const chars=[...layer.text];
 
+      chars.forEach((char,index)=>{
 
-                alert(
-                    name +
-                    " tool selected.\n\n" +
-                    "This tool will be connected in the next development stage."
-                );
+        const span=document.createElement("span");
 
-            }
-        );
+        span.textContent=
+          char===" "
+          ? "\u00A0"
+          : char;
 
-    });
+        const middle=
+          (chars.length-1)/2;
 
+        const offset=
+          index-middle;
 
-    /* ==================================================
-       FORMAT
-    ================================================== */
+        const angle=
+          layer.curve*offset/
+          Math.max(chars.length,1);
 
-    document
-    .querySelectorAll(".format")
-    .forEach(function(format){
+        span.style.display="inline-block";
 
-        format.addEventListener(
-            "click",
-            function(){
+        span.style.transform=
+          `translateY(${Math.abs(offset)*Math.abs(layer.curve)/18}px)
+           rotate(${angle}deg)`;
 
-                document
-                .querySelectorAll(".format")
-                .forEach(function(item){
+        span.style.color=
+          layer.colorMode==="solid"
+          ? layer.color1
+          : "";
 
-                    item.classList.remove("active");
+        if(layer.colorMode==="gradient"){
 
-                });
+          span.style.background=
+            `linear-gradient(
+              90deg,
+              ${layer.color1},
+              ${layer.color2}
+            )`;
 
+          span.style.webkitBackgroundClip="text";
 
-                format.classList.add("active");
-
-
-                const value =
-                    format.getAttribute("data-format");
-
-
-                if(value === "9:16"){
-
-                    preview.style.aspectRatio =
-                        "9 / 16";
-
-                    preview.style.height =
-                        "min(470px,75vh)";
-
-                }
-
-
-                if(value === "1:1"){
-
-                    preview.style.aspectRatio =
-                        "1 / 1";
-
-                    preview.style.height =
-                        "min(470px,75vw)";
-
-                }
-
-
-                if(value === "16:9"){
-
-                    preview.style.aspectRatio =
-                        "16 / 9";
-
-                    preview.style.height =
-                        "min(470px,56.25vw)";
-
-                }
-
-            }
-        );
-
-    });
-
-
-    /* ==================================================
-       UNDO
-    ================================================== */
-
-    document
-    .getElementById("undoButton")
-    .addEventListener(
-        "click",
-        function(){
-
-            alert(
-                "↶ Undo history will be connected next."
-            );
+          span.style.color="transparent";
 
         }
+
+        span.style.webkitTextStroke=
+          layer.outlineWidth>0
+          ? `${layer.outlineWidth}px ${layer.outlineColor}`
+          : "none";
+
+        span.style.textShadow=
+          createShadow(layer);
+
+        span.style.fontWeight=
+          layer.bold ? "700":"400";
+
+        span.style.fontStyle=
+          layer.italic ? "italic":"normal";
+
+        content.appendChild(span);
+
+      });
+
+    }
+
+
+    el.style.transform=
+      `translate(-50%,-50%)
+       rotate(${layer.rotation}deg)`;
+
+
+    el.addEventListener(
+      "pointerdown",
+      startDrag
     );
 
 
-    /* ==================================================
-       REDO
-    ================================================== */
+    container.appendChild(el);
 
-    document
-    .getElementById("redoButton")
-    .addEventListener(
-        "click",
-        function(){
+  });
 
-            alert(
-                "↷ Redo history will be connected next."
-            );
 
-        }
+  renderLayerPanel();
+
+  renderTimeline();
+
+}
+
+
+/* =========================
+   SHADOW
+========================= */
+
+function createShadow(layer){
+
+  if(layer.shadowBlur<=0 &&
+     layer.shadowDistance<=0){
+
+    return "";
+
+  }
+
+  return `
+    ${layer.shadowDistance}px
+    ${layer.shadowDistance}px
+    ${layer.shadowBlur}px
+    ${layer.shadowColor}
+  `;
+
+}
+
+
+/* =========================
+   DRAG TEXT
+========================= */
+
+let dragData=null;
+
+function startDrag(event){
+
+  event.preventDefault();
+
+  const id=Number(
+    event.currentTarget.dataset.id
+  );
+
+  const layer=
+    state.layers.find(l=>l.id===id);
+
+  if(!layer || layer.locked)return;
+
+  selectLayer(id);
+
+  const stage=
+    document.getElementById("stage");
+
+  const rect=
+    stage.getBoundingClientRect();
+
+  dragData={
+
+    layer,
+
+    rect
+
+  };
+
+  window.addEventListener(
+    "pointermove",
+    dragMove
+  );
+
+  window.addEventListener(
+    "pointerup",
+    stopDrag,
+    {once:true}
+  );
+
+}
+
+
+function dragMove(event){
+
+  if(!dragData)return;
+
+  const {layer,rect}=dragData;
+
+  let x=
+    ((event.clientX-rect.left)/
+    rect.width)*100;
+
+  let y=
+    ((event.clientY-rect.top)/
+    rect.height)*100;
+
+  x=Math.max(0,Math.min(100,x));
+
+  y=Math.max(0,Math.min(100,y));
+
+  layer.x=x;
+
+  layer.y=y;
+
+  renderAll();
+
+}
+
+
+function stopDrag(){
+
+  window.removeEventListener(
+    "pointermove",
+    dragMove
+  );
+
+  dragData=null;
+
+}
+
+
+/* =========================
+   CONTROLS
+========================= */
+
+function updateSelected(){
+
+  const layer=getSelected();
+
+  if(!layer)return;
+
+  layer.font=
+    document.getElementById("fontFamily").value;
+
+  layer.size=
+    Number(document.getElementById("fontSize").value);
+
+  layer.color1=
+    document.getElementById("color1").value;
+
+  layer.color2=
+    document.getElementById("color2").value;
+
+  layer.colorMode=
+    document.getElementById("colorMode").value;
+
+  layer.outlineWidth=
+    Number(document.getElementById("outlineWidth").value);
+
+  layer.outlineColor=
+    document.getElementById("outlineColor").value;
+
+  layer.shadowBlur=
+    Number(document.getElementById("shadowBlur").value);
+
+  layer.shadowDistance=
+    Number(document.getElementById("shadowDistance").value);
+
+  layer.shadowColor=
+    document.getElementById("shadowColor").value;
+
+  layer.glow=
+    Number(document.getElementById("glow").value);
+
+  layer.glowColor=
+    document.getElementById("glowColor").value;
+
+  layer.opacity=
+    Number(document.getElementById("opacity").value);
+
+  layer.letterSpacing=
+    Number(document.getElementById("letterSpacing").value);
+
+  layer.rotation=
+    Number(document.getElementById("rotation").value);
+
+  layer.curve=
+    Number(document.getElementById("curve").value);
+
+  layer.backgroundColor=
+    document.getElementById("backgroundColor").value;
+
+  layer.backgroundOpacity=
+    Number(
+      document.getElementById(
+        "backgroundOpacity"
+      ).value
     );
 
 
-    /* ==================================================
-       AI DIRECTOR
-    ================================================== */
+  document.getElementById("sizeValue")
+    .textContent=layer.size;
 
-    document
-    .getElementById("askAiDirector")
-    .addEventListener(
-        "click",
-        function(){
+  document.getElementById("outlineValue")
+    .textContent=layer.outlineWidth;
 
-            alert(
-                "🤖 AI Director\n\n" +
-                "Tell me what you want to improve:\n\n" +
-                "• Make it cinematic\n" +
-                "• Make it faster\n" +
-                "• Add captions\n" +
-                "• Improve transitions\n" +
-                "• Make the hook stronger"
-            );
+  document.getElementById("shadowBlurValue")
+    .textContent=layer.shadowBlur;
 
-        }
+  document.getElementById("shadowDistanceValue")
+    .textContent=layer.shadowDistance;
+
+  document.getElementById("glowValue")
+    .textContent=layer.glow;
+
+  document.getElementById("opacityValue")
+    .textContent=layer.opacity;
+
+  document.getElementById("letterSpacingValue")
+    .textContent=layer.letterSpacing;
+
+  document.getElementById("rotationValue")
+    .textContent=layer.rotation;
+
+  document.getElementById("curveValue")
+    .textContent=layer.curve;
+
+  document.getElementById("backgroundOpacityValue")
+    .textContent=layer.backgroundOpacity;
+
+
+  renderAll();
+
+}
+
+
+function loadControls(){
+
+  const layer=getSelected();
+
+  if(!layer)return;
+
+  document.getElementById("fontFamily")
+    .value=layer.font;
+
+  document.getElementById("fontSize")
+    .value=layer.size;
+
+  document.getElementById("color1")
+    .value=layer.color1;
+
+  document.getElementById("color2")
+    .value=layer.color2;
+
+  document.getElementById("colorMode")
+    .value=layer.colorMode;
+
+  document.getElementById("outlineWidth")
+    .value=layer.outlineWidth;
+
+  document.getElementById("outlineColor")
+    .value=layer.outlineColor;
+
+  document.getElementById("shadowBlur")
+    .value=layer.shadowBlur;
+
+  document.getElementById("shadowDistance")
+    .value=layer.shadowDistance;
+
+  document.getElementById("shadowColor")
+    .value=layer.shadowColor;
+
+  document.getElementById("glow")
+    .value=layer.glow;
+
+  document.getElementById("glowColor")
+    .value=layer.glowColor;
+
+  document.getElementById("opacity")
+    .value=layer.opacity;
+
+  document.getElementById("letterSpacing")
+    .value=layer.letterSpacing;
+
+  document.getElementById("rotation")
+    .value=layer.rotation;
+
+  document.getElementById("curve")
+    .value=layer.curve;
+
+  document.getElementById("backgroundColor")
+    .value=layer.backgroundColor;
+
+  document.getElementById("backgroundOpacity")
+    .value=layer.backgroundOpacity;
+
+
+  document.getElementById("sizeValue")
+    .textContent=layer.size;
+
+  document.getElementById("outlineValue")
+    .textContent=layer.outlineWidth;
+
+  document.getElementById("shadowBlurValue")
+    .textContent=layer.shadowBlur;
+
+  document.getElementById("shadowDistanceValue")
+    .textContent=layer.shadowDistance;
+
+  document.getElementById("glowValue")
+    .textContent=layer.glow;
+
+  document.getElementById("opacityValue")
+    .textContent=layer.opacity;
+
+  document.getElementById("letterSpacingValue")
+    .textContent=layer.letterSpacing;
+
+  document.getElementById("rotationValue")
+    .textContent=layer.rotation;
+
+  document.getElementById("curveValue")
+    .textContent=layer.curve;
+
+  document.getElementById("backgroundOpacityValue")
+    .textContent=layer.backgroundOpacity;
+
+
+  document.getElementById("boldBtn")
+    .classList.toggle(
+      "active",
+      layer.bold
     );
 
-
-    /* ==================================================
-       EXPORT
-    ================================================== */
-
-    document
-    .getElementById("exportButton")
-    .addEventListener(
-        "click",
-        function(){
-
-            alert(
-                "📤 Export engine will be connected next.\n\n" +
-                "Your media and text are currently working in the editor preview."
-            );
-
-        }
+  document.getElementById("italicBtn")
+    .classList.toggle(
+      "active",
+      layer.italic
     );
 
-});
+}
+
+
+function toggleStyle(type){
+
+  const layer=getSelected();
+
+  if(!layer){
+
+    alert("Select a text layer first.");
+
+    return;
+  }
+
+  if(type==="bold"){
+    layer.bold=!layer.bold;
+  }
+
+  if(type==="italic"){
+    layer.italic=!layer.italic;
+  }
+
+  loadControls();
+
+  renderAll();
+
+}
+
+
+/* =========================
+   LAYER PANEL
+========================= */
+
+function renderLayerPanel(){
+
+  const panel=
+    document.getElementById("layers");
+
+  panel.innerHTML="";
+
+  const sorted=[
+    ...state.layers
+  ].sort((a,b)=>b.z-a.z);
+
+  if(!sorted.length){
+
+    panel.innerHTML=
+      `<div style="color:#777f8e;font-size:12px">
+        No text layers yet.
+      </div>`;
+
+    return;
+  }
+
+  sorted.forEach(layer=>{
+
+    const row=
+      document.createElement("div");
+
+    row.className="layer";
+
+    if(layer.id===state.selectedId){
+      row.classList.add("selected");
+    }
+
+    const name=
+      document.createElement("div");
+
+    name.className="layer-name";
+
+    name.textContent=
+      (layer.locked?"🔒 ":"")+
+      (layer.visible?"":"🚫 ")+
+      layer.text;
+
+    row.appendChild(name);
+
+    const eye=
+      document.createElement("button");
+
+    eye.textContent=
+      layer.visible?"👁":"🚫";
+
+    eye.onclick=(e)=>{
+
+      e.stopPropagation();
+
+      layer.visible=!layer.visible;
+
+      renderAll();
+
+    };
+
+    row.appendChild(eye);
+
+    const lock=
+      document.createElement("button");
+
+    lock.textContent=
+      layer.locked?"🔒":"🔓";
+
+    lock.onclick=(e)=>{
+
+      e.stopPropagation();
+
+      layer.locked=!layer.locked;
+
+      renderAll();
+
+    };
+
+    row.appendChild(lock);
+
+    row.onclick=()=>{
+      selectLayer(layer.id);
+    };
+
+    panel.appendChild(row);
+
+  });
+
+}
+
+
+/* =========================
+   LAYER ORDER
+========================= */
+
+function bringForward(){
+
+  const layer=getSelected();
+
+  if(!layer)return;
+
+  layer.z=getMaxZ()+1;
+
+  renderAll();
+
+}
+
+
+function sendBackward(){
+
+  const layer=getSelected();
+
+  if(!layer)return;
+
+  const minZ=
+    state.layers.length
+    ? Math.min(...state.layers.map(l=>l.z))
+    : 10;
+
+  layer.z=minZ-1;
+
+  renderAll();
+
+}
+
+
+function toggleLock(){
+
+  const layer=getSelected();
+
+  if(!layer){
+
+    alert("Select a layer first.");
+
+    return;
+  }
+
+  layer.locked=!layer.locked;
+
+  renderAll();
+
+}
+
+
+function toggleVisibility(){
+
+  const layer=getSelected();
+
+  if(!layer){
+
+    alert("Select a layer first.");
+
+    return;
+  }
+
+  layer.visible=!layer.visible;
+
+  renderAll();
+
+}
+
+
+/* =========================
+   TIMELINE
+========================= */
+
+function renderTimeline(){
+
+  const track=
+    document.getElementById("textTimeline");
+
+  track.innerHTML="";
+
+  state.layers.forEach((layer,index)=>{
+
+    const clip=
+      document.createElement("div");
+
+    clip.className="clip";
+
+    clip.style.left=
+      (index*70)+"px";
+
+    clip.style.width="130px";
+
+    clip.textContent=
+      layer.text || "Text";
+
+    clip.onclick=()=>{
+      selectLayer(layer.id);
+    };
+
+    track.appendChild(clip);
+
+  });
+
+}
+
+
+/* =========================
+   EXPORT PLACEHOLDER
+========================= */
+
+function exportProject(){
+
+  alert(
+    "Project prepared.\n\n" +
+    "Professional rendering/export engine " +
+    "will be connected next."
+  );
+
+}
+
+
+/* =========================
+   HELPERS
+========================= */
+
+function hexToRGBA(hex,alpha){
+
+  const clean=
+    hex.replace("#","");
+
+  const bigint=
+    parseInt(clean,16);
+
+  const r=
+    (bigint>>16)&255;
+
+  const g=
+    (bigint>>8)&255;
+
+  const b=
+    bigint&255;
+
+  return `rgba(${r},${g},${b},${alpha})`;
+
+}
+
+
+function escapeHTML(text){
+
+  return text
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+   STARTUP
+========================= */
+
+renderAll();
+
 </script>
 
 </body>
